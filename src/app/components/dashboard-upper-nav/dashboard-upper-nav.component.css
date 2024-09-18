@@ -1,0 +1,13 @@
+.navbar-custom {
+  background-color: #FFC107; /* Yellow background color */
+}
+
+.navbar-custom .nav-link,
+.navbar-custom .navbar-text {
+  color: #343a40; /* Dark text color */
+}
+
+.navbar-custom .icon {
+  font-size: 2rem;
+  padding-right: 1rem;
+}
