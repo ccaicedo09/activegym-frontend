@@ -2,14 +2,17 @@
   <div class="login-form shadow-lg">
     <h3><strong>Ingreso Staff</strong></h3>
     <p>ingrese sus credenciales</p>
-    <form>
+    <form [formGroup]="adminLoginForm" (ngSubmit)="login()">
       <div class="input-group mb-3">
         <label for="email" class="form-label"><i class="bi bi-envelope-fill"></i></label>
-        <input type="email" class="form-control" id="email" placeholder="Email">
+        <input type="email" formControlName="email" class="form-control" id="email" placeholder="Email">
+        <div *ngIf="email?.invalid && email?.touched" class="text text-danger">
+          El email no es válido
+        </div>
       </div>
       <div class="input-group mb-3">
         <label for="password" class="form-label"><i class="bi bi-lock-fill"></i></label>
-        <input type="password" class="form-control" id="password" placeholder="Contraseña">
+        <input type="password" class="form-control" formControlName="password" id="password" placeholder="Contraseña">
       </div>
       <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
       <a href="#">volver al inicio</a>

@@ -8,5 +8,9 @@ export const routes: Routes = [
   {
     path:'login/admin',
     loadComponent: () => import('./pages/admin-login/admin-login.component')
+  },
+  {
+    path:'dashboard',
+    loadComponent: () => import('./pages/dashboard/dashboard.component')
   }
 ];
