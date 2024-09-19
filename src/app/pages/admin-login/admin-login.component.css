@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Ocupar toda la altura de la pantalla */
+  min-height: 100vh;
   background-image: url("/assets/login-bg.jpg");
   background-size: cover;
   background-position: center;
@@ -15,17 +15,17 @@
   left: 0;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(10px); /* Blurring the background */
+  backdrop-filter: blur(10px);
   z-index: -1;
 }
 
 .login-form {
-  background-color: rgba(255, 255, 255, 0.9); /* White background */
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 2rem;
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  max-width: 350px; /* Limit width */
+  max-width: 350px;
   width: 100%;
 }
 
@@ -35,7 +35,7 @@
 
 .login-form i {
   font-size: 2rem;
-  color: #333333;
+  color: var(--color-black);
   margin-right: 10px;
   position: relative;
   top: -3px;
@@ -43,8 +43,8 @@
 
 
 .btn-primary {
-  background-color: #ffc107; /* Yellow color for button */
-  border-color: #ffc107;
+  background-color: var(--color-yellow);
+  border-color: var(--color-yellow);
   color: #000;
   width: 100%;
 }

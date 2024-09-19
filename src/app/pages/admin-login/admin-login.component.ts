@@ -24,9 +24,9 @@ export default class AdminLoginComponent {
   asyncEmailValidator(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
       return of(control.value).pipe(
-        delay(1000), // Simula una llamada a un servicio remoto
+        delay(1000), // Simulates a HTTP request
         map(value => {
-          const emailTaken = value === 'test@example.com'; // Simula una verificación de email
+          const emailTaken = value === 'test@example.com'; // Simulates email verification
           return emailTaken ? { emailTaken: true } : null;
         })
       );
