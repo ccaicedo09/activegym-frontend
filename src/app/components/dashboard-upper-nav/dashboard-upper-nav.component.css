@@ -1,0 +1,14 @@
+.navbar-custom {
+  background-color: var(--color-yellow);
+}
+
+.navbar-custom .nav-link,
+.navbar-custom .navbar-text {
+  color: var(--color-black);
+}
+
+.navbar-custom .icon {
+  font-size: 2rem;
+  padding-right: 1rem;
+  color: var(--color-black);
+}

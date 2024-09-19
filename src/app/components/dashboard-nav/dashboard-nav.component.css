@@ -1,0 +1,57 @@
+@media (min-width: 992px) {
+  #sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1;
+    padding-top: 20px;
+  }
+}
+
+/* Small screens off canvas */
+.offcanvas-start {
+  background-color: var(--color-black);
+  color: #ffc107;
+}
+
+.offcanvas-header .btn-close {
+  filter: invert(1);
+}
+
+button i {
+  font-size: 2rem;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  color: var(--color-yellow);
+  font-size: 1.5rem;
+}
+
+.navbar-brand i {
+  color: var(--color-yellow);
+  margin-right: 10px;
+}
+
+.links-list {
+  margin-top: 1.5rem;
+}
+
+.links-list i {
+  color: var(--color-yellow);
+}
+
+.links-list a {
+  color: var(--color-white);
+}
+
+#sidebar-toggler {
+  position: absolute;
+  top: 2px;
+  left: 10px;
+}
+
+#sidebar {
+  background-color: var(--color-black);
+}
