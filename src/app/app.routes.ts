@@ -11,6 +11,12 @@ export const routes: Routes = [
   },
   {
     path:'dashboard',
-    loadComponent: () => import('./pages/dashboard/dashboard.component')
+    loadComponent: () => import('./pages/dashboard/dashboard.component'),
+    children: [
+      {
+        path: 'create-user',
+        loadComponent: () => import('./pages/create-user/create-user.component')
+      }
+    ]
   }
 ];

@@ -1,0 +1,13 @@
+.content-container {
+  margin-left: 250px; /* Reserva espacio para la barra lateral */
+  margin-top: 8px;   /* Reserva espacio para la barra superior */
+  padding: 20px;      /* Ajusta el padding según lo que necesites */
+  height: calc(100vh - 60px); /* Altura dinámica menos la barra superior */
+}
+
+@media (max-width: 991px) {
+  .content-container {
+    margin-left: 0; /* Elimina el margen izquierdo cuando el sidebar no está visible */
+    width: 100%;    /* Asegura que el contenido ocupe todo el ancho */
+  }
+}
