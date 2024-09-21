@@ -64,3 +64,12 @@
 .login-form a:hover {
   text-decoration: underline;
 }
+
+.custom-invalid-feedback {
+  margin: 0 0 0 45px;
+  font-size: 0.9rem;
+  text-align: left;
+  position: relative;
+  top: -10px;
+  height: 0px;
+}

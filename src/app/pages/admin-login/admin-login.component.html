@@ -6,13 +6,22 @@
       <div class="input-group mb-3">
         <label for="email" class="form-label"><i class="bi bi-envelope-fill"></i></label>
         <input type="email" formControlName="email" class="form-control" id="email" placeholder="Email">
-        <div *ngIf="email?.invalid && email?.touched" class="text text-danger">
-          El email no es válido
+        <div *ngIf="adminLoginForm.get('email')?.hasError('required') && adminLoginForm.get('email')?.touched" class="invalid-feedback d-block custom-invalid-feedback">
+          ¡El email es necesario!
+        </div>
+        <div *ngIf="adminLoginForm.get('email')?.hasError('email') && adminLoginForm.get('email')?.touched" class="invalid-feedback d-block custom-invalid-feedback">
+          ¡El email no es válido!
         </div>
       </div>
       <div class="input-group mb-3">
         <label for="password" class="form-label"><i class="bi bi-lock-fill"></i></label>
         <input type="password" class="form-control" formControlName="password" id="password" placeholder="Contraseña">
+        <div *ngIf="adminLoginForm.get('password')?.hasError('required') && adminLoginForm.get('password')?.touched" class="invalid-feedback d-block custom-invalid-feedback">
+          ¡La contraseña es necesaria!
+        </div>
+        <div *ngIf="adminLoginForm.get('password')?.hasError('minlength') && adminLoginForm.get('password')?.touched" class="invalid-feedback d-block custom-invalid-feedback">
+          ¡La contraseña no es válida!
+        </div>
       </div>
       <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
       <a href="#">volver al inicio</a>
