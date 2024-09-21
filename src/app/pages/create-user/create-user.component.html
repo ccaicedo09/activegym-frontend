@@ -1,3 +1,52 @@
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo inventore neque repudiandae. Sunt temporibus modi doloremque quisquam enim omnis commodi? Aliquam enim minima adipisci cumque harum officia, reprehenderit quos dignissimos tenetur voluptates ut corporis quod sit numquam mollitia omnis doloremque praesentium dolorem perspiciatis. Ut perspiciatis rem ipsam, eaque earum explicabo eligendi nesciunt reiciendis placeat fugiat numquam autem dolores deleniti quia repellendus temporibus repudiandae qui in quae quam ab ipsum quasi itaque culpa? Veniam mollitia quia accusantium possimus provident quas deserunt, delectus vitae animi eaque eveniet alias commodi impedit vero voluptate repellat vel dolorem reiciendis minima aperiam dolor rem voluptatum, magni necessitatibus. Iste ab alias quos vero optio dicta, facere perferendis dolor repellat ducimus obcaecati, tempore laudantium ratione illum ipsam beatae amet sed rem asperiores facilis sit praesentium. Delectus, aut quis! Obcaecati tenetur provident non, exercitationem nobis culpa illum atque quibusdam. Illum officiis voluptas accusantium obcaecati tempora id, enim ipsum pariatur minus, similique nemo eos ratione? Aliquid molestiae inventore reprehenderit sunt cumque sequi perferendis quis aspernatur eveniet minima ut rem animi impedit maxime fugit non alias eaque facere autem, a amet magnam temporibus repellendus. Velit, enim corporis illum cumque, nesciunt in, facere amet ut ipsa nostrum atque distinctio? Voluptatibus, quis voluptatem?</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo inventore neque repudiandae. Sunt temporibus modi doloremque quisquam enim omnis commodi? Aliquam enim minima adipisci cumque harum officia, reprehenderit quos dignissimos tenetur voluptates ut corporis quod sit numquam mollitia omnis doloremque praesentium dolorem perspiciatis. Ut perspiciatis rem ipsam, eaque earum explicabo eligendi nesciunt reiciendis placeat fugiat numquam autem dolores deleniti quia repellendus temporibus repudiandae qui in quae quam ab ipsum quasi itaque culpa? Veniam mollitia quia accusantium possimus provident quas deserunt, delectus vitae animi eaque eveniet alias commodi impedit vero voluptate repellat vel dolorem reiciendis minima aperiam dolor rem voluptatum, magni necessitatibus. Iste ab alias quos vero optio dicta, facere perferendis dolor repellat ducimus obcaecati, tempore laudantium ratione illum ipsam beatae amet sed rem asperiores facilis sit praesentium. Delectus, aut quis! Obcaecati tenetur provident non, exercitationem nobis culpa illum atque quibusdam. Illum officiis voluptas accusantium obcaecati tempora id, enim ipsum pariatur minus, similique nemo eos ratione? Aliquid molestiae inventore reprehenderit sunt cumque sequi perferendis quis aspernatur eveniet minima ut rem animi impedit maxime fugit non alias eaque facere autem, a amet magnam temporibus repellendus. Velit, enim corporis illum cumque, nesciunt in, facere amet ut ipsa nostrum atque distinctio? Voluptatibus, quis voluptatem?</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo inventore neque repudiandae. Sunt temporibus modi doloremque quisquam enim omnis commodi? Aliquam enim minima adipisci cumque harum officia, reprehenderit quos dignissimos tenetur voluptates ut corporis quod sit numquam mollitia omnis doloremque praesentium dolorem perspiciatis. Ut perspiciatis rem ipsam, eaque earum explicabo eligendi nesciunt reiciendis placeat fugiat numquam autem dolores deleniti quia repellendus temporibus repudiandae qui in quae quam ab ipsum quasi itaque culpa? Veniam mollitia quia accusantium possimus provident quas deserunt, delectus vitae animi eaque eveniet alias commodi impedit vero voluptate repellat vel dolorem reiciendis minima aperiam dolor rem voluptatum, magni necessitatibus. Iste ab alias quos vero optio dicta, facere perferendis dolor repellat ducimus obcaecati, tempore laudantium ratione illum ipsam beatae amet sed rem asperiores facilis sit praesentium. Delectus, aut quis! Obcaecati tenetur provident non, exercitationem nobis culpa illum atque quibusdam. Illum officiis voluptas accusantium obcaecati tempora id, enim ipsum pariatur minus, similique nemo eos ratione? Aliquid molestiae inventore reprehenderit sunt cumque sequi perferendis quis aspernatur eveniet minima ut rem animi impedit maxime fugit non alias eaque facere autem, a amet magnam temporibus repellendus. Velit, enim corporis illum cumque, nesciunt in, facere amet ut ipsa nostrum atque distinctio? Voluptatibus, quis voluptatem?</p>
+<form [formGroup]="form" (ngSubmit)="save()">
+  <div class="mb-3">
+    <h2>Crear nuevo usuario</h2>
+    <label for="firstName" class="form-label">Nombres</label>
+    <input type="text" class="form-control" formControlName="firstName" id="firstName" placeholder="Nombres">
+  </div>
+  <div class="mb-3">
+    <label for="lastName" class="form-label">Apellidos</label>
+    <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Apellidos">
+  </div>
+  <div class="mb-3">
+    <label for="phone" class="form-label">Teléfono</label>
+    <input type="text" class="form-control" id="phone" formControlName="phone" placeholder="Teléfono">
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Correo Electrónico</label>
+    <input type="email" class="form-control" id="email" formControlName="email" placeholder="Correo Electrónico">
+  </div>
+  <div class="mb-3">
+    <label for="document" class="form-label">Número de identificación</label>
+    <input type="text" class="form-control" id="document" formControlName="document" placeholder="Número de identificación">
+  </div>
+  <div class="mb-3">
+    <label for="dateOfBirth" class="form-label">Fecha de Nacimiento</label>
+    <input type="date" class="form-control" formControlName="dateOfBirth" id="dateOfBirth">
+  </div>
+  <div class="mb-3">
+    <label for="gender" class="form-label">Género</label>
+    <select class="form-control" id="gender" formControlName="gender">
+      <option *ngFor="let gender of genders" [value]="gender.id">{{ gender.genderName }}</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="eps" class="form-label">EPS</label>
+    <select class="form-control" formControlName="eps" id="eps">
+      <option *ngFor="let eps of eps" [value]="eps.id">{{ eps.epsName }}</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="bloodType" class="form-label">Tipo de Sangre</label>
+    <select class="form-control" id="bloodType" formControlName="bloodType">
+      <option *ngFor="let bloodType of bloodTypes" [value]="bloodType.id">{{ bloodType.bloodTypeName }}</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="bloodRh" class="form-label">RH</label>
+    <select class="form-control" id="bloodRh" formControlName="bloodRh">
+      <option *ngFor="let bloodRh of bloodRhs" [value]="bloodRh.id">{{ bloodRh.bloodRh }}</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
