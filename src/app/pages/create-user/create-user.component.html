@@ -27,25 +27,25 @@
   <div class="mb-3">
     <label for="gender" class="form-label">Género</label>
     <select class="form-control" id="gender" formControlName="gender">
-      <option *ngFor="let gender of genders" [value]="gender.id">{{ gender.genderName }}</option>
+      <option *ngFor="let gender of genders" [value]="gender.genderName">{{ gender.genderName }}</option>
     </select>
   </div>
   <div class="mb-3">
     <label for="eps" class="form-label">EPS</label>
     <select class="form-control" formControlName="eps" id="eps">
-      <option *ngFor="let eps of eps" [value]="eps.id">{{ eps.epsName }}</option>
+      <option *ngFor="let eps of eps" [value]="eps.epsName">{{ eps.epsName }}</option>
     </select>
   </div>
   <div class="mb-3">
     <label for="bloodType" class="form-label">Tipo de Sangre</label>
     <select class="form-control" id="bloodType" formControlName="bloodType">
-      <option *ngFor="let bloodType of bloodTypes" [value]="bloodType.id">{{ bloodType.bloodTypeName }}</option>
+      <option *ngFor="let bloodType of bloodTypes" [value]="bloodType.bloodTypeName">{{ bloodType.bloodTypeName }}</option>
     </select>
   </div>
   <div class="mb-3">
     <label for="bloodRh" class="form-label">RH</label>
     <select class="form-control" id="bloodRh" formControlName="bloodRh">
-      <option *ngFor="let bloodRh of bloodRhs" [value]="bloodRh.id">{{ bloodRh.bloodRh }}</option>
+      <option *ngFor="let bloodRh of bloodRhs" [value]="bloodRh.bloodRh">{{ bloodRh.bloodRh }}</option>
     </select>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>

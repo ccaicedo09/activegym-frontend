@@ -65,10 +65,11 @@ export default class CreateUserComponent implements OnInit {
     }
 
     const userForm = this.form!.value;
+    console.log('Datos enviados:', userForm);
 
     this.userService.create(userForm)
     .subscribe(() => {
-      this.router.navigate(['/']);
+      this.router.navigate(['dashboard']);
     })
   }
 
