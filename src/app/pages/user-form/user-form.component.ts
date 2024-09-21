@@ -14,13 +14,13 @@ import { BloodRh } from '../../models/bloodrh.interface';
 import { NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-create-user',
+  selector: 'app-user-form',
   standalone: true,
   imports: [RouterModule, ReactiveFormsModule, NgFor],
-  templateUrl: './create-user.component.html',
-  styleUrl: './create-user.component.css'
+  templateUrl: './user-form.component.html',
+  styleUrl: './user-form.component.css'
 })
-export default class CreateUserComponent implements OnInit {
+export default class UserFormComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
   private userService = inject(UserService);
   private genderService = inject(GenderService);
