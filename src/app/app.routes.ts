@@ -14,7 +14,7 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/dashboard/dashboard.component'),
     children: [
       {
-        path: 'create-user',
+        path: 'user-form',
         loadComponent: () => import('./components/user-form/user-form.component')
       }
     ]
