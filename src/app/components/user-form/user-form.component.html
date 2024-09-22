@@ -1,0 +1,118 @@
+<form [formGroup]="userForm" (ngSubmit)="save()">
+  <div class="mb-3">
+    <h3>Crear nuevo usuario</h3>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-12 mb-3">
+      <label for="firstName" class="form-label">Nombres</label>
+      <input type="text" class="form-control" formControlName="firstName" id="firstName" placeholder="Nombres">
+      <div *ngIf="userForm.get('firstName')?.hasError('required') && userForm.get('firstName')?.touched" class="invalid-feedback d-block">
+        ¡El nombre es necesario!
+      </div>
+      <div *ngIf="userForm.get('firstName')?.hasError('minlength') && userForm.get('firstName')?.touched" class="invalid-feedback d-block">
+        ¡El nombre es muy corto!
+      </div>
+    </div>
+    <div class="col-md-6 col-12 mb-3">
+      <label for="lastName" class="form-label">Apellidos</label>
+      <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Apellidos">
+      <div *ngIf="userForm.get('lastName')?.hasError('required') && userForm.get('lastName')?.touched" class="invalid-feedback d-block">
+        ¡El apellido es necesario!
+      </div>
+      <div *ngIf="userForm.get('lastName')?.hasError('minlength') && userForm.get('lastName')?.touched" class="invalid-feedback d-block">
+        ¡El apellido es muy corto!
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-12 mb-3">
+      <label for="phone" class="form-label">Teléfono</label>
+      <input type="text" class="form-control" id="phone" formControlName="phone" placeholder="Teléfono">
+      <div *ngIf="userForm.get('phone')?.hasError('required') && userForm.get('phone')?.touched" class="invalid-feedback d-block">
+        ¡El teléfono es necesario!
+      </div>
+      <div *ngIf="userForm.get('phone')?.hasError('minlength') && userForm.get('phone')?.touched" class="invalid-feedback d-block">
+        ¡El teléfono es muy corto!
+      </div>
+    </div>
+    <div class="col-md-6 col-12 mb-3">
+      <label for="email" class="form-label">Correo Electrónico</label>
+      <input type="email" class="form-control" id="email" formControlName="email" placeholder="Correo Electrónico">
+      <div *ngIf="userForm.get('email')?.hasError('required') && userForm.get('email')?.touched" class="invalid-feedback d-block">
+        ¡El email es necesario!
+      </div>
+      <div *ngIf="userForm.get('email')?.hasError('email') && userForm.get('email')?.touched" class="invalid-feedback d-block">
+        ¡El email no es válido!
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-12 mb-3">
+      <label for="document" class="form-label">Número de identificación</label>
+      <input type="text" class="form-control" id="document" formControlName="document"
+        placeholder="Número de identificación">
+        <div *ngIf="userForm.get('document')?.hasError('required') && userForm.get('document')?.touched" class="invalid-feedback d-block">
+          ¡La identificación es necesaria!
+        </div>
+        <div *ngIf="userForm.get('document')?.hasError('minlength') && userForm.get('document')?.touched" class="invalid-feedback d-block">
+          ¡La identificación es muy corta!
+        </div>
+    </div>
+    <div class="col-md-6 col-12 mb-3">
+      <label for="dateOfBirth" class="form-label">Fecha de Nacimiento</label>
+      <input type="date" class="form-control" formControlName="dateOfBirth" id="dateOfBirth">
+      <div *ngIf="userForm.get('dateOfBirth')?.hasError('required') && userForm.get('dateOfBirth')?.touched" class="invalid-feedback d-block">
+        ¡La fecha de nacimiento es necesaria!
+      </div>
+      <div *ngIf="userForm.get('dateOfBirth')?.hasError('ageInvalid') && userForm.get('dateOfBirth')?.touched" class="invalid-feedback d-block">
+        ¡El usuario debe tener mínimo 15 años!
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-12 mb-3">
+      <label for="gender" class="form-label">Género</label>
+      <select class="form-control form-select" id="gender" formControlName="gender">
+        <option value="" disable selected>Selecciona un género</option>
+        <option *ngFor="let gender of genders" [value]="gender.genderName">{{ gender.genderName }}</option>
+      </select>
+      <div *ngIf="userForm.get('gender')?.hasError('required') && userForm.get('gender')?.touched" class="invalid-feedback d-block">
+        ¡El género es necesario!
+      </div>
+    </div>
+    <div class="col-md-6 col-12 mb-3">
+      <label for="eps" class="form-label">EPS</label>
+      <select class="form-control form-select" formControlName="eps" id="eps">
+        <option value="" disable selected>Selecciona una EPS</option>
+        <option *ngFor="let eps of eps" [value]="eps.epsName">{{ eps.epsName }}</option>
+      </select>
+      <div *ngIf="userForm.get('eps')?.hasError('required') && userForm.get('eps')?.touched" class="invalid-feedback d-block">
+        ¡La EPS es necesaria!
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-12 mb-3">
+      <label for="bloodType" class="form-label">Tipo de Sangre</label>
+      <select class="form-control form-select" id="bloodType" formControlName="bloodType">
+        <option value="" disable selected>Selecciona un tipo de sangre</option>
+        <option *ngFor="let bloodType of bloodTypes" [value]="bloodType.bloodTypeName">{{ bloodType.bloodTypeName }}
+        </option>
+      </select>
+      <div *ngIf="userForm.get('bloodType')?.hasError('required') && userForm.get('bloodType')?.touched" class="invalid-feedback d-block">
+        ¡El tipo de sangre es necesario!
+      </div>
+    </div>
+    <div class="col-md-6 col-12 mb-3">
+      <label for="bloodRh" class="form-label">RH</label>
+      <select class="form-control form-select" id="bloodRh" formControlName="bloodRh">
+        <option value="" disable selected>Selecciona un factor RH</option>
+        <option *ngFor="let bloodRh of bloodRhs" [value]="bloodRh.bloodRh">{{ bloodRh.bloodRh }}</option>
+      </select>
+      <div *ngIf="userForm.get('bloodRh')?.hasError('required') && userForm.get('bloodRh')?.touched" class="invalid-feedback d-block">
+        ¡El factor RH es necesario!
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-custom">Confirmar</button>
+</form>

@@ -17,7 +17,7 @@ export default class AdminLoginComponent {
   constructor(private formBuilder: FormBuilder, private router: Router) {
     this.adminLoginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email], [this.asyncEmailValidator()]],
-      password: ['', Validators.required]
+      password: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
 
@@ -49,7 +49,6 @@ export default class AdminLoginComponent {
       this.adminLoginForm.reset();
     } else {
       this.adminLoginForm.markAllAsTouched();
-      alert('Please enter valid email and password');
     }
   }
 }
