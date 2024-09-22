@@ -21,4 +21,8 @@ export class UserService {
     return this.http.post<User>('http://localhost:8081/users', user);
   }
 
+  update(document: number, user: User) {
+    return this.http.put<User>(`http://localhost:8081/users/${document}`, user);
+  }
+
 }
