@@ -39,11 +39,31 @@ button i {
 }
 
 .links-list i {
+  margin-left: 5px;
   color: var(--color-yellow);
 }
 
 .links-list a {
   color: var(--color-white);
+}
+
+.links-list .nav-item {
+  transition: background-color 0.15s ease;
+}
+
+.links-list .nav-item:hover {
+  background-color: #363c42; /* Color de fondo más claro */
+  border-radius: 10px;
+}
+
+.links-list .nav-item.active {
+  background-color: #363c42; /* Color de fondo para la página seleccionada */
+  border-radius: 10px;
+}
+
+.active-link {
+  background-color: #363c42; /* Fondo que deseas para la ruta activa */
+  border-radius: 10px; /* Para darle un borde redondeado si deseas */
 }
 
 #sidebar-toggler {
