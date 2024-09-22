@@ -11,12 +11,13 @@ import { Gender } from '../../models/gender.interface';
 import { Eps } from '../../models/eps.interface';
 import { BloodType } from '../../models/bloodtype.interface';
 import { BloodRh } from '../../models/bloodrh.interface';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
+import { ageValidator } from '../../validators/ageValidator';
 
 @Component({
   selector: 'app-user-form',
   standalone: true,
-  imports: [RouterModule, ReactiveFormsModule, NgFor],
+  imports: [RouterModule, ReactiveFormsModule, NgFor, NgIf],
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.css'
 })
@@ -30,7 +31,7 @@ export default class UserFormComponent implements OnInit {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
 
-  form!: FormGroup;
+  userForm!: FormGroup;
   user?: User;
   genders: Gender[] = [];
   eps: Eps[] = [];
@@ -39,13 +40,13 @@ export default class UserFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.form = this.formBuilder.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      document: ['', [Validators.required]],
-      dateOfBirth: ['', [Validators.required]],
+    this.userForm = this.formBuilder.group({
+      firstName: ['', [Validators.required, Validators.minLength(3)]],
+      lastName: ['', [Validators.required, Validators.minLength(3)]],
+      phone: ['', [Validators.required, Validators.minLength(7)]],
+      email: ['', [Validators.required, Validators.email]],
+      document: ['', [Validators.required, Validators.minLength(9)]],
+      dateOfBirth: ['', [Validators.required, ageValidator(15)]],
       gender: ['', [Validators.required]],
       eps: ['', [Validators.required]],
       bloodType: ['', [Validators.required]],
@@ -59,15 +60,15 @@ export default class UserFormComponent implements OnInit {
 
 
   save() {
-    if(this.form?.invalid) {
-      this.form.markAllAsTouched()
+    if(this.userForm?.invalid) {
+      this.userForm.markAllAsTouched()
       return;
     }
 
-    const userForm = this.form!.value;
-    console.log('Datos enviados:', userForm);
+    const userData = this.userForm!.value;
+    console.log('Datos enviados:', userData);
 
-    this.userService.create(userForm)
+    this.userService.create(userData)
     .subscribe(() => {
       this.router.navigate(['dashboard']);
     })
