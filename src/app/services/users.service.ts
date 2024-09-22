@@ -9,8 +9,16 @@ import { User } from "../models/users.interface";
 export class UserService {
   private http = inject(HttpClient);
 
+  list() {
+    return this.http.get<User[]>('http://localhost:8081/users');
+  }
+
+  get(document: number) {
+    return this.http.get<User>(`http://localhost:8081/users/${document}`);
+  }
+
   create(user: User) {
     return this.http.post<User>('http://localhost:8081/users', user);
   }
-  
+
 }
