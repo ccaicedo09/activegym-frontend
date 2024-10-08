@@ -1,5 +1,5 @@
 export interface User {
-  document: string;
+  document: number;
   firstName: string;
   lastName: string;
   phone: string;

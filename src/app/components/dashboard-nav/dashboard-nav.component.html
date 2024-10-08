@@ -5,7 +5,7 @@
 <!-- Small screen off canvas -->
 <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
   <div class="offcanvas-header">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" [routerLink]="['/#']">
       <i class="fas fa-dumbbell fa-1x"></i> Active Gym
     </a>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -14,23 +14,27 @@
     <ul class="nav flex-column links-list">
       <li class="nav-item d-flex align-items-center">
         <i class="bi bi-house-fill"></i>
-        <a class="nav-link" href="#">Menú principal</a>
+        <a class="nav-link" [routerLink]="['/dashboard']">Menú principal</a>
       </li>
-      <li class="nav-item d-flex align-items-center">
+      <li class="nav-item d-flex align-items-center" routerLinkActive="active-link">
+        <i class="bi bi-person-fill"></i>
+        <a class="nav-link" [routerLink]="['/dashboard/users']">Gestionar usuarios</a>
+      </li>
+      <li class="nav-item d-flex align-items-center" routerLinkActive="active-link">
         <i class="bi bi-person-plus-fill"></i>
-        <a class="nav-link" href="dashboard/create-user">Crear usuario</a>
+        <a class="nav-link" [routerLink]="['/dashboard/user-form']">Crear usuario</a>
       </li>
       <li class="nav-item d-flex align-items-center">
         <i class="bi bi-graph-up"></i>
-        <a class="nav-link" href="#">Estadísticas</a>
+        <a class="nav-link" [routerLink]="['/dashboard']">Estadísticas</a>
       </li>
       <li class="nav-item d-flex align-items-center">
         <i class="bi bi-calendar3"></i>
-        <a class="nav-link" href="#">Actividades</a>
+        <a class="nav-link" [routerLink]="['/dashboard']">Actividades</a>
       </li>
       <li class="nav-item d-flex align-items-center">
         <i class="bi bi-gear-fill"></i>
-        <a class="nav-link" href="#">Configuración</a>
+        <a class="nav-link" [routerLink]="['/dashboard']">Configuración</a>
       </li>
     </ul>
   </div>
@@ -38,29 +42,33 @@
 
 <!-- Big screens sidebar -->
 <div id="sidebar" class="d-none d-lg-block text-white p-3">
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" [routerLink]="['/#']">
     <i class="fas fa-dumbbell fa-1x"></i> Active Gym
   </a>
   <ul class="nav flex-column links-list">
     <li class="nav-item d-flex align-items-center">
       <i class="bi bi-house-fill"></i>
-      <a class="nav-link" href="#">Menú principal</a>
+      <a class="nav-link" [routerLink]="['/dashboard']">Menú principal</a>
     </li>
-    <li class="nav-item d-flex align-items-center">
+    <li class="nav-item d-flex align-items-center" routerLinkActive="active-link">
+      <i class="bi bi-person-fill"></i>
+      <a class="nav-link" [routerLink]="['/dashboard/users']">Gestionar usuarios</a>
+    </li>
+    <li class="nav-item d-flex align-items-center" routerLinkActive="active-link">
       <i class="bi bi-person-plus-fill"></i>
-      <a class="nav-link" href="dashboard/user-form">Crear usuario</a>
+      <a class="nav-link" [routerLink]="['/dashboard/user-form']">Crear usuario</a>
     </li>
     <li class="nav-item d-flex align-items-center">
       <i class="bi bi-graph-up"></i>
-      <a class="nav-link" href="#">Estadísticas</a>
+      <a class="nav-link" [routerLink]="['/dashboard']">Estadísticas</a>
     </li>
     <li class="nav-item d-flex align-items-center">
       <i class="bi bi-calendar3"></i>
-      <a class="nav-link" href="#">Actividades</a>
+      <a class="nav-link" [routerLink]="['/dashboard']">Actividades</a>
     </li>
     <li class="nav-item d-flex align-items-center">
       <i class="bi bi-gear-fill"></i>
-      <a class="nav-link" href="#">Configuración</a>
+      <a class="nav-link" [routerLink]="['/dashboard']">Configuración</a>
     </li>
   </ul>
 </div>

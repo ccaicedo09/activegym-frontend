@@ -39,19 +39,29 @@ export default class UserFormComponent implements OnInit {
   bloodRhs: BloodRh[] = [];
 
   ngOnInit(): void {
+    const userDocument = this.route.snapshot.paramMap.get('document');
 
     this.userForm = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.minLength(3)]],
       lastName: ['', [Validators.required, Validators.minLength(3)]],
-      phone: ['', [Validators.required, Validators.minLength(7)]],
+      phone: ['', [Validators.required, Validators.minLength(10)]],
       email: ['', [Validators.required, Validators.email]],
-      document: ['', [Validators.required, Validators.minLength(9)]],
-      dateOfBirth: ['', [Validators.required, ageValidator(15)]],
+      document: ['', [Validators.required, Validators.minLength(5)]],
+      dateOfBirth: ['', [Validators.required]],
       gender: ['', [Validators.required]],
       eps: ['', [Validators.required]],
       bloodType: ['', [Validators.required]],
       bloodRh: ['', [Validators.required]],
     });
+
+    if (userDocument) {
+      this.userService.get(parseInt(userDocument)).subscribe((user: User) => {
+        this.user = user;
+        console.log('Usuario:', user);
+        this.userForm.patchValue(user);
+      });
+    }
+
     this.loadGenders();
     this.loadEps();
     this.loadBloodTypes();
@@ -68,10 +78,17 @@ export default class UserFormComponent implements OnInit {
     const userData = this.userForm!.value;
     console.log('Datos enviados:', userData);
 
-    this.userService.create(userData)
-    .subscribe(() => {
-      this.router.navigate(['dashboard']);
-    })
+    if (this.user) {
+      this.userService.update(this.user.document, userData)
+      .subscribe(() => {
+        this.router.navigate(['dashboard']);
+      });
+    } else {
+      this.userService.create(userData)
+      .subscribe(() => {
+        this.router.navigate(['dashboard']);
+      })
+    }
   }
 
   loadGenders() {
