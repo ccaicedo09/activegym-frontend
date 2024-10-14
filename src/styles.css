@@ -12,6 +12,10 @@ h3 {
   font-weight: bold;
 }
 
+label {
+  font-weight: 450;
+}
+
 .btn-custom {
   background-color: var(--color-yellow);
   font-weight: 500;

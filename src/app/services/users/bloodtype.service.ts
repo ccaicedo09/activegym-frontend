@@ -1,17 +1,17 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
-import { Eps } from "../models/eps.interface";
+import { BloodType } from "../../models/users/bloodtype.interface";
 
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class EpsService {
+export class BloodTypeService {
   private http = inject(HttpClient)
 
   list() {
-    return this.http.get<Eps[]>('http://localhost:8081/eps')
+    return this.http.get<BloodType[]>('http://localhost:8081/bloodtype')
   }
 
 }

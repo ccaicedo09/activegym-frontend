@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { delay, map, Observable, of } from 'rxjs';
+import { LoginService } from '../../services/auth/login.service';
+import { LoginRequest } from '../../services/auth/loginRequest.interface';
 
 @Component({
   selector: 'app-admin-login',
@@ -12,28 +14,15 @@ import { delay, map, Observable, of } from 'rxjs';
   styleUrl: './admin-login.component.css'
 })
 export default class AdminLoginComponent {
+  loginError: string = "";
   adminLoginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginService) {
     this.adminLoginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email], [this.asyncEmailValidator()]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
-
-  asyncEmailValidator(): AsyncValidatorFn {
-    return (control: AbstractControl): Observable<ValidationErrors | null> => {
-      return of(control.value).pipe(
-        delay(1000), // Simulates a HTTP request
-        map(value => {
-          const emailTaken = value === 'test@example.com'; // Simulates email verification
-          return emailTaken ? { emailTaken: true } : null;
-        })
-      );
-    };
-  }
-
-  // Test purpose routing
 
   get email() {
     return this.adminLoginForm.get('email');
@@ -45,8 +34,21 @@ export default class AdminLoginComponent {
 
   login() {
     if(this.adminLoginForm.valid) {
-      this.router.navigateByUrl('/dashboard');
-      this.adminLoginForm.reset();
+      this.loginError = "";
+      this.loginService.login(this.adminLoginForm.value as LoginRequest).subscribe({
+        next: (userData) => {
+          console.log(userData);
+        },
+        error: (errorData) => {
+          console.log(errorData);
+          this.loginError = "Usuario o contraseña incorrectos";
+        },
+        complete: () => {
+          console.info("Login completado!!");
+          this.router.navigateByUrl('/dashboard');
+          this.adminLoginForm.reset();
+        }
+      })
     } else {
       this.adminLoginForm.markAllAsTouched();
     }
