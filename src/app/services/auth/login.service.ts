@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, map, Observable, tap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, firstValueFrom, map, Observable, tap, throwError } from 'rxjs';
 import { LoginRequest } from './loginRequest.interface';
 import { User } from '../../models/users/users.interface';
 
@@ -54,4 +54,9 @@ export class LoginService {
   getUserToken():String {
     return sessionStorage.getItem("token") || "";
   }
+
+  validateToken(token: String): Observable<boolean> {
+    return this.http.post<boolean>('http://localhost:8081/auth/verify-token', { token });
+  }
+
 }
