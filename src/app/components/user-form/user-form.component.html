@@ -1,7 +1,7 @@
 <form *ngIf="userForm" [formGroup]="userForm" (ngSubmit)="save()">
   <h3 class="mb-3">
-    <span *ngIf="user; else createUser">Editar</span>
-    <ng-template #createUser>Crear</ng-template> usuario
+    <span *ngIf="user; else createUser">Datos básicos</span>
+    <ng-template #createUser>Crear usuario</ng-template>
   </h3>
   <div class="row">
     <div class="col-md-6 col-12 mb-3">
@@ -60,7 +60,7 @@
         </div>
     </div>
     <div class="col-md-6 col-12 mb-3">
-      <label for="dateOfBirth" class="form-label">Fecha de Nacimiento</label>
+      <label for="dateOfBirth" class="form-label">Fecha de Nacimiento <span *ngIf="user"> - edad: {{ user.age }}</span></label>
       <input type="date" class="form-control" formControlName="dateOfBirth" id="dateOfBirth">
       <div *ngIf="userForm.get('dateOfBirth')?.hasError('required') && userForm.get('dateOfBirth')?.touched" class="invalid-feedback d-block">
         ¡La fecha de nacimiento es necesaria!
@@ -74,7 +74,7 @@
     <div class="col-md-6 col-12 mb-3">
       <label for="gender" class="form-label">Género</label>
       <select class="form-control form-select" id="gender" formControlName="gender">
-        <option value="" disabled>Selecciona un género</option>
+
         <option *ngFor="let gender of genders" [value]="gender.genderName">{{ gender.genderName }}</option>
       </select>
       <div *ngIf="userForm.get('gender')?.hasError('required') && userForm.get('gender')?.touched" class="invalid-feedback d-block">

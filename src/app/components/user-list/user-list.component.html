@@ -18,11 +18,8 @@
         <td>{{ user.phone }}</td>
         <td class="d-flex ">
           <div class="btn-group" role="group">
-            <button class="btn btn-primary btn-sm me-2" title="Ver Detalle">
+            <button class="btn btn-primary btn-sm me-2" title="Ver Detalle" [routerLink]="[user.document]">
               <i class="bi bi-eye-fill"></i>
-            </button>
-            <button class="btn btn-success btn-sm me-2" title="Editar" [routerLink]="['/dashboard', user.document, 'edit']">
-              <i class="bi bi-pencil-fill"></i>
             </button>
             <button class="btn btn-danger btn-sm me-2" title="Eliminar">
               <i class="bi bi-trash-fill"></i>

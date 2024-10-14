@@ -9,4 +9,5 @@ export interface User {
   eps: string;
   bloodType: string;
   bloodRh: string;
+  age: number;
 }

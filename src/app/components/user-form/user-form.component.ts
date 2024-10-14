@@ -1,18 +1,18 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UserService } from '../../services/users.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { User } from '../../models/users.interface';
-import { GenderService } from '../../services/gender.service';
-import { EpsService } from '../../services/eps.service';
-import { BloodTypeService } from '../../services/bloodtype.service';
-import { BloodRhService } from '../../services/bloodrh.service';
-import { Gender } from '../../models/gender.interface';
-import { Eps } from '../../models/eps.interface';
-import { BloodType } from '../../models/bloodtype.interface';
-import { BloodRh } from '../../models/bloodrh.interface';
+import { User } from '../../models/users/users.interface';
+import { Gender } from '../../models/users/gender.interface';
+import { Eps } from '../../models/users/eps.interface';
+import { BloodType } from '../../models/users/bloodtype.interface';
+import { BloodRh } from '../../models/users/bloodrh.interface';
 import { NgFor, NgIf } from '@angular/common';
 import { ageValidator } from '../../validators/ageValidator';
+import { UserService } from '../../services/users/users.service';
+import { GenderService } from '../../services/users/gender.service';
+import { EpsService } from '../../services/users/eps.service';
+import { BloodTypeService } from '../../services/users/bloodtype.service';
+import { BloodRhService } from '../../services/users/bloodrh.service';
 
 @Component({
   selector: 'app-user-form',
@@ -47,7 +47,7 @@ export default class UserFormComponent implements OnInit {
       phone: ['', [Validators.required, Validators.minLength(10)]],
       email: ['', [Validators.required, Validators.email]],
       document: ['', [Validators.required, Validators.minLength(5)]],
-      dateOfBirth: ['', [Validators.required]],
+      dateOfBirth: ['', [Validators.required, ageValidator(15)]],
       gender: ['', [Validators.required]],
       eps: ['', [Validators.required]],
       bloodType: ['', [Validators.required]],
@@ -57,7 +57,6 @@ export default class UserFormComponent implements OnInit {
     if (userDocument) {
       this.userService.get(parseInt(userDocument)).subscribe((user: User) => {
         this.user = user;
-        console.log('Usuario:', user);
         this.userForm.patchValue(user);
       });
     }
@@ -79,7 +78,7 @@ export default class UserFormComponent implements OnInit {
     console.log('Datos enviados:', userData);
 
     if (this.user) {
-      this.userService.update(this.user.document, userData)
+      this.userService.updateBasicInfo(this.user.document, userData)
       .subscribe(() => {
         this.router.navigate(['dashboard']);
       });

@@ -1,17 +1,16 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
-import { BloodRh } from "../models/bloodrh.interface";
-
+import { Gender } from "../../models/users/gender.interface";
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class BloodRhService {
+export class GenderService {
   private http = inject(HttpClient)
 
   list() {
-    return this.http.get<BloodRh[]>('http://localhost:8081/bloodrh')
+    return this.http.get<Gender[]>('http://localhost:8081/genders')
   }
 
 }

@@ -1,17 +1,17 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
-import { Gender } from "../models/gender.interface";
+import { Eps } from "../../models/users/eps.interface";
 
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class GenderService {
+export class EpsService {
   private http = inject(HttpClient)
 
   list() {
-    return this.http.get<Gender[]>('http://localhost:8081/genders')
+    return this.http.get<Eps[]>('http://localhost:8081/eps')
   }
 
 }
