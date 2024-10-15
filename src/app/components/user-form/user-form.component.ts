@@ -48,15 +48,16 @@ export default class UserFormComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       document: ['', [Validators.required, Validators.minLength(5)]],
       dateOfBirth: ['', [Validators.required, ageValidator(15)]],
-      gender: ['', [Validators.required]],
-      eps: ['', [Validators.required]],
-      bloodType: ['', [Validators.required]],
-      bloodRh: ['', [Validators.required]],
+      genderName: ['', [Validators.required]],
+      epsName: ['', [Validators.required]],
+      bloodTypeName: ['', [Validators.required]],
+      bloodRhName: ['', [Validators.required]],
     });
 
     if (userDocument) {
       this.userService.get(parseInt(userDocument)).subscribe((user: User) => {
         this.user = user;
+        console.log(user);
         this.userForm.patchValue(user);
       });
     }

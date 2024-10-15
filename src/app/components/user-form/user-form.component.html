@@ -73,9 +73,13 @@
   <div class="row">
     <div class="col-md-6 col-12 mb-3">
       <label for="gender" class="form-label">Género</label>
-      <select class="form-control form-select" id="gender" formControlName="gender">
-
-        <option *ngFor="let gender of genders" [value]="gender.genderName">{{ gender.genderName }}</option>
+      <select class="form-control form-select" id="gender" formControlName="genderName">
+        <option value="" disabled selected>Selecciona un género</option>
+        <!-- <option value="" disabled selected><p *ngIf="user; else noUser">{{ user.genderName }}</p><ng-template #noUser>Selecciona un género</ng-template></option> -->
+        <option *ngFor="let gender of genders"
+        [value]="gender.genderName">
+        {{ gender.genderName }}
+        </option>
       </select>
       <div *ngIf="userForm.get('gender')?.hasError('required') && userForm.get('gender')?.touched" class="invalid-feedback d-block">
         ¡El género es necesario!
@@ -83,7 +87,7 @@
     </div>
     <div class="col-md-6 col-12 mb-3">
       <label for="eps" class="form-label">EPS</label>
-      <select class="form-control form-select" formControlName="eps" id="eps">
+      <select class="form-control form-select" formControlName="epsName" id="eps">
         <option value="" disabled>Selecciona una EPS</option>
         <option *ngFor="let eps of eps" [value]="eps.epsName">{{ eps.epsName }}</option>
       </select>
@@ -95,7 +99,7 @@
   <div class="row">
     <div class="col-md-6 col-12 mb-3">
       <label for="bloodType" class="form-label">Tipo de Sangre</label>
-      <select class="form-control form-select" id="bloodType" formControlName="bloodType">
+      <select class="form-control form-select" id="bloodType" formControlName="bloodTypeName">
         <option value="" disabled>Selecciona un tipo de sangre</option>
         <option *ngFor="let bloodType of bloodTypes" [value]="bloodType.bloodTypeName">{{ bloodType.bloodTypeName }}</option>
       </select>
@@ -105,7 +109,7 @@
     </div>
     <div class="col-md-6 col-12 mb-3">
       <label for="bloodRh" class="form-label">RH</label>
-      <select class="form-control form-select" id="bloodRh" formControlName="bloodRh">
+      <select class="form-control form-select" id="bloodRh" formControlName="bloodRhName">
         <option value="" disabled>Selecciona un factor RH</option>
         <option *ngFor="let bloodRh of bloodRhs" [value]="bloodRh.bloodRh">{{ bloodRh.bloodRh }}</option>
       </select>

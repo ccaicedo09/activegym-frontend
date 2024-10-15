@@ -5,9 +5,9 @@ export interface User {
   phone: string;
   email: string;
   dateOfBirth: string;
-  gender: string;
-  eps: string;
-  bloodType: string;
+  genderName: string;
+  epsName: string;
+  bloodTypeName: string;
   bloodRh: string;
   age: number;
 }
