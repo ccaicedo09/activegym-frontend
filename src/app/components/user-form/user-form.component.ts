@@ -81,12 +81,12 @@ export default class UserFormComponent implements OnInit {
     if (this.user) {
       this.userService.updateBasicInfo(this.user.document, userData)
       .subscribe(() => {
-        this.router.navigate(['dashboard']);
+        location.reload()
       });
     } else {
       this.userService.create(userData)
       .subscribe(() => {
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['dashboard/users']);
       })
     }
   }

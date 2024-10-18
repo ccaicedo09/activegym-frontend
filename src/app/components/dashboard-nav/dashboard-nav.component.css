@@ -62,8 +62,8 @@ button i {
 }
 
 .active-link {
-  background-color: #363c42; /* Fondo que deseas para la ruta activa */
-  border-radius: 10px; /* Para darle un borde redondeado si deseas */
+  background-color: #363c42;
+  border-radius: 10px;
 }
 
 #sidebar-toggler {

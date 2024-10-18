@@ -20,6 +20,10 @@ export const routes: Routes = [
         loadComponent: () => import('./components/user-form/user-form.component')
       },
       {
+        path: 'memberships-list',
+        loadComponent: () => import('./components/memberships-list/memberships-list.component')
+      },
+      {
         path: 'users',
         loadComponent: () => import('./components/user-list/user-list.component')
       },

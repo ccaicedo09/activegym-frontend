@@ -4,11 +4,12 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { User } from '../../models/users/users.interface';
 import UserFormComponent from "../user-form/user-form.component";
 import UserOverviewComponent from "../user-overview/user-overview.component";
+import MembershipsListComponent from "../memberships-list/memberships-list.component";
 
 @Component({
   selector: 'app-user-details',
   standalone: true,
-  imports: [RouterLink, UserFormComponent, UserOverviewComponent],
+  imports: [RouterLink, UserFormComponent, UserOverviewComponent, MembershipsListComponent],
   templateUrl: './user-details.component.html',
   styleUrl: './user-details.component.css'
 })
