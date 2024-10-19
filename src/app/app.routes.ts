@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
+import { roleGuard } from './guards/role.guard';
 
 export const routes: Routes = [
   {
@@ -17,20 +18,34 @@ export const routes: Routes = [
     children: [
       {
         path: 'user-form',
-        loadComponent: () => import('./components/user-form/user-form.component')
+        loadComponent: () => import('./components/user-form/user-form.component'),
+        canActivate: [roleGuard],
+        data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR']}
       },
       {
         path: 'memberships-list',
-        loadComponent: () => import('./components/memberships-list/memberships-list.component')
+        loadComponent: () => import('./components/memberships-list/memberships-list.component'),
+        canActivate: [roleGuard],
+        data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR']}
       },
       {
         path: 'users',
-        loadComponent: () => import('./components/user-list/user-list.component')
+        loadComponent: () => import('./components/user-list/user-list.component'),
+        canActivate: [roleGuard],
+        data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR']}
       },
       {
         path: 'users/:document',
         loadComponent: () => import('./components/user-details/user-details.component')
       }
     ]
+  },
+  {
+    path: 'forbidden',
+    loadComponent: () => import('./pages/forbidden/forbidden.component')
+  },
+  {
+    path: '**',
+    loadComponent: () => import('./pages/notfound/notfound.component')
   }
 ];

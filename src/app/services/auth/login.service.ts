@@ -2,7 +2,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, firstValueFrom, map, Observable, tap, throwError } from 'rxjs';
 import { LoginRequest } from './loginRequest.interface';
-import { User } from '../../models/users/users.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +17,10 @@ export class LoginService {
   }
 
   login(credentials: LoginRequest):Observable<any> {
-    return this.http.post<any>('http://localhost:8081/auth/login', credentials).pipe(
+    return this.http.post<any>('http://localhost:8081/auth/login', credentials, {withCredentials: true}).pipe(
       tap(userData => {
         sessionStorage.setItem("token", userData.token);
+        sessionStorage.setItem("userName", userData.userName);
         this.currentUserLogged.next(true);
         this.currentUserData.next(userData.token);
       }),
@@ -31,6 +31,7 @@ export class LoginService {
 
   logout(): void {
     sessionStorage.removeItem("token");
+    sessionStorage.removeItem("userName");
     this.currentUserLogged.next(false);
   }
 
@@ -59,4 +60,7 @@ export class LoginService {
     return this.http.post<boolean>('http://localhost:8081/auth/verify-token', { token });
   }
 
+  getRoles():Observable<string[]> {
+    return this.http.get<string[]>('http://localhost:8081/auth/roles', {withCredentials: true});
+  }
 }

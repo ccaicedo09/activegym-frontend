@@ -21,10 +21,10 @@
       </ul>
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" href="login/admin"><strong>Admin</strong></a>
+          <a class="nav-link" href="login/admin" *ngIf="!userLogged"><strong>Admin & autogestión</strong></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><strong>Autogestión</strong></a>
+        <li>
+          <a class="nav-link" [routerLink]="['dashboard']" *ngIf="userLogged"><strong>Dashboard</strong></a>
         </li>
       </ul>
     </div>

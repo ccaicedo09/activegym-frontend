@@ -8,7 +8,11 @@
 }
 
 .navbar-custom .icon {
-  font-size: 2rem;
+  font-size: 2em;
   padding-right: 1rem;
   color: var(--color-black);
+}
+
+.navbar .icon:hover {
+  color: #383b3d;
 }
