@@ -15,12 +15,12 @@ export const authGuard: CanActivateFn = async (route, state) => {
       if (isValid) {
         return true;
       } else {
-        sessionStorage.removeItem('token');
+        localStorage.removeItem('token');
       }
     }
   } catch (error) {
     console.error('Error validating token', error);
-    sessionStorage.removeItem('token');
+    localStorage.removeItem('token');
   }
 
   router.navigate(['/login/admin'], { queryParams: { returnUrl: state.url } });

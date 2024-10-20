@@ -1,0 +1,14 @@
+<app-home-nav></app-home-nav>
+<main class="plans-container">
+  <section class="header-section">
+    <h1>Aprovecha nuestras <span class="highlight">ofertas</span></h1>
+    <p class="subheading">
+      Escoge el plan que mejor se adapte a ti y consulta con nuestros asesores
+    </p>
+  </section>
+
+  <!-- Aquí llamamos a las cards desde membership-type-list -->
+  <section class="membership-cards">
+    <app-membership-type-list [isAdmin]="false"></app-membership-type-list>
+  </section>
+</main>

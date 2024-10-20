@@ -12,21 +12,25 @@
   </div>
   <div class="offcanvas-body">
     <ul class="nav flex-column links-list">
-      <li class="nav-item d-flex align-items-center">
+      <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas">
         <i class="bi bi-house-fill"></i>
         <a class="nav-link" [routerLink]="['/dashboard']">Menú principal</a>
       </li>
-      <li class="nav-item d-flex align-items-center" routerLinkActive="active-link">
+      <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole('ADMINISTRADOR') || hasRole('ASESOR')">
         <i class="bi bi-card-checklist"></i>
         <a class="nav-link" [routerLink]="['/dashboard/memberships-list']">Gestionar membresías</a>
       </li>
-      <li class="nav-item d-flex align-items-center" routerLinkActive="active-link">
+      <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole('ADMINISTRADOR') || hasRole('ASESOR')">
         <i class="bi bi-person-fill"></i>
         <a class="nav-link" [routerLink]="['/dashboard/users']">Gestionar usuarios</a>
       </li>
-      <li class="nav-item d-flex align-items-center" routerLinkActive="active-link">
+      <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole('ADMINISTRADOR') || hasRole('ASESOR')">
         <i class="bi bi-person-plus-fill"></i>
         <a class="nav-link" [routerLink]="['/dashboard/user-form']">Crear usuario</a>
+      </li>
+      <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole('ADMINISTRADOR')">
+        <i class="bi bi-gear-fill"></i>
+        <a class="nav-link" [routerLink]="['/dashboard/gymconfig']">Mi gimnasio</a>
       </li>
     </ul>
   </div>
@@ -53,6 +57,10 @@
     <li class="nav-item d-flex align-items-center" routerLinkActive="active-link" *ngIf="hasRole('ADMINISTRADOR') || hasRole('ASESOR')">
       <i class="bi bi-person-plus-fill"></i>
       <a class="nav-link" [routerLink]="['/dashboard/user-form']">Crear usuario</a>
+    </li>
+    <li class="nav-item d-flex align-items-center" routerLinkActive="active-link" *ngIf="hasRole('ADMINISTRADOR')">
+      <i class="bi bi-gear-fill"></i>
+      <a class="nav-link" [routerLink]="['/dashboard/gymconfig']">Mi gimnasio</a>
     </li>
   </ul>
 </div>

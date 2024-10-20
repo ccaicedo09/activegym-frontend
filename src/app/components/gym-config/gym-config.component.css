@@ -1,0 +1,15 @@
+.rotate-icon {
+  transition: transform 0.5s;
+}
+
+a[aria-expanded="true"] .rotate-icon {
+  transform: rotate(180deg);
+}
+
+.collapse {
+  transition: height 2s ease-in-out;
+}
+
+.collapse.show {
+  height: height 2s ease-in-out;
+}

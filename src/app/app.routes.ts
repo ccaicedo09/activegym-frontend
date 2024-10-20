@@ -8,6 +8,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/home/home.component')
   },
   {
+    path: 'plans',
+    loadComponent: () => import('./pages/plans/plans.component')
+  },
+  {
     path:'login/admin',
     loadComponent: () => import('./pages/admin-login/admin-login.component')
   },
@@ -37,6 +41,10 @@ export const routes: Routes = [
       {
         path: 'users/:document',
         loadComponent: () => import('./components/user-details/user-details.component')
+      },
+      {
+        path: 'gymconfig',
+        loadComponent: () => import('./components/gym-config/gym-config.component'),
       }
     ]
   },

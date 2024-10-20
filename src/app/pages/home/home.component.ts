@@ -2,21 +2,15 @@ import { Component, inject, Inject, OnInit } from '@angular/core';
 import { LoginService } from '../../services/auth/login.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import HomeNavComponent from "../../components/home-nav/home-nav.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule,RouterLink],
+  imports: [CommonModule, RouterLink, HomeNavComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export default class HomeComponent implements OnInit {
-  private loginService = inject(LoginService);
-  userLogged: boolean = false;
+export default class HomeComponent {
 
-  ngOnInit(): void {
-      this.loginService.getUserLogged().subscribe((logged) => {
-        this.userLogged = logged;
-      });
-  }
 }

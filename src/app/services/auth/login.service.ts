@@ -12,15 +12,15 @@ export class LoginService {
   currentUserData: BehaviorSubject<String> = new BehaviorSubject<String>("");
 
   constructor(private http: HttpClient) {
-    this.currentUserLogged = new BehaviorSubject<boolean>(sessionStorage.getItem("token")!=null);
-    this.currentUserData = new BehaviorSubject<String>(sessionStorage.getItem("token") || "");
+    this.currentUserLogged = new BehaviorSubject<boolean>(localStorage.getItem("token")!=null);
+    this.currentUserData = new BehaviorSubject<String>(localStorage.getItem("token") || "");
   }
 
   login(credentials: LoginRequest):Observable<any> {
     return this.http.post<any>('http://localhost:8081/auth/login', credentials, {withCredentials: true}).pipe(
       tap(userData => {
-        sessionStorage.setItem("token", userData.token);
-        sessionStorage.setItem("userName", userData.userName);
+        localStorage.setItem("token", userData.token);
+        localStorage.setItem("userName", userData.userName);
         this.currentUserLogged.next(true);
         this.currentUserData.next(userData.token);
       }),
@@ -30,8 +30,8 @@ export class LoginService {
   }
 
   logout(): void {
-    sessionStorage.removeItem("token");
-    sessionStorage.removeItem("userName");
+    localStorage.removeItem("token");
+    localStorage.removeItem("userName");
     this.currentUserLogged.next(false);
   }
 
@@ -53,7 +53,7 @@ export class LoginService {
   }
 
   getUserToken():String {
-    return sessionStorage.getItem("token") || "";
+    return localStorage.getItem("token") || "";
   }
 
   validateToken(token: String): Observable<boolean> {

@@ -1,6 +1,6 @@
 .content-container {
   margin-left: 275px;
-  margin-top: 8px;
+  margin-top: 65px;
   padding: 5px 20px;
   height: calc(100vh - 60px);
 }
@@ -10,4 +10,17 @@
     margin-left: 0;
     width: 100%;
   }
+}
+
+app-dashboard-upper-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+app-dashboard-nav {
+  position: fixed;
+  z-index: 20;
 }
