@@ -18,14 +18,34 @@ export default class UserListComponent implements OnInit {
   users: User[] = [];
   edit: string = 'edit';
 
+  // Pagination
+  page: number = 0;
+  size: number = 8;
+  totalPages: number = 0;
+
   ngOnInit(): void {
     this.loadUsers();
   }
 
   loadUsers() {
-    this.userService.list()
-      .subscribe((users) => {
-        this.users = users;
+    this.userService.list(this.page, this.size)
+      .subscribe((response) => {
+        this.users = response.content;
+        this.totalPages = response.totalPages;
       });
+  }
+
+  nextPage() {
+    if(this.page < this.totalPages - 1) {
+      this.page++;
+      this.loadUsers();
+    }
+  }
+
+  previousPage() {
+    if (this.page > 0) {
+      this.page--;
+      this.loadUsers();
+    }
   }
 }
