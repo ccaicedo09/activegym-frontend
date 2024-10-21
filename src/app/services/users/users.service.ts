@@ -19,12 +19,24 @@ export class UserService {
     return this.http.get<User>(`http://localhost:8081/api/users/${document}`);
   }
 
+  listGymTeam() {
+    return this.http.get<User[]>('http://localhost:8081/api/users/team');
+  }
+
   create(user: User) {
     return this.http.post<User>('http://localhost:8081/api/users', user);
   }
 
   updateBasicInfo(document: number, user: User) {
     return this.http.put<User>(`http://localhost:8081/api/users/${document}`, user);
+  }
+
+  assignRole(document: number, roleName: string) {
+    return this.http.post(`http://localhost:8081/api/users/${document}/roles`, { roleName });
+  }
+
+  revokeRole(document: number, roleName: string) {
+    return this.http.delete(`http://localhost:8081/api/users/${document}/roles`, { body: { roleName } });
   }
 
 }

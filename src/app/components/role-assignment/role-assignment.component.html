@@ -1,0 +1,26 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title">Asignar Rol: {{ role }}</h5>
+    <button type="button" class="btn-close" (click)="closeModal.emit()"></button>
+  </div>
+
+  <div class="modal-body">
+    <div class="mb-3">
+      <label for="document" class="form-label">Documento</label>
+      <input type="text" id="document" [(ngModel)]="document" class="form-control" placeholder="Ingresa el documento">
+      <button class="btn btn-custom mt-2" (click)="searchUser()">Buscar</button>
+    </div>
+
+    <div *ngIf="isLoading">Buscando...</div>
+
+    <div *ngIf="userFound">
+      <p><strong>Usuario:</strong> {{ userFound.firstName }} {{ userFound.lastName }}</p>
+      <p><strong>Email:</strong> {{ userFound.email }}</p>
+      <button class="btn btn-custom" (click)="confirmRoleAssignment()">Confirmar Asignación</button>
+    </div>
+
+    <div *ngIf="!userFound && !isLoading && document">
+      <p>No se encontró ningún usuario con ese documento.</p>
+    </div>
+  </div>
+</div>

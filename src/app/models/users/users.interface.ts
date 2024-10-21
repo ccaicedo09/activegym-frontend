@@ -10,4 +10,5 @@ export interface User {
   bloodTypeName: string;
   bloodRh: string;
   age: number;
+  roles: string[];
 }

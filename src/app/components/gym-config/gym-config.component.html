@@ -8,7 +8,7 @@
     Tus asesores, entrenadores y personal de apoyo.
   </li>
 </ul>
-<section id="admin-membership-types">
+<section id="admin-membership-types" class="mb-4">
   <a data-bs-toggle="collapse" class="d-flex align-items-center justifiy-content-between" role="button" href="#membershipList" aria-expanded="false" aria-controls="membershipList">
     <h3 class="me-2">Tipos de membresía</h3>
     <i class="bi bi-chevron-down rotate-icon"></i>
@@ -16,5 +16,16 @@
   <div class="collapse" id="membershipList">
     <p>A continuación verás las membresías tal cual se muestran en tu home page, puedes escoger si la membresía esta disponible para venderse o no:</p>
     <app-membership-type-list [isAdmin]="true"></app-membership-type-list>
+  </div>
+</section>
+
+<section id="admin-gym-team">
+  <a data-bs-toggle="collapse" class="d-flex align-items-center justifiy-content-between" role="button" href="#gym-team" aria-expanded="false" aria-controls="membershipList">
+    <h3 class="me-2">Tu equipo</h3>
+    <i class="bi bi-chevron-down rotate-icon"></i>
+  </a>
+  <div class="collapse" id="gym-team">
+    <p>En esta sección puedes visualizar cómo está conformado tu equipo de trabajo. Podrás editar los roles de los usuarios asociados.</p>
+    <app-gym-team-list></app-gym-team-list>
   </div>
 </section>

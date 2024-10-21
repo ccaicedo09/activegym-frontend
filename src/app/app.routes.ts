@@ -45,6 +45,8 @@ export const routes: Routes = [
       {
         path: 'gymconfig',
         loadComponent: () => import('./components/gym-config/gym-config.component'),
+        canActivate: [roleGuard],
+        data: { requiredRoles: ['ADMINISTRADOR']}
       }
     ]
   },
