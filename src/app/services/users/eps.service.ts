@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 import { Eps } from "../../models/users/eps.interface";
+import { environment } from "../../../environments/environment.development";
 
 
 @Injectable({
@@ -9,9 +10,10 @@ import { Eps } from "../../models/users/eps.interface";
 
 export class EpsService {
   private http = inject(HttpClient)
+  private apiUrl = environment.apiUrl;
 
   list() {
-    return this.http.get<Eps[]>('http://localhost:8081/eps')
+    return this.http.get<Eps[]>(`${this.apiUrl}/eps`)
   }
 
 }

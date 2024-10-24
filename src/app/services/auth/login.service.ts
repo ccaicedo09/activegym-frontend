@@ -2,11 +2,13 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, firstValueFrom, map, Observable, tap, throwError } from 'rxjs';
 import { LoginRequest } from './loginRequest.interface';
+import { environment } from '../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  private apiUrl = environment.apiUrl;
 
   currentUserLogged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   currentUserData: BehaviorSubject<String> = new BehaviorSubject<String>("");
@@ -17,7 +19,7 @@ export class LoginService {
   }
 
   login(credentials: LoginRequest):Observable<any> {
-    return this.http.post<any>('http://localhost:8081/auth/login', credentials, {withCredentials: true}).pipe(
+    return this.http.post<any>(`${this.apiUrl}/auth/login`, credentials, {withCredentials: true}).pipe(
       tap(userData => {
         localStorage.setItem("token", userData.token);
         localStorage.setItem("userName", userData.userName);
@@ -57,10 +59,10 @@ export class LoginService {
   }
 
   validateToken(token: String): Observable<boolean> {
-    return this.http.post<boolean>('http://localhost:8081/auth/verify-token', { token });
+    return this.http.post<boolean>(`${this.apiUrl}/auth/verify-token`, { token });
   }
 
   getRoles():Observable<string[]> {
-    return this.http.get<string[]>('http://localhost:8081/auth/roles', {withCredentials: true});
+    return this.http.get<string[]>(`${this.apiUrl}/auth/roles`, {withCredentials: true});
   }
 }
