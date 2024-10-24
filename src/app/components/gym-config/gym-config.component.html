@@ -15,6 +15,9 @@
   </a>
   <div class="collapse" id="membershipList">
     <p>A continuación verás las membresías tal cual se muestran en tu home page, puedes escoger si la membresía esta disponible para venderse o no:</p>
+    <button class="btn btn-custom" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <i class="bi bi-plus"></i> Crear plan
+    </button>
     <app-membership-type-list [isAdmin]="true"></app-membership-type-list>
   </div>
 </section>
@@ -29,3 +32,17 @@
     <app-gym-team-list></app-gym-team-list>
   </div>
 </section>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title fs-5" id="exampleModalLabel">Crear nuevo plan</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-membership-type-form></app-membership-type-form>
+      </div>
+    </div>
+  </div>
+</div>
