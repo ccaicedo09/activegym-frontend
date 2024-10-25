@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Membership } from '../../models/memberships/memberships.interface';
 import { MembershipType } from '../../models/memberships/membershiptype.interface';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
