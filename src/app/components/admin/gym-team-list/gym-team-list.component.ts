@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { UserService } from '../../services/users/users.service';
-import { User } from '../../models/users/users.interface';
+import { UserService } from '../../../services/users/users.service';
+import { User } from '../../../models/users/users.interface';
 import { CommonModule } from '@angular/common';
 import { TooltipPosition, MatTooltipModule } from '@angular/material/tooltip';
 import { RoleAssignmentComponent } from "../role-assignment/role-assignment.component";

@@ -1,10 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { MembershipsService } from '../../services/memberships/memberships.service';
-import { MembershipType } from '../../models/memberships/membershiptype.interface';
+import { MembershipsService } from '../../../services/memberships/memberships.service';
+import { MembershipType } from '../../../models/memberships/membershiptype.interface';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { dateValidator } from '../../validators/dateValidator';
+import { dateValidator } from '../../../validators/dateValidator';
 
 @Component({
   selector: 'app-membership-form',

@@ -1,8 +1,8 @@
 import { CommonModule, NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
-import { Membership } from '../../models/memberships/memberships.interface';
-import { MembershipsService } from '../../services/memberships/memberships.service';
+import { Membership } from '../../../models/memberships/memberships.interface';
+import { MembershipsService } from '../../../services/memberships/memberships.service';
 import MembershipFormComponent from "../membership-form/membership-form.component";
 import { NgModel } from '@angular/forms';
 

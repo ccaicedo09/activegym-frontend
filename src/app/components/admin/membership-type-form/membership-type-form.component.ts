@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MembershipsService } from '../../services/memberships/memberships.service';
+import { MembershipsService } from '../../../services/memberships/memberships.service';
 
 @Component({
   selector: 'app-membership-type-form',

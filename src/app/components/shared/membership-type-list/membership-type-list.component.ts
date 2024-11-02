@@ -1,6 +1,6 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { MembershipsService } from '../../services/memberships/memberships.service';
-import { MembershipType } from '../../models/memberships/membershiptype.interface';
+import { MembershipsService } from '../../../services/memberships/memberships.service';
+import { MembershipType } from '../../../models/memberships/membershiptype.interface';
 import { CommonModule } from '@angular/common';
 
 @Component({

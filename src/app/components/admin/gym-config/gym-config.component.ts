@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import MembershipTypeListComponent from "../membership-type-list/membership-type-list.component";
+import MembershipTypeListComponent from "../../shared/membership-type-list/membership-type-list.component";
 import GymTeamListComponent from "../gym-team-list/gym-team-list.component";
 import MembershipTypeFormComponent from "../membership-type-form/membership-type-form.component";
 

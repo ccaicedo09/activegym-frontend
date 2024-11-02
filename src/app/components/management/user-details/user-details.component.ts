@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/users/users.service';
+import { UserService } from '../../../services/users/users.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { User } from '../../models/users/users.interface';
+import { User } from '../../../models/users/users.interface';
 import UserFormComponent from "../user-form/user-form.component";
-import UserOverviewComponent from "../user-overview/user-overview.component";
+import UserOverviewComponent from "../../user-overview/user-overview.component";
 import MembershipsListComponent from "../memberships-list/memberships-list.component";
 
 @Component({

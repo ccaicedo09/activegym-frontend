@@ -22,29 +22,29 @@ export const routes: Routes = [
     children: [
       {
         path: 'user-form',
-        loadComponent: () => import('./components/user-form/user-form.component'),
+        loadComponent: () => import('./components/management/user-form/user-form.component'),
         canActivate: [roleGuard],
         data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR']}
       },
       {
         path: 'memberships-list',
-        loadComponent: () => import('./components/memberships-list/memberships-list.component'),
+        loadComponent: () => import('./components/management/memberships-list/memberships-list.component'),
         canActivate: [roleGuard],
         data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR']}
       },
       {
         path: 'users',
-        loadComponent: () => import('./components/user-list/user-list.component'),
+        loadComponent: () => import('./components/management/user-list/user-list.component'),
         canActivate: [roleGuard],
         data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR']}
       },
       {
         path: 'users/:document',
-        loadComponent: () => import('./components/user-details/user-details.component')
+        loadComponent: () => import('./components/management/user-details/user-details.component')
       },
       {
         path: 'gymconfig',
-        loadComponent: () => import('./components/gym-config/gym-config.component'),
+        loadComponent: () => import('./components/admin/gym-config/gym-config.component'),
         canActivate: [roleGuard],
         data: { requiredRoles: ['ADMINISTRADOR']}
       }

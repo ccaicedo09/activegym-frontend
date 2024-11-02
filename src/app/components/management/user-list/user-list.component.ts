@@ -1,8 +1,8 @@
 import { Component, inject, Inject, OnInit } from '@angular/core';
-import { User } from '../../models/users/users.interface';
+import { User } from '../../../models/users/users.interface';
 import { NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { UserService } from '../../services/users/users.service';
+import { UserService } from '../../../services/users/users.service';
 
 @Component({
   selector: 'app-user-list',

@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { LoginService } from '../../services/auth/login.service';
+import { LoginService } from '../../../services/auth/login.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

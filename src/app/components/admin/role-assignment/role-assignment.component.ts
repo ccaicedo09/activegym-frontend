@@ -1,5 +1,5 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
-import { UserService } from '../../services/users/users.service';
+import { UserService } from '../../../services/users/users.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
