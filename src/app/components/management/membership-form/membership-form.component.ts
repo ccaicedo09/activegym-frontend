@@ -36,7 +36,7 @@ export default class MembershipFormComponent implements OnInit {
   loadMembershipTypes() {
     this.membershipService.getMembershipTypes()
       .subscribe((membershipTypes) => {
-        this.membershipTypes = membershipTypes;
+        this.membershipTypes = membershipTypes.filter(type => type.isVisible);
       });
   }
 

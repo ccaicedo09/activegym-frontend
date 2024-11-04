@@ -22,10 +22,15 @@ export default class MembershipTypeListComponent implements OnInit{
     this.fetchMembershipTypes();
   }
 
-  fetchMembershipTypes() {
-    this.membershipService.getMembershipTypes()
-      .subscribe((membershipTypes) => {
-        this.membershipTypes = membershipTypes;
+  fetchMembershipTypes(): void {
+    this.membershipService.getMembershipTypes().subscribe((membershipTypes) => {
+      let filteredMembershipTypes = membershipTypes;
+
+      if (!this.isAdmin) {
+        filteredMembershipTypes = membershipTypes.filter(type => type.isVisible);
+      }
+
+      this.membershipTypes = filteredMembershipTypes.sort((a, b) => a.duration - b.duration);
     });
   }
 
@@ -34,6 +39,14 @@ export default class MembershipTypeListComponent implements OnInit{
       .split('-')
       .map(item => item.trim())
       .filter(item => item !== '');
+  }
+
+  toggleVisibility(id: number) {
+    this.membershipService.toggleMembershipTypeVisibility(id)
+      .subscribe(() => {
+        this.fetchMembershipTypes();
+      });
+      location.reload();
   }
 
 }

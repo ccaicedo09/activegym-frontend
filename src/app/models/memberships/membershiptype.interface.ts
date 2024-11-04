@@ -1,4 +1,5 @@
 export interface MembershipType {
+  id: number;
   name: String;
   price: number;
   duration: number;
