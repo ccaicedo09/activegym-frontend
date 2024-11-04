@@ -21,6 +21,12 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       {
+        path:'',
+        loadComponent: () => import('./components/management/analytics/analytics.component'),
+        canActivate: [roleGuard],
+        data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR']}
+      },
+      {
         path: 'user-form',
         loadComponent: () => import('./components/management/user-form/user-form.component'),
         canActivate: [roleGuard],
