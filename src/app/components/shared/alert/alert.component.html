@@ -1,0 +1,5 @@
+<div *ngIf="showAlert" class="alert alert-danger" [ngClass]="{'fadeOut': isClosing}" role="alert">
+  <i class="bi bi-exclamation-circle alert-icon"></i> <!-- Ícono de alerta -->
+  <i class="bi bi-x close-icon" role="button" (click)="closeAlert()"></i>
+  {{ message }}
+</div>

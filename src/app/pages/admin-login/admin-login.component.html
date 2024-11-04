@@ -22,9 +22,6 @@
         <div *ngIf="adminLoginForm.get('password')?.hasError('minlength') && adminLoginForm.get('password')?.touched" class="invalid-feedback d-block custom-invalid-feedback">
           ¡La contraseña no es válida!
         </div>
-        <div *ngIf="loginError" class="invalid-feedback d-block custom-invalid-feedback">
-          {{ loginError }}
-        </div>
       </div>
       <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
       <a href="#">volver al inicio</a>
