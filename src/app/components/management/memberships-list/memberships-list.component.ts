@@ -26,7 +26,7 @@ export default class MembershipsListComponent implements OnInit{
 
   // Pagination
   page: number = 0;
-  size: number = 8;
+  size: number = 12;
   totalPages: number = 0;
 
   ngOnInit(): void {
