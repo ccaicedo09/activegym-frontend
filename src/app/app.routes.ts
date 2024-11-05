@@ -57,6 +57,12 @@ export const routes: Routes = [
       {
         path: 'change-password',
         loadComponent: () => import('./components/shared/change-password/change-password.component')
+      },
+      {
+        path: 'admin-change-password',
+        loadComponent: () => import('./components/admin/admin-change-password/admin-change-password.component'),
+        canActivate: [roleGuard],
+        data: { requiredRoles: ['ADMINISTRADOR']}
       }
     ]
   },

@@ -24,6 +24,10 @@
         <i class="bi bi-person-fill"></i>
         <a class="nav-link" [routerLink]="['/dashboard/users']">Gestionar usuarios</a>
       </li>
+      <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole('ADMINISTRADOR')">
+        <i class="bi bi-lock-fill"></i>
+        <a class="nav-link" [routerLink]="['/dashboard/admin-change-password']">Contraseñas</a>
+      </li>
       <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole('ADMINISTRADOR') || hasRole('ASESOR')">
         <i class="bi bi-person-plus-fill"></i>
         <a class="nav-link" [routerLink]="['/dashboard/user-form']">Crear usuario</a>
@@ -53,6 +57,10 @@
     <li class="nav-item d-flex align-items-center" routerLinkActive="active-link" *ngIf="hasRole('ADMINISTRADOR') || hasRole('ASESOR')">
       <i class="bi bi-person-fill"></i>
       <a class="nav-link" [routerLink]="['/dashboard/users']">Gestionar usuarios</a>
+    </li>
+    <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole('ADMINISTRADOR')">
+      <i class="bi bi-lock-fill"></i>
+      <a class="nav-link" [routerLink]="['/dashboard/admin-change-password']">Contraseñas</a>
     </li>
     <li class="nav-item d-flex align-items-center" routerLinkActive="active-link" *ngIf="hasRole('ADMINISTRADOR') || hasRole('ASESOR')">
       <i class="bi bi-person-plus-fill"></i>
