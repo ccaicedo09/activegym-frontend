@@ -19,7 +19,7 @@ export default class AnalyticsComponent implements OnInit{
   private analyticsService = inject(AnalyticsService);
 
   totalSales: number = 0;
-  totalEarnings: number = 0;
+  totalEarnings: string = '';
   activeUsers: number = 0;
   recentUsers: number = 0;
   chart: any;
@@ -34,7 +34,7 @@ export default class AnalyticsComponent implements OnInit{
     );
 
     this.analyticsService.getTotalEarnings(currentMonth, currentYear).subscribe(
-      (data: number) => this.totalEarnings = data,
+      (data: number) => this.totalEarnings = this.formatCurrency(data),
       (error) => console.error(error)
     );
 
@@ -150,5 +150,9 @@ export default class AnalyticsComponent implements OnInit{
         }
       }
     });
+  }
+
+  formatCurrency(amount: number): string {
+    return new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(amount);
   }
 }
