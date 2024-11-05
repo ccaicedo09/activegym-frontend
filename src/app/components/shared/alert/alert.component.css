@@ -7,9 +7,6 @@
   padding: 20px;
   font-size: 1.2em;
   animation: slideIn 0.5s ease-out forwards;
-  background-color: #ffcccc; /* Color de fondo rojo más suave */
-  color: #721c24; /* Color del texto */
-  border: 2px solid #f44336; /* Borde rojo más vivo */
   border-radius: 8px;
   display: flex; /* Para alinear el ícono y el texto */
   align-items: center; /* Alinea verticalmente el contenido */
@@ -17,9 +14,20 @@
 }
 
 .alert-icon {
-  color: #f44336; /* Color del ícono */
   font-size: 1.5em; /* Tamaño del ícono */
   margin-right: 10px; /* Espacio entre el ícono y el texto */
+}
+
+.alert-danger {
+  background-color: #ffcccc; /* Color de fondo rojo más suave */
+  border: 2px solid #f44336; /* Borde rojo más vivo */
+  color: #721c24; /* Color del texto */
+}
+
+.alert-success {
+  background-color: #dcfce7;
+  border: 2px solid #22c55e;
+  color: #16a34a;
 }
 
 .close-icon {

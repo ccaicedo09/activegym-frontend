@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../../../services/auth/login.service';
 import { Router, RouterLink } from '@angular/router';
 
@@ -13,7 +13,7 @@ import { Router, RouterLink } from '@angular/router';
 })
 export default class ChangePasswordComponent implements OnInit {
   userName: string = localStorage.getItem('userName') || '';
-  changePasswordForm !: FormGroup;
+  changePasswordForm!: FormGroup;
 
   private loginService = inject(LoginService);
   private formBuilder = inject(FormBuilder);
@@ -22,30 +22,64 @@ export default class ChangePasswordComponent implements OnInit {
   ngOnInit(): void {
     this.changePasswordForm = this.formBuilder.group({
       oldPassword: ['', Validators.required],
-      newPassword: ['', [Validators.required, Validators.minLength(8)]],
+      newPassword: ['', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)
+      ]],
       confirmPassword: ['', Validators.required]
-    })
+    }, {
+      validators: this.passwordMatchValidator
+    });
+  }
+
+  private passwordMatchValidator(control: AbstractControl) {
+    const newPassword = control.get('newPassword');
+    const confirmPassword = control.get('confirmPassword');
+
+    if (newPassword && confirmPassword && newPassword.value !== confirmPassword.value) {
+      confirmPassword.setErrors({ passwordMismatch: true });
+      return { passwordMismatch: true };
+    }
+
+    if (confirmPassword?.hasError('passwordMismatch')) {
+      confirmPassword.setErrors(null);
+    }
+
+    return null;
+  }
+
+  getPasswordErrors() {
+    const password = this.changePasswordForm.get('newPassword');
+    if (!password) return [];
+
+    const errors = [];
+    if (password.hasError('required') && password.touched) {
+      errors.push('La contraseña es requerida');
+    }
+    if (password.hasError('minlength')) {
+      errors.push('La contraseña debe tener al menos 8 caracteres');
+    }
+    if (password.hasError('pattern')) {
+      errors.push('La contraseña debe contener al menos una mayúscula, una minúscula y un número');
+    }
+    return errors;
   }
 
   changePassword() {
-    if (this.changePasswordForm?.invalid) {
-      this.changePasswordForm.markAllAsTouched()
+    if (this.changePasswordForm.invalid) {
+      this.changePasswordForm.markAllAsTouched();
       return;
-    } else if (this.changePasswordForm.value.newPassword !== this.changePasswordForm.value.confirmPassword) {
-      alert('Las contraseñas no coinciden');
-      return
     }
 
     const { oldPassword, newPassword } = this.changePasswordForm.value;
     this.loginService.changePassword(oldPassword, newPassword).subscribe({
       next: () => {
-        alert('Contraseña cambiada con éxito');
         this.router.navigate(['/dashboard']);
       },
       error: (error) => {
-        alert('Error al cambiar la contraseña');
         console.error(error);
       }
-    })
+    });
   }
 }

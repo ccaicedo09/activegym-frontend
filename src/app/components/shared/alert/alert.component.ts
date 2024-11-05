@@ -10,19 +10,36 @@ import { AlertService } from './alert.service';
   templateUrl: './alert.component.html',
   styleUrl: './alert.component.css'
 })
-export class AlertComponent implements OnDestroy{
+export class AlertComponent implements OnDestroy {
   @Input() message: string = '';
+  @Input() type: 'success' | 'error' = 'error'; // Tipo de alerta (error o éxito)
   showAlert: boolean = false;
   isClosing: boolean = false;
-  private subscription: Subscription;
+  private errorSubscription: Subscription;
+  private successSubscription: Subscription;
 
   constructor(private alertService: AlertService) {
-    this.subscription = this.alertService.error$.subscribe(msg => {
-      if (!this.isClosing) { // Solo mostrar si no está cerrando
-        this.message = msg;
-        this.showAlert = true; // Muestra la alerta
-      }
+    // Suscribirse a los mensajes de error
+    this.errorSubscription = this.alertService.error$.subscribe(msg => {
+      this.showAlertMessage(msg, 'error');
     });
+
+    // Suscribirse a los mensajes de éxito
+    this.successSubscription = this.alertService.success$.subscribe(msg => {
+      this.showAlertMessage(msg, 'success');
+    });
+  }
+
+  showAlertMessage(message: string, type: 'success' | 'error') {
+    if (!this.isClosing) { // Solo mostrar si no está cerrando
+      this.message = message;
+      this.type = type;
+      this.showAlert = true;
+
+      setTimeout(() => {
+        this.closeAlert();
+      }, 6000);
+    }
   }
 
   closeAlert() {
@@ -34,6 +51,7 @@ export class AlertComponent implements OnDestroy{
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.errorSubscription.unsubscribe();
+    this.successSubscription.unsubscribe();
   }
 }

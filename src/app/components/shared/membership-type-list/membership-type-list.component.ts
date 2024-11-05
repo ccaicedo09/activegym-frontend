@@ -2,6 +2,7 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { MembershipsService } from '../../../services/memberships/memberships.service';
 import { MembershipType } from '../../../models/memberships/membershiptype.interface';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-membership-type-list',
@@ -14,7 +15,7 @@ export default class MembershipTypeListComponent implements OnInit{
 
   @Input() isAdmin: boolean = false;
   private membershipService = inject(MembershipsService);
-
+  private router = inject(Router);
 
   membershipTypes: MembershipType[] = []
 
@@ -46,7 +47,7 @@ export default class MembershipTypeListComponent implements OnInit{
       .subscribe(() => {
         this.fetchMembershipTypes();
       });
-      location.reload();
+      this.router.navigate(['/dashboard/gymconfig']);
   }
 
 }
