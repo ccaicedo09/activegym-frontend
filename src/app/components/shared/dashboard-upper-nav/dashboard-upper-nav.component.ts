@@ -1,11 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { LoginService } from '../../../services/auth/login.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-upper-nav',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './dashboard-upper-nav.component.html',
   styleUrl: './dashboard-upper-nav.component.css'
 })

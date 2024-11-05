@@ -53,6 +53,10 @@ export const routes: Routes = [
         loadComponent: () => import('./components/admin/gym-config/gym-config.component'),
         canActivate: [roleGuard],
         data: { requiredRoles: ['ADMINISTRADOR']}
+      },
+      {
+        path: 'change-password',
+        loadComponent: () => import('./components/shared/change-password/change-password.component')
       }
     ]
   },
