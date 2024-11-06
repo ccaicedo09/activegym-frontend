@@ -4,6 +4,7 @@ import { Membership } from '../../models/memberships/memberships.interface';
 import { MembershipType } from '../../models/memberships/membershiptype.interface';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { MembershipTransfer } from '../../components/management/transfer-membership/membership-transfer.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,10 @@ export class MembershipsService {
     return this.http.post<Membership>(`${this.apiUrl}/api/memberships`, membership)
   }
 
+  transfer(transferBody: MembershipTransfer) {
+    return this.http.post(`${this.apiUrl}/api/memberships/transfer`, transferBody, { responseType: 'text' });
+  }
+
   // Membership types
 
   getMembershipTypes() {
@@ -36,6 +41,10 @@ export class MembershipsService {
 
   createMembershipType(membershipType: MembershipType) {
     return this.http.post<MembershipType>(`${this.apiUrl}/api/memberships/types/create`, membershipType);
+  }
+
+  toggleMembershipTypeVisibility(id: number) {
+    return this.http.patch(`${this.apiUrl}/api/memberships/types/toggle-visibility/${id}`, null);
   }
 
 }

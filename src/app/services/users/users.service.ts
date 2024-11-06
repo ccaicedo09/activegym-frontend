@@ -41,4 +41,8 @@ export class UserService {
     return this.http.delete(`${this.apiUrl}/api/users/${document}/roles`, { body: { roleName } });
   }
 
+  adminChangePassword(document: number, password: string) {
+    return this.http.put(`${this.apiUrl}/api/users/${document}/change-password`, { password });
+  }
+
 }

@@ -1,0 +1,9 @@
+<div *ngIf="showAlert"
+     [ngClass]="{'alert-danger': type === 'error', 'alert-success': type === 'success', 'fadeOut': isClosing}"
+     class="alert"
+     role="alert">
+  <i *ngIf="type === 'error'" class="bi bi-exclamation-circle alert-icon"></i> <!-- Ícono de error -->
+  <i *ngIf="type === 'success'" class="bi bi-check-circle alert-icon"></i> <!-- Ícono de éxito -->
+  <i class="bi bi-x close-icon" role="button" (click)="closeAlert()"></i>
+  {{ message }}
+</div>

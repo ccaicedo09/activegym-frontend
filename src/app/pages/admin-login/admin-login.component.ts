@@ -39,10 +39,6 @@ export default class AdminLoginComponent {
         next: (userData) => {
           console.log(userData);
         },
-        error: (errorData) => {
-          console.log(errorData);
-          this.loginError = "Usuario o contraseña incorrectos";
-        },
         complete: () => {
           console.info("Login completado!!");
           this.router.navigateByUrl('/dashboard');

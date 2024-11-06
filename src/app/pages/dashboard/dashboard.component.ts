@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import DashboardNavComponent from "../../components/dashboard-nav/dashboard-nav.component";
-import { DashboardUpperNavComponent } from "../../components/dashboard-upper-nav/dashboard-upper-nav.component";
+import DashboardNavComponent from "../../components/shared/dashboard-nav/dashboard-nav.component";
+import { DashboardUpperNavComponent } from "../../components/shared/dashboard-upper-nav/dashboard-upper-nav.component";
 import { RouterOutlet } from '@angular/router';
 import { LoginService } from '../../services/auth/login.service';
 

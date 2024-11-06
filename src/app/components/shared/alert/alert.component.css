@@ -1,0 +1,66 @@
+.alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 450px;
+  padding: 20px;
+  font-size: 1.2em;
+  animation: slideIn 0.5s ease-out forwards;
+  border-radius: 8px;
+  display: flex; /* Para alinear el ícono y el texto */
+  align-items: center; /* Alinea verticalmente el contenido */
+  overflow: hidden; /* Para evitar que el contenido sobresalga */
+}
+
+.alert-icon {
+  font-size: 1.5em; /* Tamaño del ícono */
+  margin-right: 10px; /* Espacio entre el ícono y el texto */
+}
+
+.alert-danger {
+  background-color: #ffcccc; /* Color de fondo rojo más suave */
+  border: 2px solid #f44336; /* Borde rojo más vivo */
+  color: #721c24; /* Color del texto */
+}
+
+.alert-success {
+  background-color: #dcfce7;
+  border: 2px solid #22c55e;
+  color: #16a34a;
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 1.5em;
+  color: #721c24; /* Cambia el color del icono a rojo */
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.fadeOut {
+  animation: slideOut 0.5s ease-in forwards; /* Aplica la animación de salida */
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%); /* Mueve hacia la derecha */
+    opacity: 0; /* Se desvanece */
+  }
+}

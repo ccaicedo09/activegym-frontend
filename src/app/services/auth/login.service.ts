@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, firstValueFrom, map, Observable, tap, throwError } from 'rxjs';
 import { LoginRequest } from './loginRequest.interface';
 import { environment } from '../../../environments/environment';
+import { ChangePassword } from '../../components/shared/change-password/change-password.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -64,5 +65,9 @@ export class LoginService {
 
   getRoles():Observable<string[]> {
     return this.http.get<string[]>(`${this.apiUrl}/auth/roles`, {withCredentials: true});
+  }
+
+  changePassword(oldPassword: string, newPassword: string):Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/api/users/change-password`, { oldPassword, newPassword });
   }
 }
