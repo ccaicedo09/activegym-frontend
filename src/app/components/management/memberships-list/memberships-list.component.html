@@ -19,18 +19,32 @@
         <th>Fecha de fin</th>
         <th>Estado</th>
         <th>Fecha de compra</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody class="text-nowrap">
       <tr *ngFor="let membership of memberships"
         [ngClass]="{'bg-success-light': membership.membershipStatus === 'ACTIVA',
                     'bg-danger-light': membership.membershipStatus === 'INACTIVA'}">
-        <td *ngIf="!user"><a [routerLink]="['/dashboard/users', membership.userDocument]">{{ membership.userDocument }}</a></td>
+        <td *ngIf="!user"><a [routerLink]="['/dashboard/users', membership.userDocument]" matTooltip="Ver usuario">{{ membership.userDocument }}</a></td>
         <td>{{ membership.membershipTypeName }}</td>
         <td>{{ membership.startDate}}</td>
         <td>{{ membership.endDate }}</td>
         <td>{{ membership.membershipStatus }}</td>
         <td>{{ membership.saleDate }}</td>
+        <td class="d-flex justify-content-center">
+          <div class="btn-group" role="group">
+            <button *ngIf="membership.membershipStatus === 'ACTIVA' && isTransferable(membership.membershipTypeName)" class="btn btn-custom btn-sm me-2" matTooltip="Transferir membresía" [routerLink]="['/dashboard/transfer-membership']" [state]="{ membershipId: membership.id, membershipTypeName: membership.membershipTypeName, userDocument: membership.userDocument}">
+              <i class="bi bi-people"></i>
+            </button>
+            <button *ngIf="membership.membershipStatus === 'ACTIVA' && isFreezable(membership.membershipTypeName)" class="btn btn-primary btn-sm me-2" matTooltip="Congelar membresía">
+              <i class="bi bi-snow"></i>
+            </button>
+            <button *ngIf="membership.membershipStatus !== 'ACTIVA' || !isTransferable(membership.membershipTypeName) && !isFreezable(membership.membershipTypeName)" class="btn" matTooltip="Sin acciones disponibles">
+              <i class="bi bi-info-circle"></i>
+            </button>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>

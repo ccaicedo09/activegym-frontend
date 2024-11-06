@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AlertService } from './alert.service';
 
@@ -38,7 +38,7 @@ export class AlertComponent implements OnDestroy {
 
       setTimeout(() => {
         this.closeAlert();
-      }, 6000);
+      }, 5000);
     }
   }
 
