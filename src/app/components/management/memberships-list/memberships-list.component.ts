@@ -5,11 +5,13 @@ import { Membership } from '../../../models/memberships/memberships.interface';
 import { MembershipsService } from '../../../services/memberships/memberships.service';
 import MembershipFormComponent from "../membership-form/membership-form.component";
 import { NgModel } from '@angular/forms';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MembershipType } from '../../../models/memberships/membershiptype.interface';
 
 @Component({
   selector: 'app-memberships-list',
   standalone: true,
-  imports: [RouterLink, CommonModule, NgClass, MembershipFormComponent],
+  imports: [RouterLink, CommonModule, NgClass, MembershipFormComponent, MatTooltipModule],
   templateUrl: './memberships-list.component.html',
   styleUrl: './memberships-list.component.css'
 })
@@ -21,6 +23,7 @@ export default class MembershipsListComponent implements OnInit{
   user ?: boolean;
   memberships: Membership[] = [];
   filteredMemberships: Membership[] = [];
+  membershipTypes: MembershipType[] = [];
   searchText: string = '';
   hasActiveMembership: boolean = false;
 
@@ -31,6 +34,10 @@ export default class MembershipsListComponent implements OnInit{
 
   ngOnInit(): void {
     const userDocument = this.route.snapshot.paramMap.get('document');
+
+    this.membershipsService.getMembershipTypes().subscribe((membershipTypes) => {
+      this.membershipTypes = membershipTypes;
+    })
 
     if(userDocument) {
       this.membershipsService.get(parseInt(userDocument))
@@ -53,6 +60,18 @@ export default class MembershipsListComponent implements OnInit{
       this.totalPages = response.totalPages;
       this.filteredMemberships = response.content;
     });
+  }
+
+  isTransferable(membershipTypeName: string): boolean {
+    return this.membershipTypes.some(
+      (type) => type.name === membershipTypeName && type.isTransferable
+    );
+  }
+
+  isFreezable(membershipTypeName: string): boolean {
+    return this.membershipTypes.some(
+      (type) => type.name === membershipTypeName && type.isFreezable
+    );
   }
 
   nextPage() {

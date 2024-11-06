@@ -63,6 +63,12 @@ export const routes: Routes = [
         loadComponent: () => import('./components/admin/admin-change-password/admin-change-password.component'),
         canActivate: [roleGuard],
         data: { requiredRoles: ['ADMINISTRADOR']}
+      },
+      {
+        path: 'transfer-membership',
+        loadComponent: () => import('./components/management/transfer-membership/transfer-membership.component'),
+        canActivate: [roleGuard],
+        data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR']}
       }
     ]
   },

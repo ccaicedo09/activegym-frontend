@@ -3,11 +3,12 @@ import { User } from '../../../models/users/users.interface';
 import { NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { UserService } from '../../../services/users/users.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [NgFor, RouterLink],
+  imports: [NgFor, RouterLink, MatTooltipModule],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })
