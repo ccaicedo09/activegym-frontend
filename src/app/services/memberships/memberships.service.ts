@@ -38,4 +38,8 @@ export class MembershipsService {
     return this.http.post<MembershipType>(`${this.apiUrl}/api/memberships/types/create`, membershipType);
   }
 
+  toggleMembershipTypeVisibility(id: number) {
+    return this.http.patch(`${this.apiUrl}/api/memberships/types/toggle-visibility/${id}`, null);
+  }
+
 }

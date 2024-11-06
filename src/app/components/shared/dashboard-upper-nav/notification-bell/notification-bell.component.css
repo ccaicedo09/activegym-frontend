@@ -1,0 +1,13 @@
+.dropdown-item {
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 2em;
+  padding-right: 1rem;
+  color: var(--color-black);
+}
+
+.icon:hover {
+  color: #383b3d;
+}
