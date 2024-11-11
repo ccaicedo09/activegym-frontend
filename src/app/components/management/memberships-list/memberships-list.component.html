@@ -13,20 +13,20 @@
   <table class="table table-hover table-bordered">
     <thead class="table-dark">
       <tr>
-        <th *ngIf="!user">Documento</th>
+        <th *ngIf="!user && hasRole(['ADMINISTRADOR', 'ASESOR'])">Documento</th>
         <th>Tipo de membresía</th>
         <th>Fecha de inicio</th>
         <th>Fecha de fin</th>
         <th>Estado</th>
         <th>Fecha de compra</th>
-        <th>Acciones</th>
+        <th >Acciones</th>
       </tr>
     </thead>
     <tbody class="text-nowrap">
       <tr *ngFor="let membership of memberships"
         [ngClass]="{'bg-success-light': membership.membershipStatus === 'ACTIVA',
                     'bg-danger-light': membership.membershipStatus === 'INACTIVA'}">
-        <td *ngIf="!user"><a [routerLink]="['/dashboard/users', membership.userDocument]" matTooltip="Ver usuario">{{ membership.userDocument }}</a></td>
+        <td *ngIf="!user && hasRole(['ADMINISTRADOR', 'ASESOR'])"><a [routerLink]="['/dashboard/users', membership.userDocument]" matTooltip="Ver usuario">{{ membership.userDocument }}</a></td>
         <td>{{ membership.membershipTypeName }}</td>
         <td>{{ membership.startDate}}</td>
         <td>{{ membership.endDate }}</td>

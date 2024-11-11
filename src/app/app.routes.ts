@@ -46,6 +46,10 @@ export const routes: Routes = [
         data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR'] }
       },
       {
+        path: 'my-memberships',
+        loadComponent: () => import('./components/management/memberships-list/memberships-list.component'),
+      },
+      {
         path: 'users',
         loadComponent: () => import('./components/management/user-list/user-list.component'),
         canActivate: [roleGuard],
@@ -53,7 +57,9 @@ export const routes: Routes = [
       },
       {
         path: 'users/:document',
-        loadComponent: () => import('./components/management/user-details/user-details.component')
+        loadComponent: () => import('./components/management/user-details/user-details.component'),
+        canActivate: [roleGuard],
+        data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR'] }
       },
       {
         path: 'profile',

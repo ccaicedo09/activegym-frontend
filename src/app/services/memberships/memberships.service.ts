@@ -25,6 +25,10 @@ export class MembershipsService {
     return this.http.get<Membership[]>(`${this.apiUrl}/api/memberships/${document}`);
   }
 
+  getSelf() {
+    return this.http.get<Membership[]>(`${this.apiUrl}/api/memberships/self-management/get-memberships`);
+  }
+
   create(membership: Membership) {
     return this.http.post<Membership>(`${this.apiUrl}/api/memberships`, membership)
   }
