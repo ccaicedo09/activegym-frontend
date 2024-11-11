@@ -9,7 +9,7 @@ import MembershipsListComponent from "../memberships-list/memberships-list.compo
 @Component({
   selector: 'app-user-details',
   standalone: true,
-  imports: [RouterLink, UserFormComponent, UserOverviewComponent, MembershipsListComponent],
+  imports: [UserFormComponent, UserOverviewComponent, MembershipsListComponent],
   templateUrl: './user-details.component.html',
   styleUrl: './user-details.component.css'
 })

@@ -36,11 +36,7 @@ export default class AdminLoginComponent {
     if(this.adminLoginForm.valid) {
       this.loginError = "";
       this.loginService.login(this.adminLoginForm.value as LoginRequest).subscribe({
-        next: (userData) => {
-          console.log(userData);
-        },
         complete: () => {
-          console.info("Login completado!!");
           this.router.navigateByUrl('/dashboard');
           this.adminLoginForm.reset();
         }

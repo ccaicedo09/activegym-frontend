@@ -1,0 +1,17 @@
+.welcome-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* Ocupa toda la altura de la ventana */
+  text-align: center;
+}
+
+.activegym {
+  color: var(--color-yellow)
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}

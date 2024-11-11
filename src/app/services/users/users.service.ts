@@ -21,6 +21,10 @@ export class UserService {
     return this.http.get<User>(`${this.apiUrl}/api/users/${document}`);
   }
 
+  getSelf() {
+    return this.http.get<User>(`${this.apiUrl}/api/users/self-management/get-info`);
+  }
+
   listGymTeam() {
     return this.http.get<User[]>(`${this.apiUrl}/api/users/team`);
   }
@@ -31,6 +35,10 @@ export class UserService {
 
   updateBasicInfo(document: number, user: User) {
     return this.http.put<User>(`${this.apiUrl}/api/users/${document}`, user);
+  }
+
+  updateSelfBasicInfo(user: User) {
+    return this.http.put<User>(`${this.apiUrl}/api/users/self-management/update-info`, user);
   }
 
   assignRole(document: number, roleName: string) {

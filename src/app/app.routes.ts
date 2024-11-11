@@ -3,8 +3,9 @@ import { authGuard } from './guards/auth.guard';
 import { roleGuard } from './guards/role.guard';
 
 export const routes: Routes = [
+  // General access routes
   {
-    path:'',
+    path: '',
     loadComponent: () => import('./pages/home/home.component')
   },
   {
@@ -12,47 +13,57 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/plans/plans.component')
   },
   {
-    path:'login/admin',
+    path: 'login/admin',
     loadComponent: () => import('./pages/admin-login/admin-login.component')
   },
+
+  // Protected dashboard routes
   {
-    path:'dashboard',
+    path: 'dashboard',
     loadComponent: () => import('./pages/dashboard/dashboard.component'),
     canActivate: [authGuard],
     children: [
       {
-        path:'',
+        path: '',
+        loadComponent: () => import('./components/shared/welcome-view/welcome-view.component')
+      },
+      {
+        path: 'analytics',
         loadComponent: () => import('./components/management/analytics/analytics.component'),
         canActivate: [roleGuard],
-        data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR']}
+        data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR'] }
       },
       {
         path: 'user-form',
         loadComponent: () => import('./components/management/user-form/user-form.component'),
         canActivate: [roleGuard],
-        data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR']}
+        data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR'] }
       },
       {
         path: 'memberships-list',
         loadComponent: () => import('./components/management/memberships-list/memberships-list.component'),
         canActivate: [roleGuard],
-        data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR']}
+        data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR'] }
       },
       {
         path: 'users',
         loadComponent: () => import('./components/management/user-list/user-list.component'),
         canActivate: [roleGuard],
-        data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR']}
+        data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR'] }
       },
       {
         path: 'users/:document',
         loadComponent: () => import('./components/management/user-details/user-details.component')
       },
       {
+        path: 'profile',
+        loadComponent: () => import('./components/management/user-form/user-form.component')
+      },
+      {
         path: 'gymconfig',
         loadComponent: () => import('./components/admin/gym-config/gym-config.component'),
         canActivate: [roleGuard],
-        data: { requiredRoles: ['ADMINISTRADOR']}
+        data: { requiredRoles: ['ADMINISTRADOR'] }
       },
       {
         path: 'change-password',
@@ -62,16 +73,18 @@ export const routes: Routes = [
         path: 'admin-change-password',
         loadComponent: () => import('./components/admin/admin-change-password/admin-change-password.component'),
         canActivate: [roleGuard],
-        data: { requiredRoles: ['ADMINISTRADOR']}
+        data: { requiredRoles: ['ADMINISTRADOR'] }
       },
       {
         path: 'transfer-membership',
         loadComponent: () => import('./components/management/transfer-membership/transfer-membership.component'),
         canActivate: [roleGuard],
-        data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR']}
+        data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR'] }
       }
     ]
   },
+
+  // Error routes
   {
     path: 'forbidden',
     loadComponent: () => import('./pages/forbidden/forbidden.component')
