@@ -23,9 +23,7 @@
       </tr>
     </thead>
     <tbody class="text-nowrap">
-      <tr *ngFor="let membership of memberships"
-        [ngClass]="{'bg-success-light': membership.membershipStatus === 'ACTIVA',
-                    'bg-danger-light': membership.membershipStatus === 'INACTIVA'}">
+      <tr *ngFor="let membership of memberships">
         <td *ngIf="!user && hasRole(['ADMINISTRADOR', 'ASESOR'])"><a [routerLink]="['/dashboard/users', membership.userDocument]" matTooltip="Ver usuario">{{ membership.userDocument }}</a></td>
         <td>{{ membership.membershipTypeName }}</td>
         <td>{{ membership.startDate}}</td>
@@ -37,7 +35,7 @@
             <button *ngIf="membership.membershipStatus === 'ACTIVA' && isTransferable(membership.membershipTypeName)" class="btn btn-custom btn-sm me-2" matTooltip="Transferir membresía" [routerLink]="['/dashboard/transfer-membership']" [state]="{ membershipId: membership.id, membershipTypeName: membership.membershipTypeName, userDocument: membership.userDocument}">
               <i class="bi bi-people"></i>
             </button>
-            <button *ngIf="membership.membershipStatus === 'ACTIVA' && isFreezable(membership.membershipTypeName)" class="btn btn-primary btn-sm me-2" matTooltip="Congelar membresía">
+            <button *ngIf="membership.membershipStatus === 'ACTIVA' && isFreezable(membership.membershipTypeName)" class="btn btn-primary btn-sm me-2" matTooltip="Congelar membresía" [routerLink]="['/dashboard/freeze-membership']" [state]="{ membershipId: membership.id, membershipTypeName: membership.membershipTypeName, userDocument: membership.userDocument}">
               <i class="bi bi-snow"></i>
             </button>
             <button *ngIf="membership.membershipStatus !== 'ACTIVA' || !isTransferable(membership.membershipTypeName) && !isFreezable(membership.membershipTypeName)" class="btn" matTooltip="Sin acciones disponibles">

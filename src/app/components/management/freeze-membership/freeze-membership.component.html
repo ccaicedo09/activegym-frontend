@@ -1,0 +1,11 @@
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-12 col-md-8 col-lg-4 text-align-justify">
+        <h3 clas="mt-2">Congelar membresía</h3>
+        <p>Estás a punto de transferir la membresía de tipo <strong>{{ membershipTypeName }}</strong> del usuario con documento <strong>{{ userDocument }}</strong>. Por favor, introduce a continuación la cantidad de días a congelar la membresía (menor a 15 días).</p>
+        <label for="days" class="form-label">Cantidad de días a congelar</label>
+        <input type="number" min="1" max="15" id="days" [(ngModel)]="days" class="form-control" placeholder="Cantidad de días">
+        <button class="btn btn-custom mt-2 mb-2" (click)="freezeMembership()">Confirmar congelación</button>
+    </div>
+  </div>
+</div>

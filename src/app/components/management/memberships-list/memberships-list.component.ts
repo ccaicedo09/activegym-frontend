@@ -12,7 +12,7 @@ import { LoginService } from '../../../services/auth/login.service';
 @Component({
   selector: 'app-memberships-list',
   standalone: true,
-  imports: [RouterLink, CommonModule, NgClass, MembershipFormComponent, MatTooltipModule],
+  imports: [RouterLink, CommonModule, MembershipFormComponent, MatTooltipModule],
   templateUrl: './memberships-list.component.html',
   styleUrl: './memberships-list.component.css'
 })
