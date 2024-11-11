@@ -13,8 +13,8 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/plans/plans.component')
   },
   {
-    path: 'login/admin',
-    loadComponent: () => import('./pages/admin-login/admin-login.component')
+    path: 'login',
+    loadComponent: () => import('./pages/login/login.component')
   },
 
   // Protected dashboard routes
