@@ -1,3 +1,5 @@
+<button type="button" class="btn btn-custom" (click)="openModal(undefined)" *ngIf="isAdmin">Crear plan</button>
+
 <div class="container mt-4">
   <div class="row g-4">
     <div class="col-12 col-md-6 col-lg-4" *ngFor="let type of membershipTypes">
@@ -34,7 +36,7 @@
         </div>
 
         <div class="card-footer d-flex justify-content-left" *ngIf="isAdmin">
-          <button class="btn btn-custom btn-sm me-2">Editar</button>
+          <button class="btn btn-custom btn-sm me-2" (click)="openModal(type)">Editar</button>
           <button
             [ngClass]="type.isVisible ? 'btn btn-success btn-sm' : 'btn btn-secondary btn-sm'"
             class="ms-2" (click)="toggleVisibility(type.id)">
@@ -45,3 +47,21 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="membershipModal" tabindex="-1" aria-labelledby="membershipModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title fs-5" id="membershipModalLabel">
+          {{ selectedMembershipType ? 'Editar Plan' : 'Crear nuevo plan' }}
+        </h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-membership-type-form [membershipType]="selectedMembershipType"></app-membership-type-form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

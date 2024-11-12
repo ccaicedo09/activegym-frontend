@@ -52,6 +52,10 @@ export class MembershipsService {
     return this.http.post<MembershipType>(`${this.apiUrl}/api/memberships/types/create`, membershipType);
   }
 
+  updateMembershipType(membershipType: MembershipType, id: number) {
+    return this.http.put<MembershipType>(`${this.apiUrl}/api/memberships/types/edit/${id}`, membershipType);
+  }
+
   toggleMembershipTypeVisibility(id: number) {
     return this.http.patch(`${this.apiUrl}/api/memberships/types/toggle-visibility/${id}`, null);
   }
