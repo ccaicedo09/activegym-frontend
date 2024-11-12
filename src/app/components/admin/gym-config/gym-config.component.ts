@@ -6,7 +6,7 @@ import MembershipTypeFormComponent from "../membership-type-form/membership-type
 @Component({
   selector: 'app-gym-config',
   standalone: true,
-  imports: [MembershipTypeListComponent, GymTeamListComponent, MembershipTypeFormComponent],
+  imports: [MembershipTypeListComponent, GymTeamListComponent],
   templateUrl: './gym-config.component.html',
   styleUrl: './gym-config.component.css'
 })

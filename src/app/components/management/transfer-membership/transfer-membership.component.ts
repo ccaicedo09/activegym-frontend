@@ -10,7 +10,6 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './transfer-membership.component.html',
-  styleUrl: './transfer-membership.component.css'
 })
 export default class TransferMembershipComponent implements OnInit {
   membershipId: number = 0;
@@ -64,7 +63,7 @@ export default class TransferMembershipComponent implements OnInit {
         next: () => {
           setTimeout(() => {
             this.router.navigate(['/dashboard/users/' + this.userFound.document]);
-          }, 5000);
+          }, 2500);
         },
         error: () => {
           this.resetForm();

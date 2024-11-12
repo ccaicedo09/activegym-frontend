@@ -3,11 +3,13 @@ import { MembershipsService } from '../../../services/memberships/memberships.se
 import { MembershipType } from '../../../models/memberships/membershiptype.interface';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import MembershipTypeFormComponent from "../../admin/membership-type-form/membership-type-form.component";
+import * as bootstrap from 'bootstrap';
 
 @Component({
   selector: 'app-membership-type-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MembershipTypeFormComponent],
   templateUrl: './membership-type-list.component.html',
   styleUrl: './membership-type-list.component.css'
 })
@@ -18,6 +20,7 @@ export default class MembershipTypeListComponent implements OnInit{
   private router = inject(Router);
 
   membershipTypes: MembershipType[] = []
+  selectedMembershipType: MembershipType | null = null;
 
   ngOnInit(): void {
     this.fetchMembershipTypes();
@@ -50,4 +53,12 @@ export default class MembershipTypeListComponent implements OnInit{
       this.router.navigate(['/dashboard/gymconfig']);
   }
 
+  openModal(type?: MembershipType): void {
+    this.selectedMembershipType = type || null;
+    const modalElement = document.getElementById('membershipModal');
+    if (modalElement) {
+      const bootstrapModal = new bootstrap.Modal(modalElement);
+      bootstrapModal.show();
+    }
+  }
 }

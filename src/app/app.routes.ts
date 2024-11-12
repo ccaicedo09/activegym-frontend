@@ -86,6 +86,12 @@ export const routes: Routes = [
         loadComponent: () => import('./components/management/transfer-membership/transfer-membership.component'),
         canActivate: [roleGuard],
         data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR'] }
+      },
+      {
+        path: 'freeze-membership',
+        loadComponent: () => import('./components/management/freeze-membership/freeze-membership.component'),
+        canActivate: [roleGuard],
+        data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR'] }
       }
     ]
   },

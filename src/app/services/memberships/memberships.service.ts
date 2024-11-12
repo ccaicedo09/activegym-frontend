@@ -5,6 +5,7 @@ import { MembershipType } from '../../models/memberships/membershiptype.interfac
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { MembershipTransfer } from '../../components/management/transfer-membership/membership-transfer.interface';
+import { MembershipFreeze } from '../../components/management/freeze-membership/membership-freeze.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,10 @@ export class MembershipsService {
     return this.http.post(`${this.apiUrl}/api/memberships/transfer`, transferBody, { responseType: 'text' });
   }
 
+  freeze(freezeBody: MembershipFreeze) {
+    return this.http.post(`${this.apiUrl}/api/memberships/freeze`, freezeBody, { responseType: 'text' });
+  }
+
   // Membership types
 
   getMembershipTypes() {
@@ -45,6 +50,10 @@ export class MembershipsService {
 
   createMembershipType(membershipType: MembershipType) {
     return this.http.post<MembershipType>(`${this.apiUrl}/api/memberships/types/create`, membershipType);
+  }
+
+  updateMembershipType(membershipType: MembershipType, id: number) {
+    return this.http.put<MembershipType>(`${this.apiUrl}/api/memberships/types/edit/${id}`, membershipType);
   }
 
   toggleMembershipTypeVisibility(id: number) {

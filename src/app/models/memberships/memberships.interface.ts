@@ -7,4 +7,5 @@ export interface Membership {
   saleDate: string;
   membershipStatus: string;
   soldByDocument: number;
+  paidAmount: number;
 }

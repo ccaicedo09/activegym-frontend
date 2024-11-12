@@ -8,11 +8,12 @@ import { NgModel } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MembershipType } from '../../../models/memberships/membershiptype.interface';
 import { LoginService } from '../../../services/auth/login.service';
+import { PdfService } from '../../../services/util/pdf.service';
 
 @Component({
   selector: 'app-memberships-list',
   standalone: true,
-  imports: [RouterLink, CommonModule, NgClass, MembershipFormComponent, MatTooltipModule],
+  imports: [RouterLink, CommonModule, MembershipFormComponent, MatTooltipModule],
   templateUrl: './memberships-list.component.html',
   styleUrl: './memberships-list.component.css'
 })
@@ -22,6 +23,7 @@ export default class MembershipsListComponent implements OnInit{
   private loginService = inject(LoginService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private pdfService = inject(PdfService);
 
   user ?: boolean;
   memberships: Membership[] = [];
@@ -110,5 +112,9 @@ export default class MembershipsListComponent implements OnInit{
 
   hasRole(roles: string[]): boolean {
     return roles.some((role) => this.roles.includes(role));
+  }
+
+  generateInvoice(membership: Membership) {
+    this.pdfService.generateInvoice(membership);
   }
 }
