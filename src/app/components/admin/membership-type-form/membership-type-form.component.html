@@ -17,7 +17,7 @@
       <label for="duration" class="form-label">Duración (en días)</label>
       <input type="number" class="form-control" formControlName="duration" id="duration">
       <div *ngIf="membershipTypeForm.get('duration')?.hasError('required') && membershipTypeForm.get('duration')?.touched" class="invalid-feedback d-block">
-        ¡El precio no puede ser nulo!
+        ¡La duración no puede ser nula!
       </div>
     </div>
   </div>

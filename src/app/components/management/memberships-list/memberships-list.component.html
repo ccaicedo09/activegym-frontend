@@ -13,20 +13,18 @@
   <table class="table table-hover table-bordered">
     <thead class="table-dark">
       <tr>
-        <th *ngIf="!user">Documento</th>
+        <th *ngIf="!user && hasRole(['ADMINISTRADOR', 'ASESOR'])">Documento</th>
         <th>Tipo de membresía</th>
         <th>Fecha de inicio</th>
         <th>Fecha de fin</th>
         <th>Estado</th>
         <th>Fecha de compra</th>
-        <th>Acciones</th>
+        <th >Acciones</th>
       </tr>
     </thead>
     <tbody class="text-nowrap">
-      <tr *ngFor="let membership of memberships"
-        [ngClass]="{'bg-success-light': membership.membershipStatus === 'ACTIVA',
-                    'bg-danger-light': membership.membershipStatus === 'INACTIVA'}">
-        <td *ngIf="!user"><a [routerLink]="['/dashboard/users', membership.userDocument]" matTooltip="Ver usuario">{{ membership.userDocument }}</a></td>
+      <tr *ngFor="let membership of memberships">
+        <td *ngIf="!user && hasRole(['ADMINISTRADOR', 'ASESOR'])"><a [routerLink]="['/dashboard/users', membership.userDocument]" matTooltip="Ver usuario">{{ membership.userDocument }}</a></td>
         <td>{{ membership.membershipTypeName }}</td>
         <td>{{ membership.startDate}}</td>
         <td>{{ membership.endDate }}</td>
@@ -34,14 +32,14 @@
         <td>{{ membership.saleDate }}</td>
         <td class="d-flex justify-content-center">
           <div class="btn-group" role="group">
+            <button class="btn btn-secondary btn-sm me-2" matTooltip="Generar factura" (click)="generateInvoice(membership)">
+              <i class="bi bi-printer"></i>
+            </button>
             <button *ngIf="membership.membershipStatus === 'ACTIVA' && isTransferable(membership.membershipTypeName)" class="btn btn-custom btn-sm me-2" matTooltip="Transferir membresía" [routerLink]="['/dashboard/transfer-membership']" [state]="{ membershipId: membership.id, membershipTypeName: membership.membershipTypeName, userDocument: membership.userDocument}">
               <i class="bi bi-people"></i>
             </button>
-            <button *ngIf="membership.membershipStatus === 'ACTIVA' && isFreezable(membership.membershipTypeName)" class="btn btn-primary btn-sm me-2" matTooltip="Congelar membresía">
+            <button *ngIf="membership.membershipStatus === 'ACTIVA' && isFreezable(membership.membershipTypeName)" class="btn btn-primary btn-sm me-2" matTooltip="Congelar membresía" [routerLink]="['/dashboard/freeze-membership']" [state]="{ membershipId: membership.id, membershipTypeName: membership.membershipTypeName, userDocument: membership.userDocument}">
               <i class="bi bi-snow"></i>
-            </button>
-            <button *ngIf="membership.membershipStatus !== 'ACTIVA' || !isTransferable(membership.membershipTypeName) && !isFreezable(membership.membershipTypeName)" class="btn" matTooltip="Sin acciones disponibles">
-              <i class="bi bi-info-circle"></i>
             </button>
           </div>
         </td>

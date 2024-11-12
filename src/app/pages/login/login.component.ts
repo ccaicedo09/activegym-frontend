@@ -7,13 +7,13 @@ import { LoginService } from '../../services/auth/login.service';
 import { LoginRequest } from '../../services/auth/loginRequest.interface';
 
 @Component({
-  selector: 'app-admin-login',
+  selector: 'app-login',
   standalone: true,
   imports: [ReactiveFormsModule, NgIf],
-  templateUrl: './admin-login.component.html',
-  styleUrl: './admin-login.component.css'
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.css'
 })
-export default class AdminLoginComponent {
+export default class LoginComponent {
   loginError: string = "";
   adminLoginForm: FormGroup;
 
@@ -36,11 +36,7 @@ export default class AdminLoginComponent {
     if(this.adminLoginForm.valid) {
       this.loginError = "";
       this.loginService.login(this.adminLoginForm.value as LoginRequest).subscribe({
-        next: (userData) => {
-          console.log(userData);
-        },
         complete: () => {
-          console.info("Login completado!!");
           this.router.navigateByUrl('/dashboard');
           this.adminLoginForm.reset();
         }

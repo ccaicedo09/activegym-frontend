@@ -23,7 +23,7 @@ export const authGuard: CanActivateFn = async (route, state) => {
     localStorage.removeItem('token');
   }
 
-  router.navigate(['/login/admin'], { queryParams: { returnUrl: state.url } });
+  router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
   return false;
 
 };

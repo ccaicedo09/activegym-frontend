@@ -21,7 +21,7 @@ export default class DashboardNavComponent implements OnInit {
       })
   }
 
-  hasRole(role: string): boolean {
-    return this.roles.includes(role);
+  hasRole(roles: string[]): boolean {
+    return roles.some((role) => this.roles.includes(role));
   }
 }

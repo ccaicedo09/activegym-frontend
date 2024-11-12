@@ -1,24 +1,29 @@
 import { CommonModule, NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/router';
 import { Membership } from '../../../models/memberships/memberships.interface';
 import { MembershipsService } from '../../../services/memberships/memberships.service';
 import MembershipFormComponent from "../membership-form/membership-form.component";
 import { NgModel } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MembershipType } from '../../../models/memberships/membershiptype.interface';
+import { LoginService } from '../../../services/auth/login.service';
+import { PdfService } from '../../../services/util/pdf.service';
 
 @Component({
   selector: 'app-memberships-list',
   standalone: true,
-  imports: [RouterLink, CommonModule, NgClass, MembershipFormComponent, MatTooltipModule],
+  imports: [RouterLink, CommonModule, MembershipFormComponent, MatTooltipModule],
   templateUrl: './memberships-list.component.html',
   styleUrl: './memberships-list.component.css'
 })
 export default class MembershipsListComponent implements OnInit{
 
   private membershipsService = inject(MembershipsService);
+  private loginService = inject(LoginService);
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private pdfService = inject(PdfService);
 
   user ?: boolean;
   memberships: Membership[] = [];
@@ -26,6 +31,7 @@ export default class MembershipsListComponent implements OnInit{
   membershipTypes: MembershipType[] = [];
   searchText: string = '';
   hasActiveMembership: boolean = false;
+  roles: any[] = [];
 
   // Pagination
   page: number = 0;
@@ -33,6 +39,11 @@ export default class MembershipsListComponent implements OnInit{
   totalPages: number = 0;
 
   ngOnInit(): void {
+
+    this.loginService.getRoles().subscribe((roles) => {
+      this.roles = roles;
+    })
+
     const userDocument = this.route.snapshot.paramMap.get('document');
 
     this.membershipsService.getMembershipTypes().subscribe((membershipTypes) => {
@@ -47,6 +58,11 @@ export default class MembershipsListComponent implements OnInit{
         this.checkActiveMembership();
       });
       this.user = true;
+    } else if (this.router.url.includes('my-memberships')) {
+      this.membershipsService.getSelf().subscribe((memberships) => {
+        this.memberships = memberships;
+        this.filteredMemberships = memberships;
+      })
     } else {
       this.user = false;
       this.loadMemberships();
@@ -92,5 +108,13 @@ export default class MembershipsListComponent implements OnInit{
     this.hasActiveMembership = this.memberships.some(
       (membership) => membership.membershipStatus === 'ACTIVA'
     );
+  }
+
+  hasRole(roles: string[]): boolean {
+    return roles.some((role) => this.roles.includes(role));
+  }
+
+  generateInvoice(membership: Membership) {
+    this.pdfService.generateInvoice(membership);
   }
 }

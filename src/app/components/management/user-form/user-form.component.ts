@@ -37,6 +37,9 @@ export default class UserFormComponent implements OnInit {
   eps: Eps[] = [];
   bloodTypes: BloodType[] = [];
   bloodRhs: BloodRh[] = [];
+  isSelfManagement = false;
+  isCreateMode = false;
+
 
   ngOnInit(): void {
     const userDocument = this.route.snapshot.paramMap.get('document');
@@ -60,6 +63,14 @@ export default class UserFormComponent implements OnInit {
         console.log(user);
         this.userForm.patchValue(user);
       });
+    } else if (this.router.url.includes('/profile')) {
+      this.isSelfManagement = true;
+      this.userService.getSelf().subscribe((user: User) => {
+        this.user = user;
+        this.userForm.patchValue(user);
+      });
+    } else {
+      this.isCreateMode = true;
     }
 
     this.loadGenders();
@@ -76,16 +87,17 @@ export default class UserFormComponent implements OnInit {
     }
 
     const userData = this.userForm!.value;
-    console.log('Datos enviados:', userData);
 
-    if (this.user) {
-      this.userService.updateBasicInfo(this.user.document, userData)
-      .subscribe(() => {
+    if (this.isCreateMode) {
+      this.userService.create(userData).subscribe(() => {
         this.router.navigate(['dashboard/users']);
       });
+    } else if (this.isSelfManagement) {
+      this.userService.updateSelfBasicInfo(userData).subscribe(() => {
+        this.router.navigate(['dashboard/profile']);
+      });
     } else {
-      this.userService.create(userData)
-      .subscribe(() => {
+      this.userService.updateBasicInfo(this.user!.document, userData).subscribe(() => {
         this.router.navigate(['dashboard/users']);
       });
     }

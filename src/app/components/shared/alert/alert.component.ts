@@ -38,7 +38,7 @@ export class AlertComponent implements OnDestroy {
 
       setTimeout(() => {
         this.closeAlert();
-      }, 5000);
+      }, 2000);
     }
   }
 
