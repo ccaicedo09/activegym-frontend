@@ -12,8 +12,17 @@ export class UserService {
   private http = inject(HttpClient);
   private apiUrl = environment.apiUrl;
 
-  list(page: number, size: number): Observable<any> {
-    const params = new HttpParams().set('page', page).set('size', size);
+  list(page: number, size: number, filters?: any): Observable<any> {
+    let params = new HttpParams().set('page', page).set('size', size);
+
+    if (filters) {
+      Object.keys(filters).forEach(key => {
+        if (filters[key]) {
+          params = params.set(key, filters[key]);
+        }
+      });
+    }
+
     return this.http.get<User[]>(`${this.apiUrl}/api/users`, { params });
   }
 

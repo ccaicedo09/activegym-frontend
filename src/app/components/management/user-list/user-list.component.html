@@ -1,4 +1,31 @@
 <h3>Usuarios existentes</h3>
+<div class="mb-4">
+  <form [formGroup]="filterForm">
+    <div class="row g-3">
+      <div class="col-md-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Documento"
+          formControlName="document">
+      </div>
+      <div class="col-md-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Nombre"
+          formControlName="name">
+      </div>
+      <div class="col-md-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Teléfono"
+          formControlName="phone">
+      </div>
+    </div>
+  </form>
+</div>
 <div class="table-responsive">
   <table class="table table-striped table-hover table-bordered">
     <thead class="table-dark">
