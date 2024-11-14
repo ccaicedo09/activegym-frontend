@@ -1,43 +1,60 @@
+<section class="d-flex justify-content-between align-items-center mt-2">
+  <div class="d-flex align-items-center ">
+    <h3 class="me-2">
+      Resumen de métricas
+    </h3>
+    <i class="bi bi-info-circle fs-6 mb-1" matTooltip="La selección de filtros aplica únicamente a ventas del mes, ingresos y membresías más vendidas."></i>
+  </div>
+  <form [formGroup]="dateForm" (ngSubmit)="updateMetrics()">
+    <div class="d-flex">
+      <select class="form-control form-select me-2" formControlName="month">
+        <option *ngFor="let month of months" [value]="month.value">{{ month.name }}</option>
+      </select>
+      <input type="number" class="form-control me-2" formControlName="year" placeholder="Año">
+      <button type="submit" class="btn btn-custom">Consultar</button>
+    </div>
+  </form>
+</section>
 <section class="metrics-summary mt-3 row">
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 metric-card d-flex justify-content-center analytic-chart-container">
+  <article class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 metric-card d-flex justify-content-center analytic-chart-container mt-2">
     <app-metric-card
       [value]="totalSales"
       icon="fas fa-shopping-bag"
       title="Ventas del mes">
     </app-metric-card>
-  </div>
+  </article>
 
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 metric-card d-flex justify-content-center analytic-hover analytic-chart-container">
+  <article class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 metric-card d-flex justify-content-center analytic-hover analytic-chart-container">
     <app-metric-card
       [value]="totalEarnings"
       icon="fas fa-dollar-sign"
       title="Ingresos totales">
     </app-metric-card>
-  </div>
+  </article>
 
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 metric-card d-flex justify-content-center analytic-chart-container">
+  <article class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 metric-card d-flex justify-content-center analytic-chart-container">
     <app-metric-card
       [value]="activeUsers"
       icon="fas fa-users"
       title="Miembros activos">
     </app-metric-card>
-  </div>
+  </article>
 
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 metric-card d-flex justify-content-center analytic-chart-container">
+  <article class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 metric-card d-flex justify-content-center analytic-chart-container">
     <app-metric-card
       [value]="recentUsers"
       icon="fas fa-user-plus"
       title="Miembros nuevos">
     </app-metric-card>
-  </div>
+  </article>
 </section>
 
 <section class="charts-section row  mx-3">
-  <div class="col-12 col-lg-6 mb-3 line-chart-container analytic-chart-container">
+  <article class="col-12 col-lg-6 mb-3 line-chart-container analytic-chart-container">
     <canvas id="concurrencyChart"></canvas>
-  </div>
+  </article>
 
-  <div class="col-12 col-lg-6 mb-3 pie-chart-container analytic-chart-container">
+  <article class="col-12 col-lg-6 mb-3 pie-chart-container analytic-chart-container">
     <canvas id="membershipChart"></canvas>
-  </div>
+  </article>
 </section>

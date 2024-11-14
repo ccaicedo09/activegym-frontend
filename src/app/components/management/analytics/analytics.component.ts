@@ -2,11 +2,14 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Chart, ChartConfiguration, ChartData, ChartEvent, ChartType, registerables } from 'chart.js';
 import MetricCardComponent from "./metric-card/metric-card.component";
 import { AnalyticsService } from '../../../services/analytics/analytics.service';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-analytics',
   standalone: true,
-  imports: [MetricCardComponent],
+  imports: [MetricCardComponent, ReactiveFormsModule, CommonModule, MatTooltip],
   templateUrl: './analytics.component.html',
   styleUrl: './analytics.component.css'
 })
@@ -17,6 +20,7 @@ export default class AnalyticsComponent implements OnInit{
   }
 
   private analyticsService = inject(AnalyticsService);
+  private formBuilder = inject(FormBuilder);
 
   totalSales: number = 0;
   totalEarnings: string = '';
@@ -24,16 +28,44 @@ export default class AnalyticsComponent implements OnInit{
   recentUsers: number = 0;
   chart: any;
   lineChart: any;
+  dateForm !: FormGroup;
+
+  months = [
+    { value: 1, name: 'Enero' },
+    { value: 2, name: 'Febrero' },
+    { value: 3, name: 'Marzo' },
+    { value: 4, name: 'Abril' },
+    { value: 5, name: 'Mayo' },
+    { value: 6, name: 'Junio' },
+    { value: 7, name: 'Julio' },
+    { value: 8, name: 'Agosto' },
+    { value: 9, name: 'Septiembre' },
+    { value: 10, name: 'Octubre' },
+    { value: 11, name: 'Noviembre' },
+    { value: 12, name: 'Diciembre' }
+  ];
 
   ngOnInit(): void {
-    const currentMonth = new Date().getMonth() + 1;
-    const currentYear = new Date().getFullYear();
-    this.analyticsService.getTotalSales(currentMonth, currentYear).subscribe(
+    const month = new Date().getMonth() + 1;
+    const year = new Date().getFullYear();
+
+    this.dateForm = this.formBuilder.group({
+      month: [month],
+      year: [year]
+    });
+
+    this.updateMetrics();
+  }
+
+  updateMetrics(): void {
+    const { month, year } = this.dateForm.value;
+
+    this.analyticsService.getTotalSales(month, year).subscribe(
       (data: number) => this.totalSales = data,
       (error) => console.error(error)
     );
 
-    this.analyticsService.getTotalEarnings(currentMonth, currentYear).subscribe(
+    this.analyticsService.getTotalEarnings(month, year).subscribe(
       (data: number) => this.totalEarnings = this.formatCurrency(data),
       (error) => console.error(error)
     );
@@ -49,7 +81,7 @@ export default class AnalyticsComponent implements OnInit{
     );
 
     // Pie chart
-    this.analyticsService.getTopSoldMemberships(currentMonth, currentYear).subscribe(data => {
+    this.analyticsService.getTopSoldMemberships(month, year).subscribe(data => {
       // Sort and select top 5 memberships
       const topMemberships = data.sort((a, b) => b.count - a.count).slice(0, 5);
       const labels = topMemberships.map(m => m.membershipTypeName);
