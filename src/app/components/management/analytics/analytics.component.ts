@@ -87,6 +87,10 @@ export default class AnalyticsComponent implements OnInit{
       const labels = topMemberships.map(m => m.membershipTypeName);
       const counts = topMemberships.map(m => m.count);
 
+      if (this.chart) {
+        this.chart.destroy();
+      }
+
       // Create the chart
       this.chart = new Chart('membershipChart', {
         type: 'doughnut',
