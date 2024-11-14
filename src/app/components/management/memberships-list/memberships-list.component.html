@@ -1,4 +1,4 @@
-<div class="d-flex gap-3 mb-3">
+<div class="d-flex gap-3 mb-3 mt-2">
   <h3>
     Membresías
     <span *ngIf="user; else noUser"> del usuario</span>
@@ -7,6 +7,47 @@
   <button *ngIf="user" class="btn btn-custom" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" [disabled]="hasActiveMembership">
     <i class="bi bi-plus"></i> Crear
   </button>
+  <button *ngIf="!user" class="btn btn-custom" type="button" (click)="resetFilters()" matTooltip="Limpiar filtros">
+    <i class="bi bi-arrow-repeat"></i>
+  </button>
+</div>
+
+<div class="mb-4" *ngIf="!user">
+  <form [formGroup]="filterForm">
+    <div class="row g-3">
+      <div class="col-md-3">
+        <select class="form-control form-select" id="membershipType" formControlName="membershipType">
+          <option value="" disabled>Buscar por tipo</option>
+          <option *ngFor="let membershipType of membershipTypes" [value]="membershipType.name">{{ membershipType.name }}</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Búsqueda por documento"
+          formControlName="userDocument">
+      </div>
+      <div class="col-md-3">
+        <select class="form-control form-select" id="membershipStatus" formControlName="membershipStatus">
+          <option value="" disabled>Buscar por estado</option>
+          <option value="ACTIVA">Activa</option>
+          <option value="INACTIVA">Inactiva</option>
+          <option value="CONGELADA">Congelada</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <div class="form-check form-switch">
+          <input class="form-check-input me-2" type="checkbox" formControlName="frozen" id="frozen"/>
+          <label class="form-check-label" for="frozen">Ha sido congelada</label>
+        </div>
+        <div class="form-check form-switch">
+          <input class="form-check-input me-2" type="checkbox" formControlName="transferred" id="transferred"/>
+          <label class="form-check-label" for="transferred">Ha sido transferida</label>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
 
 <div class="table-responsive" *ngIf="memberships.length > 0; else noMemberships">
@@ -26,10 +67,10 @@
       <tr *ngFor="let membership of memberships">
         <td *ngIf="!user && hasRole(['ADMINISTRADOR', 'ASESOR'])"><a [routerLink]="['/dashboard/users', membership.userDocument]" matTooltip="Ver usuario">{{ membership.userDocument }}</a></td>
         <td>{{ membership.membershipTypeName }}</td>
-        <td>{{ membership.startDate}}</td>
-        <td>{{ membership.endDate }}</td>
+        <td>{{ membership.startDate | date: 'dd/MM/yyy'}}</td>
+        <td>{{ membership.endDate | date: 'dd/MM/yyy'}}</td>
         <td>{{ membership.membershipStatus }}</td>
-        <td>{{ membership.saleDate }}</td>
+        <td>{{ membership.saleDate | date: 'dd/MM/yyy'}}</td>
         <td class="d-flex justify-content-center">
           <div class="btn-group" role="group">
             <button class="btn btn-secondary btn-sm me-2" matTooltip="Generar factura" (click)="generateInvoice(membership)">

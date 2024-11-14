@@ -4,20 +4,24 @@ import { NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { UserService } from '../../../services/users/users.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [NgFor, RouterLink, MatTooltipModule],
+  imports: [NgFor, RouterLink, MatTooltipModule, ReactiveFormsModule],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })
 export default class UserListComponent implements OnInit {
 
   private userService = inject(UserService);
+  private formBuilder = inject(FormBuilder);
 
   users: User[] = [];
   edit: string = 'edit';
+  filterForm !: FormGroup;
 
   // Pagination
   page: number = 0;
@@ -25,11 +29,32 @@ export default class UserListComponent implements OnInit {
   totalPages: number = 0;
 
   ngOnInit(): void {
+    this.initFilterForm();
     this.loadUsers();
   }
 
+  initFilterForm() {
+    this.filterForm = this.formBuilder.group({
+      document: [''],
+      name: [''],
+      phone: ['']
+    });
+
+    // Apply real time filters
+    this.filterForm.valueChanges
+      .pipe(
+        debounceTime(500),
+        distinctUntilChanged()
+      )
+      .subscribe(() => {
+        this.page = 0; // Reset page to 0 when filters change
+        this.loadUsers();
+      });
+  }
+
   loadUsers() {
-    this.userService.list(this.page, this.size)
+    const filters = this.filterForm.value;
+    this.userService.list(this.page, this.size, filters)
       .subscribe((response) => {
         this.users = response.content;
         this.totalPages = response.totalPages;

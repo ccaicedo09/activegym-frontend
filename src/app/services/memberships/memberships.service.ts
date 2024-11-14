@@ -17,8 +17,17 @@ export class MembershipsService {
 
   // User memberships
 
-  list(page: number, size: number): Observable<any> {
-    const params = new HttpParams().set('page', page).set('size', size);
+  list(page: number, size: number, filters?: any): Observable<any> {
+    let params = new HttpParams().set('page', page).set('size', size);
+
+    if (filters) {
+      Object.keys(filters).forEach(key => {
+        if (filters[key]) {
+          params = params.set(key, filters[key]);
+        }
+      });
+    }
+
     return this.http.get<any>(`${this.apiUrl}/api/memberships`, { params });
   }
 
