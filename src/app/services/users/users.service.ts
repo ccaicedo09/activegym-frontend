@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
-import { User } from "../../models/users/users.interface";
+import { User, UserOverview } from "../../models/users/users.interface";
 import { Observable } from "rxjs";
 import { environment } from "../../../environments/environment";
 
@@ -34,12 +34,20 @@ export class UserService {
     return this.http.get<User>(`${this.apiUrl}/api/users/self-management/get-info`);
   }
 
+  getOverview(document: number) {
+    return this.http.get<UserOverview>(`${this.apiUrl}/api/users/${document}/overview`);
+  }
+
+  getSelfOverview() {
+    return this.http.get<UserOverview>(`${this.apiUrl}/api/users/self-management/overview`);
+  }
+
   listGymTeam() {
     return this.http.get<User[]>(`${this.apiUrl}/api/users/team`);
   }
 
-  create(user: User) {
-    return this.http.post<User>(`${this.apiUrl}/api/users`, user);
+  create(formData: FormData) {
+    return this.http.post<User>(`${this.apiUrl}/api/users`, formData);
   }
 
   updateBasicInfo(document: number, user: User) {
@@ -48,6 +56,14 @@ export class UserService {
 
   updateSelfBasicInfo(user: User) {
     return this.http.put<User>(`${this.apiUrl}/api/users/self-management/update-info`, user);
+  }
+
+  updateProfilePicture(document: number, formData: FormData) {
+    return this.http.put(`${this.apiUrl}/api/users/${document}/profile-picture`, formData);
+  }
+
+  updateSelfProfilePicture(formData: FormData) {
+    return this.http.put(`${this.apiUrl}/api/users/self-management/profile-picture`, formData);
   }
 
   assignRole(document: number, roleName: string) {
