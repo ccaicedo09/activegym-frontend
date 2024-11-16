@@ -33,6 +33,8 @@ export default class UserFormComponent implements OnInit {
 
   userForm!: FormGroup;
   user?: User;
+  profilePicture ?: File;
+  fileError : string | null = null;
   genders: Gender[] = [];
   eps: Eps[] = [];
   bloodTypes: BloodType[] = [];
@@ -55,6 +57,7 @@ export default class UserFormComponent implements OnInit {
       epsName: ['', [Validators.required]],
       bloodTypeName: ['', [Validators.required]],
       bloodRhName: ['', [Validators.required]],
+      profilePicture: ['']
     });
 
     if (userDocument) {
@@ -81,15 +84,24 @@ export default class UserFormComponent implements OnInit {
 
 
   save() {
-    if(this.userForm?.invalid) {
-      this.userForm.markAllAsTouched()
+    if (this.userForm?.invalid || (this.isCreateMode && !this.profilePicture)) {
+      this.userForm.markAllAsTouched();
+      if (!this.profilePicture) {
+        this.fileError = 'Debes seleccionar una foto de perfil.';
+      }
       return;
     }
 
     const userData = this.userForm!.value;
 
     if (this.isCreateMode) {
-      this.userService.create(userData).subscribe(() => {
+      const formData = new FormData();
+      formData.append('data', new Blob([JSON.stringify(userData)], { type: 'application/json' }));
+      if (this.profilePicture) {
+        formData.append('profile-picture', this.profilePicture);
+      }
+
+      this.userService.create(formData).subscribe(() => {
         this.router.navigate(['dashboard/users']);
       });
     } else if (this.isSelfManagement) {
@@ -131,4 +143,52 @@ export default class UserFormComponent implements OnInit {
     });
   }
 
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      const maxFileSize = 2 * 1024 * 1024; // 2MB
+      const allowedTypes = ['image/jpeg', 'image/png'];
+
+      if (file.size > maxFileSize) {
+        this.fileError = 'El archivo es demasiado grande. Máximo permitido: 2MB.';
+        this.profilePicture = undefined;
+      } else if (!allowedTypes.includes(file.type)) {
+        this.fileError = 'Formato no permitido. Usa JPEG o PNG.';
+        this.profilePicture = undefined;
+      } else {
+        // Cast the file to a webp image
+        const reader = new FileReader();
+        reader.onload = (e: ProgressEvent<FileReader>) => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            const ctx = canvas.getContext('2d');
+            ctx?.drawImage(img, 0, 0);
+
+            canvas.toBlob(
+              (blob) => {
+                if (blob) {
+                  this.fileError = null;
+                  const documentValue = this.userForm.get('document')?.value;
+                  const newFileName = `${documentValue || 'archivo'}_imagen.webp`;
+                  this.profilePicture = new File([blob], newFileName, { type: 'image/webp' });
+                } else {
+                  this.fileError = 'Error al procesar la imagen.';
+                  this.profilePicture = undefined;
+                }
+              },
+              'image/webp',
+              0.8 // Compression quality
+            );
+          };
+          img.src = e.target?.result as string;
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  }
 }

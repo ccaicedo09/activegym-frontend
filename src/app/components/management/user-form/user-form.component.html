@@ -118,6 +118,13 @@
       </div>
     </div>
   </div>
+  <div *ngIf="isCreateMode" class="mb-3">
+    <label for="profilePicture" class="form-label">Foto de perfil</label>
+    <input type="file" class="form-control" id="profilePicture" (change)="onFileSelected($event)" accept="image/*">
+    <div *ngIf="fileError" class="invalid-feedback d-block">
+      {{ fileError }}
+    </div>
+  </div>
   <button type="submit" class="btn btn-custom me-2">Confirmar</button>
   <button type="button" class="btn btn-secondary"><a href="dashboard" class="nav-link">Cancelar</a></button>
 </form>

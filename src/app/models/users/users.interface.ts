@@ -12,3 +12,11 @@ export interface User {
   age: number;
   roles: string[];
 }
+
+export interface UserOverview {
+  name: string;
+  roles: string[];
+  profilePicture: string;
+  hasMembership: boolean;
+  daysLeft: number;
+}

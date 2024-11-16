@@ -1,4 +1,82 @@
-#user-profile-picture {
+.profile-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.profile-picture-container {
+  position: relative;
   width: 150px;
   height: 150px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 3px solid var(--color-black);
+  transition: filter 0.3s ease;
+}
+
+.profile-picture-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.profile-picture-container label:hover .profile-picture-overlay {
+  opacity: 1;
+}
+
+.profile-picture-container label:hover .profile-picture {
+  filter: brightness(0.8);
+}
+
+.profile-picture-overlay i {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.profile-picture-overlay span {
+  font-size: 0.9rem;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.badge {
+  font-size: 0.9rem;
+  padding: 0.5em 1em;
+  background-color: var(--color-yellow);
+  color: var(--color-black);
+}
+
+.bi {
+  vertical-align: -0.125em;
+}
+
+.uploading {
+  pointer-events: none;
 }

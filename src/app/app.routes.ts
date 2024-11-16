@@ -63,7 +63,7 @@ export const routes: Routes = [
       },
       {
         path: 'profile',
-        loadComponent: () => import('./components/management/user-form/user-form.component')
+        loadComponent: () => import('./components/shared/user-profile/user-profile.component')
       },
       {
         path: 'gymconfig',
