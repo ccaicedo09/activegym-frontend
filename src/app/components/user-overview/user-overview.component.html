@@ -27,7 +27,7 @@
                id="profile-picture-input"
                accept="image/jpeg,image/png"
                (change)="onFileSelected($event)"
-               [disabled]="isUploading"
+               [disabled]="isUploading || isAccessing"
                class="d-none">
       </div>
 

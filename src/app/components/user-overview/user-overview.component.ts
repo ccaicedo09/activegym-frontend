@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { UserService } from '../../services/users/users.service';
 import { UserOverview } from '../../models/users/users.interface';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,12 +16,15 @@ export default class UserOverviewComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
 
+  @Input() accessDocument: number | undefined;
+
   overview: UserOverview | undefined;
   fileError: string | null = null;
   profilePicture: File | undefined;
   isUploading = false;
   userDocument: number | undefined;
   isSelfManagement = false;
+  isAccessing = false;
 
   isMember(): boolean {
     return this.overview?.roles.length === 1 && this.overview.roles.includes('MIEMBRO') || false;
@@ -39,6 +42,10 @@ export default class UserOverviewComponent implements OnInit {
     } else if (this.router.url.includes('/profile')) {
       this.isSelfManagement = true;
       this.loadSelfOverview();
+    } else if (this.accessDocument) {
+      this.userDocument = this.accessDocument;
+      this.isAccessing = true;
+      this.loadOverview(this.accessDocument);
     }
   }
 
