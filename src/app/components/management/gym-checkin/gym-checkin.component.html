@@ -1,0 +1,52 @@
+<div class="d-flex align-items-center justify-content-center min-vh-100 bg-dark text-white">
+  <div class="container">
+    <!-- Formulario de acceso -->
+    <div *ngIf="!showResult" class="mx-auto p-4 rounded shadow-lg" style="max-width: 400px;">
+      <h2 class="text-center mb-4">Active Gym - Acceso</h2>
+      <form [formGroup]="checkinForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="document" class="form-label">Número de Documento</label>
+          <input
+            type="number"
+            id="document"
+            formControlName="document"
+            class="form-control"
+            [class.is-invalid]="isFieldInvalid('document')"
+          />
+          <div class="invalid-feedback">
+            El documento es requerido
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-custom w-100"
+          [disabled]="checkinForm.invalid || isLoading"
+        >
+          {{ isLoading ? 'Verificando...' : 'Verificar Acceso' }}
+        </button>
+      </form>
+    </div>
+
+    <div *ngIf="showResult" class="mx-auto bg-white p-4 rounded shadow-lg text-black" style="max-width: 600px;">
+      <div
+        class="text-center p-3 rounded fw-bold"
+        [ngClass]="{
+          'bg-success text-white': accessGranted,
+          'bg-danger text-white': !accessGranted
+        }"
+      >
+        {{ accessMessage }}
+      </div>
+
+      <app-user-overview
+        *ngIf="document"
+        [accessDocument]="document"
+      ></app-user-overview>
+    </div>
+
+    <!-- Error -->
+    <div *ngIf="error" class="mx-auto bg-danger text-white p-3 rounded shadow-lg mt-3" style="max-width: 400px;">
+      {{ error }}
+    </div>
+  </div>
+</div>

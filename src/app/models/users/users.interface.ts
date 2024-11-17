@@ -20,3 +20,7 @@ export interface UserOverview {
   hasMembership: boolean;
   daysLeft: number;
 }
+
+export interface UserAccess {
+  document: number;
+}

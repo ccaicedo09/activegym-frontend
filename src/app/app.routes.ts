@@ -16,6 +16,12 @@ export const routes: Routes = [
     path: 'login',
     loadComponent: () => import('./pages/login/login.component')
   },
+  {
+    path: 'gym-checkin',
+    loadComponent: () => import('./components/management/gym-checkin/gym-checkin.component'),
+    canActivate: [authGuard, roleGuard],
+    data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR'] },
+  },
 
   // Protected dashboard routes
   {
