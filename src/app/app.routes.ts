@@ -52,6 +52,12 @@ export const routes: Routes = [
         data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR'] }
       },
       {
+        path: 'expiring-memberships',
+        loadComponent: () => import('./components/management/expiring-memberships/expiring-memberships.component'),
+        canActivate: [roleGuard],
+        data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR'] }
+      },
+      {
         path: 'my-memberships',
         loadComponent: () => import('./components/management/memberships-list/memberships-list.component'),
       },
@@ -74,6 +80,12 @@ export const routes: Routes = [
       {
         path: 'gymconfig',
         loadComponent: () => import('./components/admin/gym-config/gym-config.component'),
+        canActivate: [roleGuard],
+        data: { requiredRoles: ['ADMINISTRADOR'] }
+      },
+      {
+        path: 'access-logs',
+        loadComponent: () => import('./components/admin/manage-acess-logs/manage-acess-logs.component'),
         canActivate: [roleGuard],
         data: { requiredRoles: ['ADMINISTRADOR'] }
       },

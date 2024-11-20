@@ -1,11 +1,11 @@
 <div class="d-flex align-items-center justify-content-center min-vh-100 bg-dark text-white">
   <div class="container">
     <!-- Formulario de acceso -->
-    <div *ngIf="!showResult" class="mx-auto p-4 rounded shadow-lg" style="max-width: 400px;">
-      <h2 class="text-center mb-4">Active Gym - Acceso</h2>
+    <div *ngIf="!showResult" class="mx-auto p-4 rounded shadow-lg" style="max-width: 400px; background-color: #1a1a1a;">
+      <h2 class="text-center mb-4 text-warning">Active Gym - Acceso</h2>
       <form [formGroup]="checkinForm" (ngSubmit)="onSubmit()">
         <div class="mb-3">
-          <label for="document" class="form-label">Número de Documento</label>
+          <label for="document" class="form-label text-warning">Número de Documento</label>
           <input
             type="number"
             id="document"
@@ -19,7 +19,7 @@
         </div>
         <button
           type="submit"
-          class="btn btn-custom w-100"
+          class="btn btn-warning w-100"
           [disabled]="checkinForm.invalid || isLoading"
         >
           {{ isLoading ? 'Verificando...' : 'Verificar Acceso' }}
@@ -27,12 +27,13 @@
       </form>
     </div>
 
-    <div *ngIf="showResult" class="mx-auto bg-white p-4 rounded shadow-lg text-black" style="max-width: 600px;">
+    <!-- Resultado -->
+    <div *ngIf="showResult" class="mx-auto bg-light p-4 rounded shadow-lg text-black" style="max-width: 600px;">
       <div
         class="text-center p-3 rounded fw-bold"
         [ngClass]="{
-          'bg-success text-white': accessGranted,
-          'bg-danger text-white': !accessGranted
+          'bg-success text-white': accessMessage === 'INGRESO EXITOSO',
+          'bg-danger text-white': accessMessage === 'INGRESO DENEGADO'
         }"
       >
         {{ accessMessage }}

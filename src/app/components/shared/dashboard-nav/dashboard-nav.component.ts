@@ -16,9 +16,9 @@ export default class DashboardNavComponent implements OnInit {
   roles: any[] = [];
 
   ngOnInit(): void {
-      this.loginService.getRoles().subscribe((roles) => {
-        this.roles = roles;
-      })
+    this.loginService.getRoles().subscribe((roles) => {
+      this.roles = roles;
+    })
   }
 
   hasRole(roles: string[]): boolean {

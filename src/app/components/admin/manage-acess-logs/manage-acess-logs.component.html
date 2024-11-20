@@ -1,0 +1,59 @@
+<section>
+  <h3 class="mt-2">Todos los ingresos</h3>
+
+  <div class="row mb-3">
+    <div class="col-md-4 col-sm-10">
+      <label for="documentFilter" class="form-label">Filtrar por documento</label>
+      <div class="input-group">
+        <input
+          id="documentFilter"
+          type="text"
+          class="form-control"
+          placeholder="Ingrese el documento del usuario"
+          [(ngModel)]="userDocument"
+        />
+        <button class="btn btn-custom" (click)="applyFilter()">Filtrar</button>
+        <button class="btn btn-secondary" (click)="clearFilter()">Limpiar</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="table-responsive">
+    <table class="table table-hover table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Usuario</th>
+          <th>Fecha y hora de ingreso</th>
+          <th>Ingreso satisfactorio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let accessLog of accessLogs">
+          <td>{{ accessLog.id }}</td>
+          <td><a [routerLink]="['/dashboard/users', accessLog.userDocument]">{{ accessLog.userDocument }}</a></td>
+          <td>{{ accessLog.accessDateTime}}</td>
+          <td>{{ accessLog.success ? 'Sí' : 'No' }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <nav class="pagination-nav" aria-label="Page navigation">
+      <ul class="pagination pagination-menu justify-content-center">
+        <li class="page-item" [class.disabled]="page === 0">
+          <button class="page-link" aria-label="Previous" (click)="previousPage()">
+            <span aria-hidden="true">&laquo;</span>
+          </button>
+        </li>
+        <li class="page-item" *ngFor="let p of [].constructor(totalPages); let i = index" [class.active]="i === page">
+          <button class="page-link" (click)="page = i; loadAccessLogs()">{{ i + 1 }}</button>
+        </li>
+        <li class="page-item" [class.disabled]="page === totalPages - 1">
+          <button class="page-link" aria-label="Next" (click)="nextPage()">
+            <span aria-hidden="true">&raquo;</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</section>

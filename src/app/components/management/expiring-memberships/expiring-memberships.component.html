@@ -1,0 +1,26 @@
+<h3 class="mt-2">Membresías por expirar</h3>
+<div class="table-responsive">
+  <table class="table table-hover table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>Nombre</th>
+        <th>Documento</th>
+        <th>Teléfono</th>
+        <th>Tipo de membresía</th>
+        <th>Fecha de expiración</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let membership of memberships">
+        <td>{{membership.userNames}}</td>
+        <td>{{membership.userDocument}}</td>
+        <td>{{membership.userPhone}}
+          <a [href]="getWhatsAppLink(membership)" target="_blank" class="ms-2">
+            <i class="bi bi-whatsapp text-success"></i>
+          </a>
+        </td>
+        <td>{{membership.membershipTypeName}}</td>
+        <td>{{membership.endDate | date: 'dd/MM/yyyy'}}</td>
+      </tr>
+    </tbody>
+  </table>

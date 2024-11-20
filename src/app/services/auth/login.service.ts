@@ -24,6 +24,7 @@ export class LoginService {
       tap(userData => {
         localStorage.setItem("token", userData.token);
         localStorage.setItem("userName", userData.userName);
+        localStorage.setItem("profilePicture", userData.profilePicture);
         this.currentUserLogged.next(true);
         this.currentUserData.next(userData.token);
       }),

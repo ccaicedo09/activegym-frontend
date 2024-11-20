@@ -49,29 +49,7 @@ export class AnalyticsService {
 
   // Expiring memberships notifications
   getExpiringMemberships():Observable<ExpiringNotification[]>{
-    const today = new Date().toDateString();
-    if(this.lastCheckDate === today){
-      return this.notifications.asObservable();
-    }
-    this.http.get<ExpiringNotification[]>(`${this.apiUrl}/api/memberships/notifications/expiring`).subscribe(
-      (data) => {
-        this.lastCheckDate = today;
-        this.notifications.next(data);
-        this.hasNotifications.next(data.length > 0);
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-    return this.notifications.asObservable();
-  }
-
-  hasActiveNotifications(): Observable<boolean> {
-    return this.hasNotifications.asObservable();
-  }
-
-  getNotifications(): Observable<ExpiringNotification[]> {
-    return this.notifications.asObservable();
+    return this.http.get<ExpiringNotification[]>(`${this.apiUrl}/api/memberships/notifications/expiring`);
   }
 
 }

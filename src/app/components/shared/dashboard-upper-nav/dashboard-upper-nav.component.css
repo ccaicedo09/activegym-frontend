@@ -16,3 +16,12 @@
 .navbar .icon:hover {
   color: #383b3d;
 }
+
+.profile-picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-black);
+}
+

@@ -31,8 +31,10 @@ export default class MembershipTypeFormComponent implements OnInit, OnChanges{
       if (membershipType) {
         this.updateForm(membershipType);
       } else {
-        this.membershipTypeForm.reset();
-        this.inputs = [];
+        if (this.membershipTypeForm) {
+          this.membershipTypeForm.reset();
+          this.inputs = [];
+        }
       }
     }
   }
