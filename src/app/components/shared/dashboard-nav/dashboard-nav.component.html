@@ -41,11 +41,11 @@
         <i class="bi bi-card-checklist"></i>
         <a class="nav-link" [routerLink]="['/dashboard/my-memberships']">Mis membresías</a>
       </li>
-      <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR', 'ASESOR']) && roles.length === 1">
+      <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR', 'ASESOR'])">
         <i class="bi bi-shop"></i>
         <a class="nav-link" [routerLink]="['/gym-checkin']" target="_blank">Habilitar ingreso</a>
       </li>
-      <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR']) && roles.length === 1">
+      <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR'])">
         <i class="bi bi-incognito"></i>
         <a class="nav-link" [routerLink]="['/dashboard/access-logs']">Inspeccionar ingresos</a>
       </li>
@@ -87,11 +87,11 @@
       <i class="bi bi-gear-fill"></i>
       <a class="nav-link" [routerLink]="['/dashboard/gymconfig']">Mi gimnasio</a>
     </li>
-    <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR', 'ASESOR']) && roles.length === 1">
+    <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR', 'ASESOR'])">
       <i class="bi bi-shop"></i>
       <a class="nav-link" [routerLink]="['/gym-checkin']" target="_blank">Habilitar ingreso</a>
     </li>
-    <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR']) && roles.length === 1">
+    <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR'])">
       <i class="bi bi-incognito"></i>
       <a class="nav-link" [routerLink]="['/dashboard/access-logs']">Inspeccionar ingresos</a>
     </li>
