@@ -11,3 +11,20 @@
 .icon:hover {
   color: #383b3d;
 }
+
+.notification-badge {
+  position: absolute;
+  top: 10%;
+  transform: translate(100%, 0%);
+  font-size: 0.6em;
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}

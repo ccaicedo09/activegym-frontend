@@ -1,18 +1,14 @@
 <div class="dropdown">
   <div class="position-relative d-inline-block" role="button" id="notificationDropdown" data-bs-toggle="dropdown">
     <i class="bi bi-bell icon me-1"></i>
-    <span *ngIf="hasNotifications" class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
-      <span class="visually-hidden">Notificaciones sin leer</span>
+    <span *ngIf="hasNotifications" class="notification-badge">
+      {{ notifications }}
     </span>
   </div>
   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationDropdown">
-    <li *ngIf="hasNotifications">
-      <a class="dropdown-item" (click)="goToExpiringMemberships()">
-        Ver membresías por vencer
-      </a>
-    </li>
-    <li *ngIf="!hasNotifications">
-      <span class="dropdown-item">No hay notificaciones</span>
+    <li *ngIf="!hasNotifications" class="dropdown-item">No hay notificaciones</li>
+    <li *ngIf="hasNotifications" class="dropdown-item">
+      Hay {{ notifications }} membresías por expirar
     </li>
   </ul>
 </div>
