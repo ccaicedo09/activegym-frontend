@@ -52,6 +52,12 @@ export const routes: Routes = [
         data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR'] }
       },
       {
+        path: 'expiring-memberships',
+        loadComponent: () => import('./components/management/expiring-memberships/expiring-memberships.component'),
+        canActivate: [roleGuard],
+        data: { requiredRoles: ['ADMINISTRADOR', 'ASESOR'] }
+      },
+      {
         path: 'my-memberships',
         loadComponent: () => import('./components/management/memberships-list/memberships-list.component'),
       },
