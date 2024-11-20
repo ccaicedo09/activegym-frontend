@@ -17,9 +17,11 @@ export class DashboardUpperNavComponent implements OnInit{
   private router = inject(Router);
 
   userName: String = "";
+  profilePicture: String = "";
 
   ngOnInit(): void {
     this.userName = localStorage.getItem("userName") || "";
+    this.profilePicture = localStorage.getItem("profilePicture") || "";
   }
 
   logout(): void {

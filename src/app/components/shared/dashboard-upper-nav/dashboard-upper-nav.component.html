@@ -2,9 +2,20 @@
   <div class="container-fluid">
     <div class="ms-auto d-flex align-items-center">
       <div class="dropdown text-end me-3">
-        <div class="d-flex align-items-center dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" matTooltip="Opciones de usuario">
+        <div
+          class="d-flex align-items-center dropdown-toggle"
+          id="userDropdown"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          matTooltip="Opciones de usuario"
+        >
+          <img
+            [src]="profilePicture || 'https://active-gym-bucket.s3.us-east-2.amazonaws.com/default-profile-picture.png'"
+            alt="Foto de perfil"
+            class="profile-picture me-2"
+          />
           <h5 class="mb-0 me-2" role="button">
-            <strong>{{ userName }}</strong> <!-- Nombre del usuario -->
+            <strong>{{ userName }}</strong>
           </h5>
         </div>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
@@ -13,7 +24,7 @@
         </ul>
       </div>
       <app-notification-bell matTooltip="Notificaciones"></app-notification-bell>
-      <i class="bi bi-box-arrow-right icon" matTooltip="Cerrar sesión" (click)="logout()" role="button"></i> <!-- Ícono de cerrar sesión -->
+      <i class="bi bi-box-arrow-right icon" matTooltip="Cerrar sesión" (click)="logout()" role="button"></i>
     </div>
   </div>
 </nav>
