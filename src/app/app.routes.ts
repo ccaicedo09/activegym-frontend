@@ -84,6 +84,12 @@ export const routes: Routes = [
         data: { requiredRoles: ['ADMINISTRADOR'] }
       },
       {
+        path: 'access-logs',
+        loadComponent: () => import('./components/admin/manage-acess-logs/manage-acess-logs.component'),
+        canActivate: [roleGuard],
+        data: { requiredRoles: ['ADMINISTRADOR'] }
+      },
+      {
         path: 'change-password',
         loadComponent: () => import('./components/shared/change-password/change-password.component')
       },
