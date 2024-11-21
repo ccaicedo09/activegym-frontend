@@ -1,16 +1,16 @@
 <div class="container mt-2">
   <div class="row">
     <div class="col-12 col-md-8 col-lg-4 text-align-justify">
-        <h3 clas="mt-2">Transferir membresía</h3>
-        <p>Estás a punto de transferir la membresía de tipo <strong>{{ membershipTypeName }}</strong> del usuario con documento <strong>{{ userDocument }}</strong>. Por favor, introduce a continuación el documento del usuario al que deseas transferir la membresía:</p>
-        <label for="transferDocument" class="form-label">Documento</label>
-        <input type="text" id="transferDocument" [(ngModel)]="transferDocument" class="form-control" placeholder="Documento del usuario a transferir">
-        <button class="btn btn-custom mt-2 mb-2" (click)="searchUser()">Buscar</button>
+        <h3 clas="mt-2">{{"transferMembership.title" | translate}}</h3>
+        <p>{{"transferMembership.message" | translate}} <strong>{{ membershipTypeName }}</strong> {{"transferMembership.message2" | translate}} <strong>{{ userDocument }}</strong>. {{"transferMembership.message3" | translate}}</p>
+        <label for="transferDocument" class="form-label">{{"transferMembership.document" | translate}}</label>
+        <input type="text" id="transferDocument" [(ngModel)]="transferDocument" class="form-control" [placeholder]="'transferMembership.documentPlaceHolder' | translate">
+        <button class="btn btn-custom mt-2 mb-2" (click)="searchUser()">{{"transferMembership.search" | translate}}</button>
 
         <div *ngIf="userFound">
-          <p><strong>Usuario:</strong> {{ userFound.firstName }} {{ userFound.lastName }}</p>
-          <p><strong>Email:</strong> {{ userFound.email }}</p>
-          <button class="btn btn-custom" (click)="transferMembership()">Confirmar Transferencia</button>
+          <p><strong>{{"transferMembership.user" | translate}}</strong> {{ userFound.firstName }} {{ userFound.lastName }}</p>
+          <p><strong>{{"transferMembership.email" | translate}}</strong> {{ userFound.email }}</p>
+          <button class="btn btn-custom" (click)="transferMembership()">{{"transferMembership.confirm" | translate}}</button>
         </div>
     </div>
   </div>

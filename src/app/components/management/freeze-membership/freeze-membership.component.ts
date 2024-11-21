@@ -3,11 +3,12 @@ import { Router } from '@angular/router';
 import { MembershipsService } from '../../../services/memberships/memberships.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-freeze-membership',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, TranslateModule],
   templateUrl: './freeze-membership.component.html',
 })
 export default class FreezeMembershipComponent implements OnInit {

@@ -5,11 +5,13 @@ import { Router } from '@angular/router';
 import { delay, map, Observable, of } from 'rxjs';
 import { LoginService } from '../../services/auth/login.service';
 import { LoginRequest } from '../../services/auth/loginRequest.interface';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf],
+  imports: [ReactiveFormsModule, NgIf, TranslateModule, MatTooltipModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

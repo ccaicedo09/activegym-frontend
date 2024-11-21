@@ -3,11 +3,12 @@ import { AccessService, UserAccessRespose } from '../../../services/users/access
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-manage-acess-logs',
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule],
+  imports: [CommonModule, RouterLink, FormsModule, TranslateModule],
   templateUrl: './manage-acess-logs.component.html',
   styleUrl: './manage-acess-logs.component.css'
 })

@@ -10,18 +10,21 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Inicio</a>
+          <a class="nav-link" href="#">{{"homePage.homeNav.home"| translate}}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/plans']">Nuestros planes</a>
+          <a class="nav-link" [routerLink]="['/plans']">{{"homePage.homeNav.plans"| translate}}</a>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/login']" *ngIf="!userLogged"><strong>Admin & autogestión</strong></a>
+          <app-language-selector></app-language-selector>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/login']" *ngIf="!userLogged"><strong>{{"homePage.homeNav.login"| translate}}</strong></a>
         </li>
         <li>
-          <a class="nav-link" [routerLink]="['/dashboard']" *ngIf="userLogged"><strong>Dashboard</strong></a>
+          <a class="nav-link" [routerLink]="['/dashboard']" *ngIf="userLogged"><strong>{{"homePage.homeNav.isLogged"| translate}}</strong></a>
         </li>
       </ul>
     </div>

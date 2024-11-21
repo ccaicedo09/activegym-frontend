@@ -4,11 +4,12 @@ import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Va
 import { MembershipsService } from '../../../services/memberships/memberships.service';
 import { MembershipType } from '../../../models/memberships/membershiptype.interface';
 import { Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-membership-type-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, TranslateModule],
   templateUrl: './membership-type-form.component.html',
   styleUrl: './membership-type-form.component.css'
 })

@@ -1,13 +1,13 @@
 <div class="d-flex gap-3 mb-3 mt-2">
   <h3>
-    Membresías
-    <span *ngIf="user; else noUser"> del usuario</span>
-    <ng-template #noUser> existentes</ng-template>
+    {{"membershipsList.memberships" | translate}}
+    <span *ngIf="user; else noUser"> {{"membershipsList.ofUser" | translate}}</span>
+    <ng-template #noUser> {{"membershipsList.existing" | translate}}</ng-template>
   </h3>
-  <button *ngIf="user" class="btn btn-custom" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" [disabled]="hasActiveMembership">
-    <i class="bi bi-plus"></i> Crear
+  <button *ngIf="user" class="btn btn-custom" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" [disabled]="hasActiveMembership" [matTooltip]="'membershipsList.create' | translate">
+    <i class="bi bi-plus"></i> {{"membershipsList.create" | translate}}
   </button>
-  <button *ngIf="!user" class="btn btn-custom" type="button" (click)="resetFilters()" matTooltip="Limpiar filtros">
+  <button *ngIf="!user" class="btn btn-custom" type="button" (click)="resetFilters()" [matTooltip]="'membershipsList.clearFilters' | translate">
     <i class="bi bi-arrow-repeat"></i>
   </button>
 </div>
@@ -17,7 +17,7 @@
     <div class="row g-3">
       <div class="col-md-3">
         <select class="form-control form-select" id="membershipType" formControlName="membershipType">
-          <option value="" disabled>Buscar por tipo</option>
+          <option value="" disabled>{{"membershipsList.searchByType" | translate}}</option>
           <option *ngFor="let membershipType of membershipTypes" [value]="membershipType.name">{{ membershipType.name }}</option>
         </select>
       </div>
@@ -25,25 +25,25 @@
         <input
           type="text"
           class="form-control"
-          placeholder="Búsqueda por documento"
+          [placeholder]="'membershipsList.searchByDocument' | translate"
           formControlName="userDocument">
       </div>
       <div class="col-md-3">
         <select class="form-control form-select" id="membershipStatus" formControlName="membershipStatus">
-          <option value="" disabled>Buscar por estado</option>
-          <option value="ACTIVA">Activa</option>
-          <option value="INACTIVA">Inactiva</option>
-          <option value="CONGELADA">Congelada</option>
+          <option value="" disabled>{{"membershipsList.searchByStatus" | translate}}</option>
+          <option value="ACTIVA">{{"membershipsList.active" | translate}}</option>
+          <option value="INACTIVA">{{"membershipsList.inactive" | translate}}</option>
+          <option value="CONGELADA">{{"membershipsList.frozen" | translate}}</option>
         </select>
       </div>
       <div class="col-md-3">
         <div class="form-check form-switch">
           <input class="form-check-input me-2" type="checkbox" formControlName="frozen" id="frozen"/>
-          <label class="form-check-label" for="frozen">Ha sido congelada</label>
+          <label class="form-check-label" for="frozen">{{"membershipsList.hasBeenFrozen" | translate}}</label>
         </div>
         <div class="form-check form-switch">
           <input class="form-check-input me-2" type="checkbox" formControlName="transferred" id="transferred"/>
-          <label class="form-check-label" for="transferred">Ha sido transferida</label>
+          <label class="form-check-label" for="transferred">{{"membershipsList.hasBeenTransferred" | translate}}</label>
         </div>
       </div>
     </div>
@@ -54,18 +54,18 @@
   <table class="table table-hover table-bordered">
     <thead class="table-dark">
       <tr>
-        <th *ngIf="!user && hasRole(['ADMINISTRADOR', 'ASESOR'])">Documento</th>
-        <th>Tipo de membresía</th>
-        <th>Fecha de inicio</th>
-        <th>Fecha de fin</th>
-        <th>Estado</th>
-        <th>Fecha de compra</th>
-        <th >Acciones</th>
+        <th *ngIf="!user && hasRole(['ADMINISTRADOR', 'ASESOR'])">{{"membershipsList.document" | translate}}</th>
+        <th>{{"membershipsList.type" | translate}}</th>
+        <th>{{"membershipsList.startDate" | translate}}</th>
+        <th>{{"membershipsList.endDate" | translate}}</th>
+        <th>{{"membershipsList.status" | translate}}</th>
+        <th>{{"membershipsList.saleDate" | translate}}</th>
+        <th>{{"membershipsList.actions" | translate}}</th>
       </tr>
     </thead>
     <tbody class="text-nowrap">
       <tr *ngFor="let membership of memberships">
-        <td *ngIf="!user && hasRole(['ADMINISTRADOR', 'ASESOR'])"><a [routerLink]="['/dashboard/users', membership.userDocument]" matTooltip="Ver usuario">{{ membership.userDocument }}</a></td>
+        <td *ngIf="!user && hasRole(['ADMINISTRADOR', 'ASESOR'])"><a [routerLink]="['/dashboard/users', membership.userDocument]" [matTooltip]="'membershipsList.seeUser' | translate">{{ membership.userDocument }}</a></td>
         <td>{{ membership.membershipTypeName }}</td>
         <td>{{ membership.startDate | date: 'dd/MM/yyy'}}</td>
         <td>{{ membership.endDate | date: 'dd/MM/yyy'}}</td>
@@ -73,13 +73,13 @@
         <td>{{ membership.saleDate | date: 'dd/MM/yyy'}}</td>
         <td class="d-flex justify-content-center">
           <div class="btn-group" role="group">
-            <button class="btn btn-secondary btn-sm me-2" matTooltip="Generar factura" (click)="generateInvoice(membership)">
+            <button class="btn btn-secondary btn-sm me-2" [matTooltip]="'membershipsList.generateInvoice' | translate" (click)="generateInvoice(membership)">
               <i class="bi bi-printer"></i>
             </button>
-            <button *ngIf="membership.membershipStatus === 'ACTIVA' && isTransferable(membership.membershipTypeName)" class="btn btn-custom btn-sm me-2" matTooltip="Transferir membresía" [routerLink]="['/dashboard/transfer-membership']" [state]="{ membershipId: membership.id, membershipTypeName: membership.membershipTypeName, userDocument: membership.userDocument}">
+            <button *ngIf="membership.membershipStatus === 'ACTIVA' && isTransferable(membership.membershipTypeName)" class="btn btn-custom btn-sm me-2" [matTooltip]="'membershipsList.transfer' | translate" [routerLink]="['/dashboard/transfer-membership']" [state]="{ membershipId: membership.id, membershipTypeName: membership.membershipTypeName, userDocument: membership.userDocument}">
               <i class="bi bi-people"></i>
             </button>
-            <button *ngIf="membership.membershipStatus === 'ACTIVA' && isFreezable(membership.membershipTypeName)" class="btn btn-primary btn-sm me-2" matTooltip="Congelar membresía" [routerLink]="['/dashboard/freeze-membership']" [state]="{ membershipId: membership.id, membershipTypeName: membership.membershipTypeName, userDocument: membership.userDocument}">
+            <button *ngIf="membership.membershipStatus === 'ACTIVA' && isFreezable(membership.membershipTypeName)" class="btn btn-primary btn-sm me-2" [matTooltip]="'membershipsList.freeze' | translate" [routerLink]="['/dashboard/freeze-membership']" [state]="{ membershipId: membership.id, membershipTypeName: membership.membershipTypeName, userDocument: membership.userDocument}">
               <i class="bi bi-snow"></i>
             </button>
           </div>
@@ -106,13 +106,13 @@
   </nav>
 </div>
 <ng-template #noMemberships>
-  <p>No hay membresías registradas</p>
+  <p>{{"membershipsList.noMemberships" | translate}}</p>
 </ng-template>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title fs-5" id="exampleModalLabel">Crear membresía</h3>
+        <h3 class="modal-title fs-5" id="exampleModalLabel">{{"membershipsList.createMembership" | translate}}</h3>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

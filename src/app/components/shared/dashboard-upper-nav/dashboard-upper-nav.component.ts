@@ -4,11 +4,13 @@ import { Router, RouterLink } from '@angular/router';
 import NotificationBellComponent from "./notification-bell/notification-bell.component";
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CommonModule } from '@angular/common';
+import { LanguageSelectorComponent } from "../language-selector/language-selector.component";
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard-upper-nav',
   standalone: true,
-  imports: [RouterLink, NotificationBellComponent, MatTooltipModule, CommonModule],
+  imports: [RouterLink, NotificationBellComponent, MatTooltipModule, CommonModule, LanguageSelectorComponent, TranslateModule],
   templateUrl: './dashboard-upper-nav.component.html',
   styleUrl: './dashboard-upper-nav.component.css'
 })

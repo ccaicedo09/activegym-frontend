@@ -4,12 +4,13 @@ import { User } from '../../../models/users/users.interface';
 import { CommonModule } from '@angular/common';
 import { TooltipPosition, MatTooltipModule } from '@angular/material/tooltip';
 import { RoleAssignmentComponent } from "../role-assignment/role-assignment.component";
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-gym-team-list',
   standalone: true,
-  imports: [CommonModule, MatTooltipModule, RoleAssignmentComponent],
+  imports: [CommonModule, MatTooltipModule, RoleAssignmentComponent, TranslateModule],
   templateUrl: './gym-team-list.component.html',
   styleUrl: './gym-team-list.component.css'
 })

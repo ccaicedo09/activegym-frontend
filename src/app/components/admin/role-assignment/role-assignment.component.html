@@ -1,22 +1,22 @@
 <div class="modal-content">
   <div class="modal-header">
-    <h5 class="modal-title">Asignar Rol: {{ role }}</h5>
+    <h5 class="modal-title">{{"gymTeam.asignRole" | translate}} {{ role }}</h5>
     <button type="button" class="btn-close" (click)="closeModal.emit()"></button>
   </div>
 
   <div class="modal-body">
     <div class="mb-3">
-      <label for="document" class="form-label">Documento</label>
-      <input type="text" id="document" [(ngModel)]="document" class="form-control" placeholder="Ingresa el documento">
-      <button class="btn btn-custom mt-2" (click)="searchUser()">Buscar</button>
+      <label for="document" class="form-label">{{"userForm.document" | translate}}</label>
+      <input type="text" id="document" [(ngModel)]="document" class="form-control" [placeholder]="'gymTeam.documentPlaceHolder' | translate">
+      <button class="btn btn-custom mt-2" (click)="searchUser()">{{"gymTeam.search" | translate }}</button>
     </div>
 
-    <div *ngIf="isLoading">Buscando...</div>
+    <div *ngIf="isLoading">{{"gymTeam.searching" | translate}}</div>
 
     <div *ngIf="userFound">
-      <p><strong>Usuario:</strong> {{ userFound.firstName }} {{ userFound.lastName }}</p>
-      <p><strong>Email:</strong> {{ userFound.email }}</p>
-      <button class="btn btn-custom" (click)="confirmRoleAssignment()">Confirmar Asignación</button>
+      <p><strong>{{"gymTeam.user" | translate}}:</strong> {{ userFound.firstName }} {{ userFound.lastName }}</p>
+      <p><strong>{{"gymTeam.email" | translate}}:</strong> {{ userFound.email }}</p>
+      <button class="btn btn-custom" (click)="confirmRoleAssignment()">{{"gymTeam.confirm" | translate}}</button>
     </div>
 
     <div *ngIf="!userFound && !isLoading && document">

@@ -6,9 +6,9 @@
     </span>
   </div>
   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationDropdown">
-    <li *ngIf="!hasNotifications" class="dropdown-item">No hay notificaciones</li>
+    <li *ngIf="!hasNotifications" class="dropdown-item">{{"bell.noNotifications" | translate}}</li>
     <li *ngIf="hasNotifications" class="dropdown-item">
-      <a (click)="navigateToExpiringMemberships()">Hay {{ notifications }} membresías por expirar</a>
+      <a (click)="navigateToExpiringMemberships()">{{"bell.thereAre" | translate}} {{ notifications }} {{"bell.expiringMemberships" | translate}}</a>
     </li>
   </ul>
 </div>

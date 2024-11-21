@@ -2,11 +2,12 @@ import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { UserService } from '../../../services/users/users.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-role-assignment',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './role-assignment.component.html',
   styleUrl: './role-assignment.component.css'
 })

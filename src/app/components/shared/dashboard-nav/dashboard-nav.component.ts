@@ -3,11 +3,12 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LoginService } from '../../../services/auth/login.service';
 import { CommonModule } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard-nav',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, CommonModule, MatTooltipModule],
+  imports: [RouterLink, RouterLinkActive, CommonModule, MatTooltipModule, TranslateModule],
   templateUrl: './dashboard-nav.component.html',
   styleUrl: './dashboard-nav.component.css'
 })

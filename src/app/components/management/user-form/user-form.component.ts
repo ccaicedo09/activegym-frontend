@@ -13,11 +13,12 @@ import { GenderService } from '../../../services/users/gender.service';
 import { EpsService } from '../../../services/users/eps.service';
 import { BloodTypeService } from '../../../services/users/bloodtype.service';
 import { BloodRhService } from '../../../services/users/bloodrh.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-form',
   standalone: true,
-  imports: [RouterModule, ReactiveFormsModule, NgFor, NgIf],
+  imports: [RouterModule, ReactiveFormsModule, NgFor, NgIf, TranslateModule],
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.css'
 })
@@ -30,6 +31,7 @@ export default class UserFormComponent implements OnInit {
   private bloodRhService = inject(BloodRhService);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
+  private translate = inject(TranslateService);
 
   userForm!: FormGroup;
   user?: User;

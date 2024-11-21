@@ -1,6 +1,5 @@
 <article class="container py-4">
   <div class="profile-content text-center">
-    <!-- Profile Picture Section with Hover Effect -->
     <div class="mb-4">
       <div class="profile-picture-container">
         <label for="profile-picture-input" [class.uploading]="isUploading">
@@ -8,17 +7,14 @@
                [alt]="overview?.name"
                title="{{ overview?.name }}"
                class="rounded-circle profile-picture shadow">
-
-          <!-- Hover Overlay -->
           <div class="profile-picture-overlay">
             <i class="bi bi-camera-fill"></i>
-            <span>Cambiar foto</span>
+            <span>{{"userOverview.changePic" | translate}}</span>
           </div>
 
-          <!-- Loading Spinner -->
           <div *ngIf="isUploading" class="loading-overlay">
             <div class="spinner-border text-light" role="status">
-              <span class="visually-hidden">Cargando...</span>
+              <span class="visually-hidden">{{"userOverview.loading" | translate}}</span>
             </div>
           </div>
         </label>
@@ -31,16 +27,13 @@
                class="d-none">
       </div>
 
-      <!-- Error Message -->
       <div *ngIf="fileError" class="text-danger mt-2 small">
         {{ fileError }}
       </div>
     </div>
 
-    <!-- User Info Section -->
     <h3 class="card-title mb-2">{{ overview?.name }}</h3>
 
-    <!-- Roles Section -->
     <div class="mb-3">
       <span *ngFor="let role of overview?.roles"
             class="badge me-2">
@@ -48,21 +41,20 @@
       </span>
     </div>
 
-    <!-- Membership Status Section - Only shown for members -->
     <div *ngIf="isMember()" class="membership-status">
       <div *ngIf="hasMembershipActive()"
            class="text-success d-inline-block">
         <i class="bi bi-check-circle-fill me-2"></i>
-        Membresía Activa
+        {{"userOverview.activeMembership" | translate}}
         <div class="mt-1 small">
-          {{ overview?.daysLeft }} días restantes
+          {{ overview?.daysLeft }} {{"userOverview.daysLeft" | translate}}
         </div>
       </div>
 
       <div *ngIf="!hasMembershipActive()"
            class="text-danger d-inline-block">
         <i class="bi bi-exclamation-circle-fill me-2"></i>
-        Sin membresía activa
+        {{"userOverview.noActiveMembership" | translate}}
       </div>
     </div>
   </div>

@@ -5,11 +5,12 @@ import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { state } from '@angular/animations';
 import ExpiringMembershipsComponent from "../../../management/expiring-memberships/expiring-memberships.component";
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-notification-bell',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './notification-bell.component.html',
   styleUrl: './notification-bell.component.css'
 })
