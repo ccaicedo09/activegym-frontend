@@ -27,8 +27,8 @@ a:visited {
 }
 
 .btn-custom {
-  background-color: var(--color-yellow);
-  font-weight: 500;
+  background-color: var(--color-yellow) !important;
+  font-weight: 500 !important;
 }
 
 .btn-custom:hover {
