@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import MembershipTypeFormComponent from "../../admin/membership-type-form/membership-type-form.component";
 import * as bootstrap from 'bootstrap';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-membership-type-list',
   standalone: true,
-  imports: [CommonModule, MembershipTypeFormComponent],
+  imports: [CommonModule, MembershipTypeFormComponent, TranslateModule],
   templateUrl: './membership-type-list.component.html',
   styleUrl: './membership-type-list.component.css'
 })

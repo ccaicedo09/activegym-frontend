@@ -1,23 +1,23 @@
 <form [formGroup]="membershipTypeForm" (ngSubmit)="save()">
-  <label for="name" class="form-label">Nombre de la membresía</label>
+  <label for="name" class="form-label">{{"typeForm.name" | translate}}</label>
   <input type="text" class="form-control" formControlName="name" id="name">
   <div *ngIf="membershipTypeForm.get('name')?.hasError('required') && membershipTypeForm.get('name')?.touched" class="invalid-feedback d-block">
-    ¡El nombre no puede ser nulo!
+    {{"typeForm.nameRequired" | translate}}
   </div>
 
   <div class="row mt-2">
     <div class="col-md-6">
-      <label for="price" class="form-label">Precio</label>
+      <label for="price" class="form-label">{{"typeForm.price" | translate}}</label>
       <input type="number" class="form-control" formControlName="price" id="price">
       <div *ngIf="membershipTypeForm.get('price')?.hasError('required') && membershipTypeForm.get('price')?.touched" class="invalid-feedback d-block">
-        ¡El precio no puede ser nulo!
+        {{"typeForm.priceRequired" | translate}}
       </div>
     </div>
     <div class="col-md-6">
-      <label for="duration" class="form-label">Duración (en días)</label>
+      <label for="duration" class="form-label">{{"typeForm.duration" | translate}}</label>
       <input type="number" class="form-control" formControlName="duration" id="duration">
       <div *ngIf="membershipTypeForm.get('duration')?.hasError('required') && membershipTypeForm.get('duration')?.touched" class="invalid-feedback d-block">
-        ¡La duración no puede ser nula!
+        {{"typeForm.durationRequired" | translate}}
       </div>
     </div>
   </div>
@@ -26,24 +26,24 @@
       <div class="col-md-6">
         <div class="form-check form-switch">
           <input class="form-check-input me-4" type="checkbox" formControlName="isTransferable" id="isTransferableSwitch"/>
-          <label class="form-check-label" for="isTransferableSwitch">Transferible</label>
+          <label class="form-check-label" for="isTransferableSwitch">{{"typeForm.transferible" | translate}}</label>
         </div>
       </div>
 
       <div class="col-md-6">
         <div class="form-check form-switch">
           <input class="form-check-input me-2" type="checkbox" formControlName="isFreezable" id="isFreezableSwitch"/>
-          <label class="form-check-label" for="isFreezableSwitch">Congelable</label>
+          <label class="form-check-label" for="isFreezableSwitch">{{"typeForm.freezable" | translate}}</label>
         </div>
       </div>
     </div>
 
   <div class="row mt-3 mb-3 align-items-center">
     <div class="col-md-3 d-flex align-items-center">
-      <label for="description" class="form-label me-3">Características:</label>
+      <label for="description" class="form-label me-3">{{"typeForm.features" | translate}}</label>
     </div>
     <div class="col-md-3">
-      <button type="button" class="btn" (click)="addFeature()"><i class="bi bi-plus-circle fs-6 text-success"></i></button>
+      <button type="button" class="btn" [ariaLabel]="'typeForm.addFeature' | translate" (click)="addFeature()"><i class="bi bi-plus-circle fs-6 text-success"></i></button>
     </div>
   </div>
   <div *ngFor="let input of inputs; let i = index" class="input-group">
@@ -51,13 +51,13 @@
       type="text"
       [(ngModel)]="inputs[i].value"
       [ngModelOptions]="{standalone: true}"
-      placeholder="Ingresa una característica sin caracteres especiales"
+      [placeholder]="'typeForm.featurePlaceholder' | translate"
       class="form-control mb-2"
     />
-    <button (click)="deleteFeature(i)" type="button" class="btn"><i class="bi bi-dash-circle fs-6 text-danger"></i></button>
+    <button (click)="deleteFeature(i)" type="button" [ariaLabel]="'typeForm.deleteFeature' | translate" class="btn"><i class="bi bi-dash-circle fs-6 text-danger"></i></button>
   </div>
 
 
-  <button type="submit" class="btn btn-custom me-2 mt-4">Confirmar</button>
-  <button type="button" class="btn btn-secondary mt-4"><a href="dashboard" class="nav-link">Cancelar</a></button>
+  <button type="submit" class="btn btn-custom me-2 mt-4">{{"typeForm.confirm" | translate}}</button>
+  <button type="button" class="btn btn-secondary mt-4"><a href="dashboard" class="nav-link">{{"typeForm.cancel" | translate}}</a></button>
 </form>

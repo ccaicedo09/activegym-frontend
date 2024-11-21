@@ -3,11 +3,12 @@ import { UserService } from '../../services/users/users.service';
 import { UserOverview } from '../../models/users/users.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-overview',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './user-overview.component.html',
   styleUrl: './user-overview.component.css'
 })
@@ -15,6 +16,7 @@ export default class UserOverviewComponent implements OnInit {
   private userService = inject(UserService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private translate = inject(TranslateService);
 
   @Input() accessDocument: number | undefined;
 
@@ -79,10 +81,10 @@ export default class UserOverviewComponent implements OnInit {
       const allowedTypes = ['image/jpeg', 'image/png'];
 
       if (file.size > maxFileSize) {
-        this.fileError = 'El archivo es demasiado grande. Máximo permitido: 2MB.';
+        this.fileError = this.translate.instant('userOverview.sizeError');
         this.profilePicture = undefined;
       } else if (!allowedTypes.includes(file.type)) {
-        this.fileError = 'Formato no permitido. Usa JPEG o PNG.';
+        this.fileError = this.translate.instant('userOverview.formatError');
         this.profilePicture = undefined;
       } else {
         const reader = new FileReader();
@@ -103,7 +105,7 @@ export default class UserOverviewComponent implements OnInit {
                   this.profilePicture = new File([blob], newFileName, { type: 'image/webp' });
                   this.uploadProfilePicture();
                 } else {
-                  this.fileError = 'Error al procesar la imagen.';
+                  this.fileError = this.translate.instant('userOverview.processingError');
                   this.profilePicture = undefined;
                 }
               },
@@ -121,7 +123,7 @@ export default class UserOverviewComponent implements OnInit {
   uploadProfilePicture(): void {
 
     if (!this.userDocument && !this.isSelfManagement) {
-      this.fileError = 'Error: No se pudo identificar el usuario.';
+      this.fileError = this.translate.instant('userOverview.identificationError');
       return;
     }
 
@@ -139,8 +141,8 @@ export default class UserOverviewComponent implements OnInit {
           this.profilePicture = undefined;
         },
         error: (error) => {
-          console.error('Error al actualizar la foto de perfil:', error);
-          this.fileError = 'Error al subir la imagen. Por favor, intenta nuevamente.';
+          console.error(this.translate.instant('userOverview.errorUpdatingPic'), error);
+          this.fileError = this.translate.instant('userOverview.globalError');
           this.isUploading = false;
         }
       });

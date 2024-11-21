@@ -1,17 +1,17 @@
 <form [formGroup]="membershipForm" (ngSubmit)="save()">
-  <label for="startDate" class="form-label">Fecha de inicio</label>
+  <label for="startDate" class="form-label">{{"membershipsList.startDate" | translate}}</label>
   <input type="date" class="form-control" formControlName="startDate" id="startDate">
   <div *ngIf="membershipForm.get('startDate')?.hasError('minDate') && membershipForm.get('startDate')?.touched" class="invalid-feedback d-block">
-    ¡La fecha debe ser mayor o igual a la fecha actual!
+    {{"membershipForm.dateError" | translate}}
   </div>
   <div *ngIf="membershipForm.get('startDate')?.hasError('required') && membershipForm.get('startDate')?.touched" class="invalid-feedback d-block">
-    ¡La fecha de inicio es requerida!
+    {{"membershipForm.dateRequired" | translate}}
   </div>
-  <label for="membershipType" class="form-label">Tipo de membresía</label>
+  <label for="membershipType" class="form-label">{{"membershipsList.type" | translate}}</label>
   <select class="form-control form-select" formControlName="membershipType" id="membershipType">
-    <option value="" disabled>Selecciona un tipo de membresía</option>
+    <option value="" disabled>{{"membershipForm.select" | translate}}</option>
     <option *ngFor="let membershipType of membershipTypes" [value]="membershipType.name">{{ membershipType.name }}</option>
   </select>
-  <button type="submit" class="btn btn-custom me-2 mt-4">Confirmar</button>
-  <button type="button" class="btn btn-secondary mt-4"><a href="dashboard" class="nav-link">Cancelar</a></button>
+  <button type="submit" class="btn btn-custom me-2 mt-4">{{"userForm.confirm" | translate}}</button>
+  <button type="button" class="btn btn-secondary mt-4"><a href="dashboard" class="nav-link">{{"userForm.cancel" | translate}}</a></button>
 </form>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-custom">
+<nav class="navbar navbar-expand-lg navbar-custom" aria-label="Main Navigation">
   <div class="container-fluid">
     <div class="ms-auto d-flex align-items-center">
       <div class="dropdown text-end me-3">
@@ -7,24 +7,28 @@
           id="userDropdown"
           data-bs-toggle="dropdown"
           aria-expanded="false"
-          matTooltip="Opciones de usuario"
+          aria-haspopup="true"
+          aria-controls="userDropdownMenu"
+          [matTooltip]="'upperNav.userOptionsToolTip' | translate"
+          role="button"
         >
           <img
             [src]="profilePicture || 'https://active-gym-bucket.s3.us-east-2.amazonaws.com/default-profile-picture.png'"
-            alt="Foto de perfil"
+            [alt]="'upperNav.profilePictureAlt' | translate"
             class="profile-picture me-2"
           />
-          <h5 class="mb-0 me-2" role="button">
+          <h5 class="mb-0 me-2">
             <strong>{{ userName }}</strong>
           </h5>
         </div>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-          <li><a class="dropdown-item" [routerLink]="['/dashboard/profile']">Mi perfil</a></li>
-          <li><a class="dropdown-item" [routerLink]="['/dashboard/change-password']">Cambiar contraseña</a></li>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown" id="userDropdownMenu">
+          <li><a class="dropdown-item" [routerLink]="['/dashboard/profile']" [ariaLabel]="'upperNav.myProfile' | translate">{{"upperNav.myProfile" | translate}}</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/dashboard/change-password']" [ariaLabel]="'upperNav.changePassword' | translate">{{"upperNav.changePassword" | translate}}</a></li>
         </ul>
       </div>
-      <app-notification-bell matTooltip="Notificaciones" *ngIf="hasRole(['ADMINISTRADOR', 'ASESOR'])"></app-notification-bell>
-      <i class="bi bi-box-arrow-right icon" matTooltip="Cerrar sesión" (click)="logout()" role="button"></i>
+      <app-language-selector></app-language-selector>
+      <app-notification-bell [matTooltip]="'upperNav.notifications' | translate" *ngIf="hasRole(['ADMINISTRADOR', 'ASESOR'])" [ariaLabel]="'upperNav.notifications' | translate"></app-notification-bell>
+      <i class="bi bi-box-arrow-right icon" [matTooltip]="'upperNav.logout' | translate" (click)="logout()" role="button" [ariaLabel]="'upperNav.logout' | translate"></i>
     </div>
   </div>
 </nav>

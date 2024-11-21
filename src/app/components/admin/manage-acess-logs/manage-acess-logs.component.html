@@ -1,19 +1,19 @@
 <section>
-  <h3 class="mt-2">Todos los ingresos</h3>
+  <h3 class="mt-2">{{"manageAccess.all" | translate}}</h3>
 
   <div class="row mb-3">
     <div class="col-md-4 col-sm-10">
-      <label for="documentFilter" class="form-label">Filtrar por documento</label>
+      <label for="documentFilter" class="form-label">{{"manageAccess.documentFilter" | translate}}</label>
       <div class="input-group">
         <input
           id="documentFilter"
           type="text"
           class="form-control"
-          placeholder="Ingrese el documento del usuario"
+          [placeholder]="'manageAccess.documentPlaceHolder' | translate"
           [(ngModel)]="userDocument"
         />
-        <button class="btn btn-custom" (click)="applyFilter()">Filtrar</button>
-        <button class="btn btn-secondary" (click)="clearFilter()">Limpiar</button>
+        <button class="btn btn-custom" (click)="applyFilter()">{{"manageAccess.filter" | translate}}</button>
+        <button class="btn btn-secondary" (click)="clearFilter()">{{"manageAccess.clear" | translate}}</button>
       </div>
     </div>
   </div>
@@ -23,10 +23,10 @@
     <table class="table table-hover table-bordered">
       <thead class="table-dark">
         <tr>
-          <th>ID</th>
-          <th>Usuario</th>
-          <th>Fecha y hora de ingreso</th>
-          <th>Ingreso satisfactorio</th>
+          <th>{{"manageAccess.id" | translate}}</th>
+          <th>{{"manageAccess.user" | translate}}</th>
+          <th>{{"manageAccess.dateTime" | translate}}</th>
+          <th>{{"manageAccess.status" | translate}}</th>
         </tr>
       </thead>
       <tbody>
@@ -38,10 +38,10 @@
         </tr>
       </tbody>
     </table>
-    <nav class="pagination-nav" aria-label="Page navigation">
+    <nav class="pagination-nav" [ariaLabel]="'pagination.pageNavigation0' | translate">
       <ul class="pagination pagination-menu justify-content-center">
         <li class="page-item" [class.disabled]="page === 0">
-          <button class="page-link" aria-label="Previous" (click)="previousPage()">
+          <button class="page-link" [ariaLabel]="'pagniation.previous'|translate" (click)="previousPage()">
             <span aria-hidden="true">&laquo;</span>
           </button>
         </li>
@@ -49,7 +49,7 @@
           <button class="page-link" (click)="page = i; loadAccessLogs()">{{ i + 1 }}</button>
         </li>
         <li class="page-item" [class.disabled]="page === totalPages - 1">
-          <button class="page-link" aria-label="Next" (click)="nextPage()">
+          <button class="page-link" [ariaLabel]="'pagination.next' | translate" (click)="nextPage()">
             <span aria-hidden="true">&raquo;</span>
           </button>
         </li>

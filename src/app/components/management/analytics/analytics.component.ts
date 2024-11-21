@@ -5,15 +5,16 @@ import { AnalyticsService } from '../../../services/analytics/analytics.service'
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatTooltip } from '@angular/material/tooltip';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-analytics',
   standalone: true,
-  imports: [MetricCardComponent, ReactiveFormsModule, CommonModule, MatTooltip],
+  imports: [MetricCardComponent, ReactiveFormsModule, CommonModule, MatTooltip, TranslateModule],
   templateUrl: './analytics.component.html',
   styleUrl: './analytics.component.css'
 })
-export default class AnalyticsComponent implements OnInit{
+export default class AnalyticsComponent implements OnInit {
 
   constructor() {
     Chart.register(...registerables);
@@ -21,6 +22,7 @@ export default class AnalyticsComponent implements OnInit{
 
   private analyticsService = inject(AnalyticsService);
   private formBuilder = inject(FormBuilder);
+  private translate = inject(TranslateService);
 
   totalSales: number = 0;
   totalEarnings: string = '';
@@ -31,18 +33,18 @@ export default class AnalyticsComponent implements OnInit{
   dateForm !: FormGroup;
 
   months = [
-    { value: 1, name: 'Enero' },
-    { value: 2, name: 'Febrero' },
-    { value: 3, name: 'Marzo' },
-    { value: 4, name: 'Abril' },
-    { value: 5, name: 'Mayo' },
-    { value: 6, name: 'Junio' },
-    { value: 7, name: 'Julio' },
-    { value: 8, name: 'Agosto' },
-    { value: 9, name: 'Septiembre' },
-    { value: 10, name: 'Octubre' },
-    { value: 11, name: 'Noviembre' },
-    { value: 12, name: 'Diciembre' }
+    { value: 1, name: this.translate.instant('analytics.january') },
+    { value: 2, name: this.translate.instant('analytics.february') },
+    { value: 3, name: this.translate.instant('analytics.march') },
+    { value: 4, name: this.translate.instant('analytics.april') },
+    { value: 5, name: this.translate.instant('analytics.may') },
+    { value: 6, name: this.translate.instant('analytics.june') },
+    { value: 7, name: this.translate.instant('analytics.july') },
+    { value: 8, name: this.translate.instant('analytics.august') },
+    { value: 9, name: this.translate.instant('analytics.september') },
+    { value: 10, name: this.translate.instant('analytics.october') },
+    { value: 11, name: this.translate.instant('analytics.november') },
+    { value: 12, name: this.translate.instant('analytics.december') }
   ];
 
   ngOnInit(): void {

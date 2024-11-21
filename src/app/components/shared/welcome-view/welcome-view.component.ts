@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-welcome-view',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './welcome-view.component.html',
   styleUrl: './welcome-view.component.css'
 })

@@ -6,11 +6,12 @@ import { UserService } from '../../../services/users/users.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [NgFor, RouterLink, MatTooltipModule, ReactiveFormsModule],
+  imports: [NgFor, RouterLink, MatTooltipModule, ReactiveFormsModule, TranslateModule],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })

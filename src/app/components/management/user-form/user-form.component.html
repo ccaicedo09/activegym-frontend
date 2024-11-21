@@ -1,80 +1,80 @@
 <form *ngIf="userForm" [formGroup]="userForm" (ngSubmit)="save()">
   <h3 class="mb-3">
-    <span *ngIf="user; else createUser">Datos básicos</span>
-    <ng-template #createUser>Crear usuario</ng-template>
+    <span *ngIf="user; else createUser">{{"userForm.basicData" | translate}}</span>
+    <ng-template #createUser>{{"userForm.createUser" | translate}}</ng-template>
   </h3>
   <div class="row">
     <div class="col-md-6 col-12 mb-3">
-      <label for="firstName" class="form-label">Nombres</label>
+      <label for="firstName" class="form-label">{{"userForm.name" | translate}}</label>
       <input type="text" class="form-control" formControlName="firstName" id="firstName" placeholder="Nombres">
       <div *ngIf="userForm.get('firstName')?.hasError('required') && userForm.get('firstName')?.touched" class="invalid-feedback d-block">
-        ¡El nombre es necesario!
+        {{"userForm.nameRequired" | translate}}
       </div>
       <div *ngIf="userForm.get('firstName')?.hasError('minlength') && userForm.get('firstName')?.touched" class="invalid-feedback d-block">
-        ¡El nombre es muy corto!
+        {{"userForm.nameShort" | translate}}
       </div>
     </div>
     <div class="col-md-6 col-12 mb-3">
-      <label for="lastName" class="form-label">Apellidos</label>
+      <label for="lastName" class="form-label">{{"userForm.lastName" | translate}}</label>
       <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Apellidos">
       <div *ngIf="userForm.get('lastName')?.hasError('required') && userForm.get('lastName')?.touched" class="invalid-feedback d-block">
-        ¡El apellido es necesario!
+        {{"userForm.lastNameRequired" | translate}}
       </div>
       <div *ngIf="userForm.get('lastName')?.hasError('minlength') && userForm.get('lastName')?.touched" class="invalid-feedback d-block">
-        ¡El apellido es muy corto!
+        {{"userForm.lastNameShort" | translate}}
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6 col-12 mb-3">
-      <label for="phone" class="form-label">Teléfono</label>
+      <label for="phone" class="form-label">{{"userForm.phone" | translate}}</label>
       <input type="text" class="form-control" id="phone" formControlName="phone" placeholder="Teléfono">
       <div *ngIf="userForm.get('phone')?.hasError('required') && userForm.get('phone')?.touched" class="invalid-feedback d-block">
-        ¡El teléfono es necesario!
+        {{"userForm.phoneRequired" | translate}}
       </div>
       <div *ngIf="userForm.get('phone')?.hasError('minlength') && userForm.get('phone')?.touched" class="invalid-feedback d-block">
-        ¡El teléfono es muy corto!
+        {{"userForm.phoneShort" | translate}}
       </div>
     </div>
     <div class="col-md-6 col-12 mb-3">
-      <label for="email" class="form-label">Correo Electrónico</label>
+      <label for="email" class="form-label">{{"userForm.email" | translate}}</label>
       <input type="email" class="form-control" id="email" formControlName="email" placeholder="Correo Electrónico">
       <div *ngIf="userForm.get('email')?.hasError('required') && userForm.get('email')?.touched" class="invalid-feedback d-block">
-        ¡El email es necesario!
+        {{"userForm.emailRequired" | translate}}
       </div>
       <div *ngIf="userForm.get('email')?.hasError('email') && userForm.get('email')?.touched" class="invalid-feedback d-block">
-        ¡El email no es válido!
+        {{"userForm.emailInvalid" | translate}}
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6 col-12 mb-3">
-      <label for="document" class="form-label">Número de identificación</label>
+      <label for="document" class="form-label">{{"userForm.document" | translate}}</label>
       <input type="text" class="form-control" id="document" formControlName="document"
         placeholder="Número de identificación">
         <div *ngIf="userForm.get('document')?.hasError('required') && userForm.get('document')?.touched" class="invalid-feedback d-block">
-          ¡La identificación es necesaria!
+          {{"userForm.documentRequired" | translate}}
         </div>
         <div *ngIf="userForm.get('document')?.hasError('minlength') && userForm.get('document')?.touched" class="invalid-feedback d-block">
-          ¡La identificación es muy corta!
+          {{"userForm.documentShort" | translate}}
         </div>
     </div>
     <div class="col-md-6 col-12 mb-3">
-      <label for="dateOfBirth" class="form-label">Fecha de Nacimiento <span *ngIf="user"> - edad: {{ user.age }}</span></label>
+      <label for="dateOfBirth" class="form-label">{{"userForm.birthDate" | translate}} <span *ngIf="user"> - {{"userForm.age" | translate}} {{ user.age }}</span></label>
       <input type="date" class="form-control" formControlName="dateOfBirth" id="dateOfBirth">
       <div *ngIf="userForm.get('dateOfBirth')?.hasError('required') && userForm.get('dateOfBirth')?.touched" class="invalid-feedback d-block">
-        ¡La fecha de nacimiento es necesaria!
+        {{"userForm.birthDateRequired" | translate}}
       </div>
       <div *ngIf="userForm.get('dateOfBirth')?.hasError('ageInvalid') && userForm.get('dateOfBirth')?.touched" class="invalid-feedback d-block">
-        ¡El usuario debe tener mínimo 15 años!
+        {{"userForm.birthDateInvalid" | translate}}
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6 col-12 mb-3">
-      <label for="gender" class="form-label">Género</label>
+      <label for="gender" class="form-label">{{"userForm.gender" | translate}}</label>
       <select class="form-control form-select" id="gender" formControlName="genderName">
-        <option value="" disabled selected>Selecciona un género</option>
+        <option value="" disabled selected>{{"userForm.selectGender" | translate}}</option>
         <!-- <option value="" disabled selected><p *ngIf="user; else noUser">{{ user.genderName }}</p><ng-template #noUser>Selecciona un género</ng-template></option> -->
         <option *ngFor="let gender of genders"
         [value]="gender.genderName">
@@ -82,49 +82,49 @@
         </option>
       </select>
       <div *ngIf="userForm.get('gender')?.hasError('required') && userForm.get('gender')?.touched" class="invalid-feedback d-block">
-        ¡El género es necesario!
+        {{"userForm.genderRequired" | translate}}
       </div>
     </div>
     <div class="col-md-6 col-12 mb-3">
       <label for="eps" class="form-label">EPS</label>
       <select class="form-control form-select" formControlName="epsName" id="eps">
-        <option value="" disabled>Selecciona una EPS</option>
+        <option value="" disabled>{{"userForm.selectEps" | translate}}</option>
         <option *ngFor="let eps of eps" [value]="eps.epsName">{{ eps.epsName }}</option>
       </select>
       <div *ngIf="userForm.get('eps')?.hasError('required') && userForm.get('eps')?.touched" class="invalid-feedback d-block">
-        ¡La EPS es necesaria!
+        {{"userForm.epsRequired" | translate}}
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6 col-12 mb-3">
-      <label for="bloodType" class="form-label">Tipo de Sangre</label>
+      <label for="bloodType" class="form-label">{{"userForm.bloodType" | translate}}</label>
       <select class="form-control form-select" id="bloodType" formControlName="bloodTypeName">
-        <option value="" disabled>Selecciona un tipo de sangre</option>
+        <option value="" disabled>{{"userForm.selectBloodType" | translate}}</option>
         <option *ngFor="let bloodType of bloodTypes" [value]="bloodType.bloodTypeName">{{ bloodType.bloodTypeName }}</option>
       </select>
       <div *ngIf="userForm.get('bloodType')?.hasError('required') && userForm.get('bloodType')?.touched" class="invalid-feedback d-block">
-        ¡El tipo de sangre es necesario!
+        {{"userForm.bloodTypeRequired" | translate}}
       </div>
     </div>
     <div class="col-md-6 col-12 mb-3">
-      <label for="bloodRh" class="form-label">RH</label>
+      <label for="bloodRh" class="form-label">{{"userForm.rh" | translate}}</label>
       <select class="form-control form-select" id="bloodRh" formControlName="bloodRhName">
-        <option value="" disabled>Selecciona un factor RH</option>
+        <option value="" disabled>{{"userForm.selectRh" | translate}}</option>
         <option *ngFor="let bloodRh of bloodRhs" [value]="bloodRh.bloodRh">{{ bloodRh.bloodRh }}</option>
       </select>
       <div *ngIf="userForm.get('bloodRh')?.hasError('required') && userForm.get('bloodRh')?.touched" class="invalid-feedback d-block">
-        ¡El factor RH es necesario!
+        {{"userForm.rhRequired" | translate}}
       </div>
     </div>
   </div>
   <div *ngIf="isCreateMode" class="mb-3">
-    <label for="profilePicture" class="form-label">Foto de perfil</label>
+    <label for="profilePicture" class="form-label">{{"userForm.profilePic" | translate}}</label>
     <input type="file" class="form-control" id="profilePicture" (change)="onFileSelected($event)" accept="image/*">
     <div *ngIf="fileError" class="invalid-feedback d-block">
       {{ fileError }}
     </div>
   </div>
-  <button type="submit" class="btn btn-custom me-2">Confirmar</button>
-  <button type="button" class="btn btn-secondary"><a href="dashboard" class="nav-link">Cancelar</a></button>
+  <button type="submit" class="btn btn-custom me-2">{{"userForm.confirm" | translate}}</button>
+  <button type="button" class="btn btn-secondary"><a href="dashboard" class="nav-link">{{"userForm.cancel" | translate}}</a></button>
 </form>

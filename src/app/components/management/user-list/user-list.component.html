@@ -1,4 +1,4 @@
-<h3>Usuarios existentes</h3>
+<h3>{{"usersList.existingUsers" | translate }}</h3>
 <div class="mb-4">
   <form [formGroup]="filterForm">
     <div class="row g-3">
@@ -6,21 +6,21 @@
         <input
           type="text"
           class="form-control"
-          placeholder="Búsqueda por documento"
+          [placeholder]="'usersList.searchByDocument' | translate"
           formControlName="document">
       </div>
       <div class="col-md-3">
         <input
           type="text"
           class="form-control"
-          placeholder="Búsqueda por nombre"
+          [placeholder]="'usersList.searchByName' | translate"
           formControlName="name">
       </div>
       <div class="col-md-3">
         <input
           type="text"
           class="form-control"
-          placeholder="Búsqueda por teléfono"
+          [placeholder]="'usersList.searchByPhone' | translate"
           formControlName="phone">
       </div>
     </div>
@@ -30,11 +30,11 @@
   <table class="table table-striped table-hover table-bordered">
     <thead class="table-dark">
       <tr>
-        <th>Documento</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Teléfono</th>
-        <th>Ver</th>
+        <th>{{"usersList.document" | translate}}</th>
+        <th>{{"usersList.name" | translate}}</th>
+        <th>{{"usersList.lastName" | translate}}</th>
+        <th>{{"usersList.phone" | translate}}</th>
+        <th>{{"usersList.see" | translate}}</th>
       </tr>
     </thead>
     <tbody class="text-nowrap">
@@ -45,7 +45,7 @@
         <td>{{ user.phone }}</td>
         <td class="d-flex justify-content-center">
           <div class="btn-group" role="group">
-            <button class="btn btn-custom btn-sm me-2" matTooltip="Ver Detalle" [routerLink]="[user.document]">
+            <button class="btn btn-custom btn-sm me-2" [matTooltip]="'usersList.seeDetails' | translate" [routerLink]="[user.document]">
               <i class="bi bi-eye-fill"></i>
             </button>
           </div>
@@ -53,10 +53,10 @@
       </tr>
     </tbody>
   </table>
-  <nav class="pagination-nav" aria-label="Page navigation">
+  <nav class="pagination-nav" [ariaLabel]="'pagination.pageNavigation' | translate">
     <ul class="pagination pagination-menu justify-content-center">
       <li class="page-item" [class.disabled]="page === 0">
-        <button class="page-link" aria-label="Previous" (click)="previousPage()">
+        <button class="page-link" [ariaLabel]="'pagination.previous' | translate" (click)="previousPage()">
           <span aria-hidden="true">&laquo;</span>
         </button>
       </li>
@@ -64,7 +64,7 @@
         <button class="page-link" (click)="page = i; loadUsers()">{{ i + 1 }}</button>
       </li>
       <li class="page-item" [class.disabled]="page === totalPages - 1">
-        <button class="page-link" aria-label="Next" (click)="nextPage()">
+        <button class="page-link" [ariaLabel]="'pagination.next' | translate" (click)="nextPage()">
           <span aria-hidden="true">&raquo;</span>
         </button>
       </li>

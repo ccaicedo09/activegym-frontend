@@ -1,0 +1,13 @@
+.flag-icon {
+  width: 20px;
+  height: auto;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}

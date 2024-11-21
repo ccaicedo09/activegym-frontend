@@ -1,0 +1,392 @@
+{
+  "meta": {
+    "description": "Active Gym은 효율적이고 중앙 집중화된 헬스장 관리를 위한 당신의 동반자입니다. 우리는 멤버십 추적, 출입 관리, 예약된 활동 등 다양한 서비스를 제공합니다.",
+    "keywords": "Active Gym, 헬스장, 멤버십, 피트니스 활동, 출입 관리, 헬스장 관리, 헬스장 소프트웨어",
+    "author": "Active Gym 팀",
+    "ogTitle": "Active Gym - 통합 헬스장 관리",
+    "ogDescription": "Active Gym으로 헬스장 관리를 최적화하세요. 사용자, 활동 및 출입 관리를 위한 도구를 확인해보세요."
+  },
+  "homePage": {
+    "homeNav": {
+      "home": "홈",
+      "plans": "우리의 플랜",
+      "login": "관리 및 셀프 관리",
+      "isLogged": "대시보드"
+    },
+    "carousel": {
+      "slide1": {
+        "imageAlt": "헬스장에 있는 러닝머신과 그 위에서 달리고 있는 남성",
+        "title": "Active Gym에서 목표를 달성하세요",
+        "description": "운동을 위한 쾌적한 환경을 제공합니다"
+      },
+      "slide2": {
+        "imageAlt": "바닥에 있는 웨이트 디스크와 클램프",
+        "title": "고품질 장비",
+        "description": "최첨단 장비를 통해 훈련을 새로운 수준으로 끌어올리세요"
+      },
+      "slide3": {
+        "imageAlt": "헬스장에서 팔굽혀펴기를 돕는 여성과 남성",
+        "title": "맞춤형 트레이닝",
+        "description": "맞춤형 플랜으로 목표를 더 빨리 달성하세요*",
+        "asterisk": "* 혜택은 구매한 플랜에 따라 다를 수 있습니다.",
+        "link": "자세히 알아보기"
+      },
+      "slide4": {
+        "imageAlt": "헬스장에서 배틀 로프를 사용하는 여성과 남성",
+        "title": "그룹 클래스",
+        "description": "숙련된 강사와 함께 플랜에 포함된 그룹 클래스를 즐기세요"
+      },
+      "slide5": {
+        "imageAlt": "바벨과 다양한 훈련 장비",
+        "title": "다목적 공간",
+        "description": "크로스핏, 스피닝, 복싱, TRX 등 모든 목표를 위한 공간을 제공합니다"
+      },
+      "previous": {
+        "ariaLabel": "이전",
+        "label": "이전"
+      },
+      "next": {
+        "ariaLabel": "다음",
+        "label": "다음"
+      }
+    },
+    "headquarters": {
+      "title": "우리의 지점",
+      "address": "주소: ",
+      "seeMore": "더 보기",
+      "usco": {
+        "title": "Active Gym USCO",
+        "toolTip": "Active Gym USCO에 대해 더 알아보기",
+        "mapTitle": "Active Gym USCO 위치",
+        "description": "Active Gym USCO에 오신 것을 환영합니다! 우리의 트레이너가 목표 달성을 도와드립니다. 제공되는 혜택:"
+      },
+      "sanPedro": {
+        "title": "Active Gym San Pedro",
+        "toolTip": "Active Gym San Pedro에 대해 더 알아보기",
+        "mapTitle": "Active Gym San Pedro 위치",
+        "description": "Active Gym San Pedro에 오신 것을 환영합니다! 고급스러운 공간에서 훈련의 럭셔리를 경험해 보세요. 제공되는 혜택:"
+      },
+      "unico": {
+        "title": "Active Gym CC Único",
+        "toolTip": "Active Gym Único에 대해 더 알아보기",
+        "mapTitle": "Active Gym Único 위치",
+        "description": "Active Gym CC Único에 오신 것을 환영합니다! 최신 기술의 장비가 갖춰진 OUTLET 헬스장에서 훈련의 럭셔리를 경험해 보세요. 제공되는 혜택:"
+      },
+      "modal": {
+        "schedule": "운영 시간",
+        "weekdays": "월요일~금요일: ",
+        "weekend": "토요일: ",
+        "sunday": "일요일: ",
+        "closed": "휴무",
+        "additionalInfo": "추가 정보",
+        "closeModal": "닫기",
+        "dumbbellZone": "덤벨 존",
+        "boxingZone": "복싱 링",
+        "spinningZone": "스피닝 존",
+        "crossfitZone": "크로스핏 존",
+        "turkishBath": "터키탕",
+        "powerlifting": "파워리프팅 플랫폼",
+        "massageChairs": "마사지 체어",
+        "discounts": "Surcolombiana 대학교 학생을 위한 독점 할인",
+        "freeParking": "쇼핑 센터 무료 주차"
+      }
+    },
+    "plans": {
+      "title": "우리의 혜택을 활용하세요",
+      "subtitle": "제안",
+      "subheading": "가장 적합한 플랜을 선택하고 우리의 상담원과 상담하세요"
+    }
+  },
+  "login": {
+    "title": "대시보드 로그인",
+    "subtitle": "자격 증명을 입력하세요",
+    "emailPlaceholder": "이메일 주소",
+    "emailNecessary": "이메일은 필수입니다!",
+    "invalidEmail": "유효하지 않은 이메일입니다!",
+    "passwordPlaceholder": "비밀번호",
+    "passwordNecessary": "비밀번호는 필수입니다!",
+    "invalidPassword": "유효하지 않은 비밀번호입니다!",
+    "loginButton": "로그인",
+    "goBack": "홈으로 돌아가기",
+    "goBackLabel": "홈페이지로 돌아가기"
+  },
+  "welcome": {
+    "welcomeTo": "환영합니다 ",
+    "activegym": "ACTIVEGYM",
+    "dashboard": "대시보드"
+  },
+  "languageSelector": {
+    "changeLanguage": "언어 변경"
+  },
+  "sideNav": {
+    "navAriaLabel": "내비게이션 바",
+    "navListAriaLabel": "내비게이션 옵션",
+    "toggleSideBar": "사이드바 토글",
+    "analytics": "통계",
+    "memberships": "회원 관리",
+    "users": "사용자 관리",
+    "passwords": "비밀번호",
+    "createUser": "사용자 생성",
+    "myGym": "내 체육관",
+    "myMemberships": "내 회원권",
+    "checkIn": "입장 활성화",
+    "inspectCheckIns": "입장 기록 확인",
+    "exitDashboard": "대시보드 종료"
+  },
+  "upperNav": {
+    "userOptionsToolTip": "사용자 옵션",
+    "profilePictureAlt": "당신의 프로필 사진",
+    "myProfile": "내 프로필",
+    "changePassword": "비밀번호 변경",
+    "notifications": "알림",
+    "logout": "로그아웃"
+  },
+  "changePassword": {
+    "title": "비밀번호 변경",
+    "message": "비밀번호를 변경하려고 합니다. 요청된 필드를 입력하세요:",
+    "currentPassword": "현재 비밀번호",
+    "currentPasswordPlaceholder": "현재 비밀번호를 입력하세요",
+    "currentPasswordNecessary": "현재 비밀번호는 필수입니다!",
+    "newPassword": "새 비밀번호",
+    "newPasswordPlaceholder": "새 비밀번호를 입력하세요",
+    "confirmPassword": "비밀번호 확인",
+    "confirmPasswordPlaceholder": "새 비밀번호를 확인하세요",
+    "confirmPasswordNecessary": "비밀번호 확인은 필수입니다!",
+    "passwordsDoNotMatch": "비밀번호가 일치하지 않습니다!",
+    "goBack": "돌아가기",
+    "passwordIsRequired": "비밀번호는 필수입니다",
+    "atLeast8Characters": "비밀번호는 최소 8자 이상이어야 합니다",
+    "pattern": "비밀번호는 최소한 하나의 대문자, 소문자, 숫자를 포함해야 합니다",
+    "admin": {
+      "title": "사용자 비밀번호 변경",
+      "message": "관리자로서 시스템의 모든 사용자의 비밀번호를 변경할 수 있습니다.",
+      "document": "사용자 문서",
+      "documentPlaceholder": "사용자의 문서",
+      "documentError": "유효하지 않은 문서",
+      "passwordPlaceholder": "새 비밀번호를 입력하세요",
+      "passwordConfirmPlaceholder": "새 비밀번호를 확인하세요"
+    }
+  },
+  "analytics": {
+    "metricsSummary": "메트릭 요약",
+    "monthSales": "이번 달 판매",
+    "totalEarnings": "총 수익",
+    "activeUsers": "활동 중인 회원",
+    "recentUsers": "새로운 회원",
+    "selectMonth": "월 선택",
+    "selectYear": "연도",
+    "consultButton": "조회",
+    "tooltip": "필터 선택은 이번 달 판매, 수익 및 가장 많이 판매된 회원권에만 적용됩니다.",
+    "january": "1월",
+    "february": "2월",
+    "march": "3월",
+    "april": "4월",
+    "may": "5월",
+    "june": "6월",
+    "july": "7월",
+    "august": "8월",
+    "september": "9월",
+    "october": "10월",
+    "november": "11월",
+    "december": "12월"
+  },
+  "membershipsList": {
+    "memberships": "회원권",
+    "ofUser": "사용자의",
+    "existing": "기존",
+    "create": "생성",
+    "searchByType": "유형별 검색",
+    "searchByStatus": "상태별 검색",
+    "active": "활성",
+    "inactive": "비활성",
+    "frozen": "동결됨",
+    "hasBeenFrozen": "동결되었습니다",
+    "hasBeenTransferred": "이전되었습니다",
+    "document": "문서",
+    "type": "회원권 유형",
+    "startDate": "시작 날짜",
+    "endDate": "종료 날짜",
+    "status": "상태",
+    "saleDate": "구매 날짜",
+    "actions": "작업",
+    "noMemberships": "표시할 회원권이 없습니다",
+    "createMembership": "회원권 생성",
+    "clearFilters": "필터 초기화",
+    "searchByDocument": "문서로 검색",
+    "seeUser": "사용자 보기",
+    "generateInvoice": "청구서 생성",
+    "transfer": "회원권 이전",
+    "freeze": "회원권 동결"
+  },
+  "usersList": {
+    "existingUsers": "기존 사용자",
+    "searchByDocument": "문서로 검색",
+    "searchByName": "이름으로 검색",
+    "searchByPhone": "전화번호로 검색",
+    "document": "문서",
+    "name": "이름",
+    "lastName": "성",
+    "phone": "전화번호",
+    "see": "보기",
+    "seeDetails": "세부정보 보기"
+  },
+  "userOverview": {
+    "changePic": "사진 변경",
+    "loading": "로딩 중...",
+    "sizeError": "이미지 크기는 2MB를 초과할 수 없습니다",
+    "formatError": "허용되지 않는 형식입니다. JPEG 또는 PNG를 사용하세요.",
+    "processingError": "이미지를 처리하는 중 오류가 발생했습니다.",
+    "identificationError": "오류: 사용자를 식별할 수 없습니다.",
+    "errorUpdatingPic": "프로필 사진 업데이트 중 오류 발생: ",
+    "globalError": "이미지 업로드 중 오류가 발생했습니다. 다시 시도해주세요.",
+    "activeMembership": "활성 회원권",
+    "noActiveMembership": "활성 회원권 없음",
+    "daysLeft": "남은 일수"
+  },
+  "userForm": {
+    "basicData": "기본 정보",
+    "createUser": "사용자 생성",
+    "name": "이름",
+    "nameRequired": "이름은 필수입니다!",
+    "nameShort": "이름이 너무 짧습니다!",
+    "lastName": "성",
+    "lastNameRequired": "성은 필수입니다!",
+    "lastNameShort": "성이 너무 짧습니다!",
+    "phone": "전화번호",
+    "phoneRequired": "전화번호는 필수입니다!",
+    "phoneShort": "전화번호가 너무 짧습니다!",
+    "email": "이메일",
+    "emailRequired": "이메일은 필수입니다!",
+    "emailInvalid": "유효하지 않은 이메일입니다!",
+    "document": "문서 번호",
+    "documentRequired": "문서는 필수입니다!",
+    "documentShort": "문서 번호가 너무 짧습니다!",
+    "birthDate": "생년월일",
+    "birthDateRequired": "생년월일은 필수입니다!",
+    "birthDateInvalid": "사용자는 최소 15세 이상이어야 합니다!",
+    "age": "나이:",
+    "gender": "성별",
+    "selectGender": "성별 선택",
+    "genderRequired": "성별은 필수입니다!",
+    "selectEps": "EPS 선택",
+    "epsRequired": "EPS는 필수입니다!",
+    "bloodType": "혈액형",
+    "selectBloodType": "혈액형 선택",
+    "bloodTypeRequired": "혈액형은 필수입니다!",
+    "rh": "RH 인자",
+    "selectRh": "RH 인자 선택",
+    "rhRequired": "RH 인자는 필수입니다!",
+    "profilePic": "프로필 사진",
+    "confirm": "확인",
+    "cancel": "취소"
+  },
+  "pagination": {
+    "previous": "이전",
+    "next": "다음",
+    "pageNavigation": "페이지 탐색"
+  },
+  "transferMembership": {
+  "title": "멤버십 이전",
+  "message": "다음 유형의 멤버십을 이전하려고 합니다:",
+  "message2": "다음 문서를 가진 사용자로부터",
+  "message3": "멤버십을 이전할 사용자의 문서 번호를 아래에 입력해주세요:",
+  "document": "문서",
+  "documentPlaceHolder": "이전을 위한 사용자의 문서",
+  "search": "검색",
+  "user": "사용자:",
+  "email": "이메일",
+  "confirm": "이전 확인"
+},
+"freezeMembership": {
+  "title": "멤버십 동결",
+  "message": "다음 유형의 멤버십을 동결하려고 합니다:",
+  "message2": "다음 문서를 가진 사용자에 대해",
+  "message3": "멤버십을 동결할 일수를 입력해주세요 (15일 이하):",
+  "label": "동결 일수",
+  "placeholder": "일수 입력",
+  "confirm": "동결 확인"
+  },
+  "gymConfig": {
+    "title": "체육관 설정",
+    "description": "아래에서 체육관의 일부 관리 기능을 확인하고 변경할 수 있습니다:",
+    "membershipTypes": "회원권 유형",
+    "yourStaff": "귀하의 팀",
+    "others": "고문, 트레이너 및 지원 직원",
+    "membershipTypesDescription": "아래에서 홈페이지에 표시되는 회원권을 확인할 수 있습니다. 판매 가능 여부를 선택할 수 있습니다:",
+    "gymStaffDescription": "이 섹션에서 팀 구성원을 확인할 수 있습니다. 관련 사용자 역할을 편집할 수 있습니다."
+  },
+  "membershipTypeList": {
+    "button": "플랜 생성",
+    "features": "특징",
+    "additionalFeatures": "추가 특징",
+    "createPlan": "새로운 플랜 생성",
+    "editPlan": "플랜 편집",
+    "notVisible": "표시되지 않음"
+  },
+  "typeForm": {
+    "name": "회원권 이름",
+    "nameRequired": "이름은 비워둘 수 없습니다!",
+    "price": "가격",
+    "priceRequired": "가격은 비워둘 수 없습니다!",
+    "duration": "기간 (일 단위)",
+    "durationRequired": "기간은 비워둘 수 없습니다!",
+    "transferible": "양도 가능",
+    "freezable": "동결 가능",
+    "features": "특징:",
+    "featurePlaceholder": "특수 문자가 없는 특징을 입력하세요",
+    "addFeature": "특징 추가",
+    "deleteFeature": "특징 삭제",
+    "confirm": "확인",
+    "cancel": "취소"
+  },
+  "gymTeam": {
+    "admins": "관리자",
+    "noAdmins": "관리자가 없습니다",
+    "adminTooltip": "관리자는 애플리케이션에서 직접 변경할 수 없습니다. 문제가 발생하면 지원팀에 문의하세요.",
+    "advisors": "고문",
+    "addAdvisor": "고문 추가",
+    "noAdvisors": "고문이 없습니다",
+    "trainers": "트레이너",
+    "addTrainer": "트레이너 추가",
+    "noTrainers": "트레이너가 없습니다",
+    "support": "지원 직원",
+    "addSupport": "지원 직원 추가",
+    "noSupport": "지원 직원이 없습니다",
+    "revoke": "역할 해제",
+    "asignRole": "역할 할당:",
+    "search": "검색",
+    "searching": "검색 중...",
+    "documentPlaceHolder": "문서를 입력하세요",
+    "user": "사용자",
+    "email": "이메일",
+    "confirm": "할당 확인"
+  },
+  "bell": {
+    "noNotifications": "알림이 없습니다",
+    "thereAre": "다음이 있습니다:",
+    "expiringMemberships": "만료 예정 회원권"
+  },
+  "expiring": {
+    "title": "만료 예정 회원권",
+    "contact": "WhatsApp 메시지 보내기"
+  },
+  "manageAccess": {
+    "all": "모든 입장 기록",
+    "documentFilter": "문서로 필터링",
+    "documentPlaceHolder": "사용자 문서를 입력하세요",
+    "filter": "필터",
+    "clear": "지우기",
+    "id": "ID",
+    "user": "사용자",
+    "dateTime": "입장 날짜 및 시간",
+    "status": "성공적인 입장"
+  },
+  "membershipForm": {
+    "dateError": "날짜는 현재 날짜와 같거나 커야 합니다",
+    "dateRequired": "시작 날짜는 필수입니다",
+    "select": "회원권 유형을 선택하세요"
+  },
+  "scrollToTop": {
+    "goUp": "맨 위로 돌아가기"
+  }
+}

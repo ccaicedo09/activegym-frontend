@@ -1,7 +1,7 @@
 <section id="admins">
   <h5>
-    Administradores
-    <i class="bi bi-info-circle fs-6" matTooltip="Los administradores no se pueden alterar directamente desde la aplicación, si tienes algún problema contacta con soporte." [matTooltipPosition]="'right'">
+    {{"gymTeam.admins" | translate}}
+    <i class="bi bi-info-circle fs-6" [matTooltip]="'gymTeam.adminTooltip' | translate" [matTooltipPosition]="'right'">
     </i>
   </h5>
   <ul *ngIf="admins.length > 0; else noAdmins">
@@ -10,55 +10,55 @@
     </li>
   </ul>
   <ng-template #noAdmins>
-    <p>No hay administradores.</p>
+    <p>{{"gymTeam.noAdmins" | translate}}</p>
   </ng-template>
 </section>
 
 <section id="advisors">
   <h5>
-    Asesores
-    <i class="bi bi-plus-circle fs-6" matTooltip="Agregar asesor" [matTooltipPosition]="'right'" role="button" (click)="openModal('ASESOR')"></i>
+    {{"gymTeam.advisors" | translate}}
+    <i class="bi bi-plus-circle fs-6" [matTooltip]="'gymTeam.addAdvisor' | translate" [matTooltipPosition]="'right'" role="button" (click)="openModal('ASESOR')"></i>
   </h5>
   <ul *ngIf="advisors.length > 0; else noAdvisors">
     <li *ngFor="let advisor of advisors">
       {{ advisor.firstName }} {{ advisor.lastName }} - {{ advisor.document }}
-      <i class="bi bi-x text-danger fs-5" matTooltip="Revocar rol" [matTooltipPosition]="'right'" role="button" (click)="revokeRole(advisor.document, 'ASESOR')"></i>
+      <i class="bi bi-x text-danger fs-5" [matTooltip]="'gymTeam.revoke' | translate"  [matTooltipPosition]="'right'" role="button" (click)="revokeRole(advisor.document, 'ASESOR')"></i>
     </li>
   </ul>
   <ng-template #noAdvisors>
-    <p>No hay asesores.</p>
+    <p>{{"gymTeam.noAdvisors" | translate}}</p>
   </ng-template>
 </section>
 
 <section id="trainers">
   <h5>
-    Entrenadores
-    <i class="bi bi-plus-circle fs-6" matTooltip="Agregar entrenador" [matTooltipPosition]="'right'" role="button" (click)="openModal('ENTRENADOR')"></i>
+    {{"gymTeam.trainers" | translate}}
+    <i class="bi bi-plus-circle fs-6" [matTooltip]="'gymTeam.addTrainer' | translate"  [matTooltipPosition]="'right'" role="button" (click)="openModal('ENTRENADOR')"></i>
   </h5>
   <ul *ngIf="trainers.length > 0; else noTrainers">
     <li *ngFor="let trainer of trainers">
       {{ trainer.firstName }} {{ trainer.lastName }} - {{ trainer.document }}
-      <i class="bi bi-x text-danger fs-5" matTooltip="Revocar rol" [matTooltipPosition]="'right'" role="button" (click)="revokeRole(trainer.document, 'ENTRENADOR')"></i>
+      <i class="bi bi-x text-danger fs-5" [matTooltip]="'gymTeam.revoke' | translate"  [matTooltipPosition]="'right'" role="button" (click)="revokeRole(trainer.document, 'ENTRENADOR')"></i>
     </li>
   </ul>
   <ng-template #noTrainers>
-    <p>No hay entrenadores.</p>
+    <p>{{"gymTeam.noTrainers" | translate}}</p>
   </ng-template>
 </section>
 
 <section id="cleaning-staff">
   <h5>
-    Personal de aseo
-    <i class="bi bi-plus-circle fs-6" matTooltip="Agregar personal de aseo" [matTooltipPosition]="'right'" role="button" (click)="openModal('PERSONAL DE ASEO')"></i>
+    {{"gymTeam.support" | translate}}
+    <i class="bi bi-plus-circle fs-6" [matTooltip]="'gymTeam.addSupport' | translate"  [matTooltipPosition]="'right'" role="button" (click)="openModal('PERSONAL DE ASEO')"></i>
   </h5>
   <ul *ngIf="cleaningStaff.length > 0; else noCleaningStaff">
     <li *ngFor="let staff of cleaningStaff">
       {{ staff.firstName }} {{ staff.lastName }} - {{ staff.document }}
-      <i class="bi bi-x text-danger fs-5" matTooltip="Revocar rol" [matTooltipPosition]="'right'" role="button" (click)="revokeRole(staff.document, 'PERSONAL DE ASEO')"></i>
+      <i class="bi bi-x text-danger fs-5" [matTooltip]="'gymTeam.revoke' | translate"  [matTooltipPosition]="'right'" role="button" (click)="revokeRole(staff.document, 'PERSONAL DE ASEO')"></i>
     </li>
   </ul>
   <ng-template #noCleaningStaff>
-    <p>No hay personal de aseo.</p>
+    <p>{{"gymTeam.noSupport" | translate}}</p>
   </ng-template>
 </section>
 

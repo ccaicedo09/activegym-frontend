@@ -1,0 +1,392 @@
+{
+  "meta": {
+    "description": "Active Gym est votre allié pour une gestion efficace et centralisée des salles de sport. Nous offrons un suivi des abonnements, un contrôle d'accès, des activités programmées et bien plus.",
+    "keywords": "Active Gym, salle de sport, abonnements, activités fitness, contrôle d'accès, gestion de salle de sport, logiciel de salle de sport",
+    "author": "Équipe Active Gym",
+    "ogTitle": "Active Gym - Gestion Complète des Salles de Sport",
+    "ogDescription": "Optimisez la gestion de votre salle de sport avec Active Gym. Découvrez des outils pour le contrôle des utilisateurs, des activités et des accès."
+  },
+  "homePage": {
+    "homeNav": {
+      "home": "Accueil",
+      "plans": "Nos Offres",
+      "login": "Admin et Autogestion",
+      "isLogged": "Tableau de Bord"
+    },
+    "carousel": {
+      "slide1": {
+        "imageAlt": "Tapis de course dans une salle de sport et un homme courant dessus",
+        "title": "Atteignez Vos Objectifs avec Active Gym",
+        "description": "Profitez d'un environnement agréable pour vos entraînements"
+      },
+      "slide2": {
+        "imageAlt": "Disques de poids et attaches au sol",
+        "title": "Équipement de Haute Qualité",
+        "description": "Nous offrons des équipements de pointe pour porter votre entraînement à un niveau supérieur"
+      },
+      "slide3": {
+        "imageAlt": "Une femme assistant un homme faisant des pompes dans une salle de sport",
+        "title": "Entraînement Personnalisé",
+        "description": "Obtenez des plans personnalisés pour atteindre vos objectifs plus rapidement*",
+        "asterisk": "* Les avantages peuvent varier selon le plan souscrit.",
+        "link": "en savoir plus ici"
+      },
+      "slide4": {
+        "imageAlt": "Une femme et un homme dans une salle de sport utilisant des cordes ondulatoires",
+        "title": "Cours Collectifs",
+        "description": "Profitez de cours collectifs inclus dans votre offre avec des instructeurs qualifiés"
+      },
+      "slide5": {
+        "imageAlt": "Une barre avec des poids et divers équipements d'entraînement",
+        "title": "Espaces Polyvalents",
+        "description": "Nous avons des espaces pour tous les objectifs : crossfit, spinning, boxe, TRX, et plus encore"
+      },
+      "previous": {
+        "ariaLabel": "Précédent",
+        "label": "Précédent"
+      },
+      "next": {
+        "ariaLabel": "Suivant",
+        "label": "Suivant"
+      }
+    },
+    "headquarters": {
+      "title": "Nos Sites",
+      "address": "Adresse : ",
+      "seeMore": "Voir Plus",
+      "usco": {
+        "title": "Active Gym USCO",
+        "toolTip": "En savoir plus sur Active Gym USCO",
+        "mapTitle": "Localisation d'Active Gym USCO",
+        "description": "Bienvenue à Active Gym USCO ! Nos entraîneurs sont là pour vous aider à atteindre vos objectifs. Nous offrons des avantages tels que :"
+      },
+      "sanPedro": {
+        "title": "Active Gym San Pedro",
+        "toolTip": "En savoir plus sur Active Gym San Pedro",
+        "mapTitle": "Localisation d'Active Gym San Pedro",
+        "description": "Bienvenue à Active Gym San Pedro ! Découvrez le luxe de vous entraîner dans une salle de sport haut de gamme avec des espaces exclusifs. Nous offrons des avantages tels que :"
+      },
+      "unico": {
+        "title": "Active Gym CC Único",
+        "toolTip": "En savoir plus sur Active Gym Único",
+        "mapTitle": "Localisation d'Active Gym Único",
+        "description": "Bienvenue à Active Gym CC Único ! Découvrez le luxe de vous entraîner dans une salle de sport OUTLET avec des machines de dernière génération. Nous offrons des avantages tels que :"
+      },
+      "modal": {
+        "schedule": "Horaires",
+        "weekdays": "Lundi à Vendredi : ",
+        "weekend": "Samedis : ",
+        "sunday": "Dimanches : ",
+        "closed": "Fermé",
+        "additionalInfo": "Informations Supplémentaires",
+        "closeModal": "Fermer",
+        "dumbbellZone": "Zone de Poids",
+        "boxingZone": "Rings de Boxe",
+        "spinningZone": "Zone de Spinning",
+        "crossfitZone": "Zone de Crossfit",
+        "turkishBath": "Bain Turc",
+        "powerlifting": "Plateformes de Powerlifting",
+        "massageChairs": "Fauteuils de Massage",
+        "discounts": "Réductions exclusives pour les étudiants de l'Université Surcolombiana",
+        "freeParking": "Parking gratuit au centre commercial"
+      }
+    },
+    "plans": {
+      "title": "Profitez de nos",
+      "subtitle": "offres",
+      "subheading": "Choisissez le plan qui vous convient le mieux et consultez nos conseillers"
+    }
+  },
+  "login": {
+    "title": "Connexion au tableau de bord",
+    "subtitle": "entrez vos identifiants",
+    "emailPlaceholder": "Adresse email",
+    "emailNecessary": "L'email est requis !",
+    "invalidEmail": "L'email n'est pas valide !",
+    "passwordPlaceholder": "Mot de passe",
+    "passwordNecessary": "Le mot de passe est requis !",
+    "invalidPassword": "Le mot de passe n'est pas valide !",
+    "loginButton": "Se connecter",
+    "goBack": "Retour à l'accueil",
+    "goBackLabel": "Retour à la page d'accueil"
+  },
+  "welcome": {
+    "welcomeTo": "Bienvenue à ",
+    "activegym": "ACTIVEGYM",
+    "dashboard": "tableau de bord"
+  },
+  "languageSelector": {
+    "changeLanguage": "Changer de langue"
+  },
+  "sideNav": {
+    "navAriaLabel": "Barre de navigation",
+    "navListAriaLabel": "Options de navigation",
+    "toggleSideBar": "Basculer la barre latérale",
+    "analytics": "Statistiques",
+    "memberships": "Gérer les adhésions",
+    "users": "Gérer les utilisateurs",
+    "passwords": "Mots de passe",
+    "createUser": "Créer un utilisateur",
+    "myGym": "Mon gymnase",
+    "myMemberships": "Mes adhésions",
+    "checkIn": "Activer l'entrée",
+    "inspectCheckIns": "Inspecter les entrées",
+    "exitDashboard": "Quitter le tableau"
+  },
+  "upperNav": {
+    "userOptionsToolTip": "Options utilisateur",
+    "profilePictureAlt": "Votre photo de profil",
+    "myProfile": "Mon profil",
+    "changePassword": "Changer le mot de passe",
+    "notifications": "Notifications",
+    "logout": "Se déconnecter"
+  },
+  "changePassword": {
+    "title": "Changer le mot de passe",
+    "message": "Vous êtes sur le point de changer votre mot de passe. Veuillez entrer les champs demandés :",
+    "currentPassword": "Mot de passe actuel",
+    "currentPasswordPlaceholder": "Entrez votre mot de passe actuel",
+    "currentPasswordNecessary": "Le mot de passe actuel est requis !",
+    "newPassword": "Nouveau mot de passe",
+    "newPasswordPlaceholder": "Entrez votre nouveau mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "confirmPasswordPlaceholder": "Confirmez votre nouveau mot de passe",
+    "confirmPasswordNecessary": "La confirmation du mot de passe est requise !",
+    "passwordsDoNotMatch": "Les mots de passe ne correspondent pas !",
+    "goBack": "Retourner",
+    "passwordIsRequired": "Le mot de passe est requis",
+    "atLeast8Characters": "Le mot de passe doit contenir au moins 8 caractères",
+    "pattern": "Le mot de passe doit contenir au moins une majuscule, une minuscule et un chiffre",
+    "admin": {
+      "title": "Changer le mot de passe de l'utilisateur",
+      "message": "En tant qu'administrateur, vous pouvez changer le mot de passe de n'importe quel utilisateur du système.",
+      "document": "Document de l'utilisateur",
+      "documentPlaceholder": "Document de l'utilisateur",
+      "documentError": "Document invalide",
+      "passwordPlaceholder": "Entrez le nouveau mot de passe",
+      "passwordConfirmPlaceholder": "Confirmez le nouveau mot de passe"
+    }
+  },
+  "analytics": {
+    "metricsSummary": "Résumé des métriques",
+    "monthSales": "Ventes du mois",
+    "totalEarnings": "Revenus totaux",
+    "activeUsers": "Membres actifs",
+    "recentUsers": "Nouveaux membres",
+    "selectMonth": "Sélectionnez un mois",
+    "selectYear": "Année",
+    "consultButton": "Consulter",
+    "tooltip": "La sélection des filtres s'applique uniquement aux ventes mensuelles, aux revenus et aux abonnements les plus vendus.",
+    "january": "Janvier",
+    "february": "Février",
+    "march": "Mars",
+    "april": "Avril",
+    "may": "Mai",
+    "june": "Juin",
+    "july": "Juillet",
+    "august": "Août",
+    "september": "Septembre",
+    "october": "Octobre",
+    "november": "Novembre",
+    "december": "Décembre"
+  },
+  "membershipsList": {
+    "memberships": "Abonnements",
+    "ofUser": "de l'utilisateur",
+    "existing": "existants",
+    "create": "Créer",
+    "searchByType": "Rechercher par type",
+    "searchByStatus": "Rechercher par statut",
+    "active": "Actif",
+    "inactive": "Inactif",
+    "frozen": "Gelé",
+    "hasBeenFrozen": "A été gelé",
+    "hasBeenTransferred": "A été transféré",
+    "document": "Document",
+    "type": "Type d'abonnement",
+    "startDate": "Date de début",
+    "endDate": "Date de fin",
+    "status": "Statut",
+    "saleDate": "Date d'achat",
+    "actions": "Actions",
+    "noMemberships": "Aucun abonnement à afficher",
+    "createMembership": "Créer un abonnement",
+    "clearFilters": "Effacer les filtres",
+    "searchByDocument": "Rechercher par document",
+    "seeUser": "Voir l'utilisateur",
+    "generateInvoice": "Générer une facture",
+    "transfer": "Transférer l'abonnement",
+    "freeze": "Geler l'abonnement"
+  },
+  "usersList": {
+    "existingUsers": "Utilisateurs existants",
+    "searchByDocument": "Rechercher par document",
+    "searchByName": "Rechercher par nom",
+    "searchByPhone": "Rechercher par téléphone",
+    "document": "Document",
+    "name": "Prénom",
+    "lastName": "Nom",
+    "phone": "Téléphone",
+    "see": "Voir",
+    "seeDetails": "Voir les détails"
+  },
+  "userOverview": {
+    "changePic": "Changer la photo",
+    "loading": "Chargement...",
+    "sizeError": "La taille de l'image ne peut pas dépasser 2 Mo",
+    "formatError": "Format non valide. Utilisez JPEG ou PNG.",
+    "processingError": "Erreur lors du traitement de l'image.",
+    "identificationError": "Erreur : l'utilisateur n'a pas pu être identifié.",
+    "errorUpdatingPic": "Erreur lors de la mise à jour de la photo de profil : ",
+    "globalError": "Erreur lors du téléchargement de l'image. Veuillez réessayer.",
+    "activeMembership": "Abonnement actif",
+    "noActiveMembership": "Pas d'abonnement actif",
+    "daysLeft": "jours restants"
+  },
+  "userForm": {
+    "basicData": "Informations de base",
+    "createUser": "Créer un utilisateur",
+    "name": "Prénom(s)",
+    "nameRequired": "Le prénom est requis !",
+    "nameShort": "Le prénom est trop court !",
+    "lastName": "Nom(s)",
+    "lastNameRequired": "Le nom est requis !",
+    "lastNameShort": "Le nom est trop court !",
+    "phone": "Téléphone",
+    "phoneRequired": "Le téléphone est requis !",
+    "phoneShort": "Le numéro de téléphone est trop court !",
+    "email": "E-mail",
+    "emailRequired": "L'e-mail est requis !",
+    "emailInvalid": "L'e-mail n'est pas valide !",
+    "document": "Numéro de document",
+    "documentRequired": "Le document est requis !",
+    "documentShort": "Le numéro de document est trop court !",
+    "birthDate": "Date de naissance",
+    "birthDateRequired": "La date de naissance est requise !",
+    "birthDateInvalid": "L'utilisateur doit avoir au moins 15 ans !",
+    "age": "âge :",
+    "gender": "Genre",
+    "selectGender": "Sélectionnez un genre",
+    "genderRequired": "Le genre est requis !",
+    "selectEps": "Sélectionnez un EPS",
+    "epsRequired": "L'EPS est requis !",
+    "bloodType": "Groupe sanguin",
+    "selectBloodType": "Sélectionnez un groupe sanguin",
+    "bloodTypeRequired": "Le groupe sanguin est requis !",
+    "rh": "Facteur RH",
+    "selectRh": "Sélectionnez un facteur RH",
+    "rhRequired": "Le facteur RH est requis !",
+    "profilePic": "Photo de profil",
+    "confirm": "Confirmer",
+    "cancel": "Annuler"
+  },
+  "pagination": {
+    "previous": "Précédent",
+    "next": "Suivant",
+    "pageNavigation": "Navigation entre les pages"
+  },
+  "transferMembership": {
+    "title": "Transférer l'abonnement",
+    "message": "Vous êtes sur le point de transférer l'abonnement de type",
+    "message2": "de l'utilisateur avec le document",
+    "message3": "Veuillez entrer ci-dessous le numéro de document de l'utilisateur à qui vous souhaitez transférer l'abonnement :",
+    "document": "Document",
+    "documentPlaceHolder": "Document de l'utilisateur pour le transfert",
+    "search": "Rechercher",
+    "user": "Utilisateur :",
+    "email": "E-mail",
+    "confirm": "Confirmer le transfert"
+  },
+  "freezeMembership": {
+    "title": "Geler l'abonnement",
+    "message": "Vous êtes sur le point de geler l'abonnement de type",
+    "message2": "pour l'utilisateur avec le document",
+    "message3": "Veuillez entrer ci-dessous le nombre de jours pour geler l'abonnement (moins de 15 jours) :",
+    "label": "Jours de gel",
+    "placeholder": "Nombre de jours",
+    "confirm": "Confirmer le gel"
+  },
+  "gymConfig": {
+    "title": "Configuration de votre salle de sport",
+    "description": "Ci-dessous, vous pouvez visualiser et modifier certains aspects administratifs de votre salle de sport :",
+    "membershipTypes": "Types d'abonnements",
+    "yourStaff": "Votre équipe",
+    "others": "Vos conseillers, entraîneurs et personnel de soutien",
+    "membershipTypesDescription": "Ci-dessous, vous verrez les abonnements tels qu'ils apparaissent sur votre page d'accueil. Vous pouvez choisir si l'abonnement est disponible à la vente ou non :",
+    "gymStaffDescription": "Dans cette section, vous pouvez voir comment votre équipe est structurée. Vous pouvez modifier les rôles des utilisateurs associés."
+  },
+  "membershipTypeList": {
+    "button": "Créer un plan",
+    "features": "Caractéristiques",
+    "additionalFeatures": "Caractéristiques supplémentaires",
+    "createPlan": "Créer un nouveau plan",
+    "editPlan": "Modifier le plan",
+    "notVisible": "Non visible"
+  },
+  "typeForm": {
+    "name": "Nom de l'abonnement",
+    "nameRequired": "Le nom ne peut pas être nul !",
+    "price": "Prix",
+    "priceRequired": "Le prix ne peut pas être nul !",
+    "duration": "Durée (en jours)",
+    "durationRequired": "La durée ne peut pas être nulle !",
+    "transferible": "Transférable",
+    "freezable": "Gelable",
+    "features": "Caractéristiques :",
+    "featurePlaceholder": "Entrez une caractéristique sans caractères spéciaux",
+    "addFeature": "Ajouter une caractéristique",
+    "deleteFeature": "Supprimer une caractéristique",
+    "confirm": "Confirmer",
+    "cancel": "Annuler"
+  },
+  "gymTeam": {
+    "admins": "Administrateurs",
+    "noAdmins": "Aucun administrateur",
+    "adminTooltip": "Les administrateurs ne peuvent pas être modifiés directement depuis l'application. Si vous rencontrez un problème, veuillez contacter le support.",
+    "advisors": "Conseillers",
+    "addAdvisor": "Ajouter un conseiller",
+    "noAdvisors": "Aucun conseiller",
+    "trainers": "Entraîneurs",
+    "addTrainer": "Ajouter un entraîneur",
+    "noTrainers": "Aucun entraîneur",
+    "support": "Personnel de soutien",
+    "addSupport": "Ajouter du personnel de soutien",
+    "noSupport": "Aucun personnel de soutien",
+    "revoke": "Révoquer le rôle",
+    "asignRole": "Attribuer un rôle :",
+    "search": "Rechercher",
+    "searching": "Recherche...",
+    "documentPlaceHolder": "Entrez le document",
+    "user": "Utilisateur",
+    "email": "Email",
+    "confirm": "Confirmer l'attribution"
+  },
+  "bell": {
+    "noNotifications": "Aucune notification",
+    "thereAre": "Il y a",
+    "expiringMemberships": "abonnements en expiration"
+  },
+  "expiring": {
+    "title": "Abonnements en expiration",
+    "contact": "Envoyer un message sur WhatsApp"
+  },
+  "manageAccess": {
+    "all": "Toutes les entrées",
+    "documentFilter": "Filtrer par document",
+    "documentPlaceHolder": "Entrez le document de l'utilisateur",
+    "filter": "Filtrer",
+    "clear": "Effacer",
+    "id": "ID",
+    "user": "Utilisateur",
+    "dateTime": "Date et heure d'entrée",
+    "status": "Entrée réussie"
+  },
+  "membershipForm": {
+    "dateError": "La date doit être supérieure ou égale à la date actuelle",
+    "dateRequired": "La date de début est requise",
+    "select": "Sélectionnez un type d'abonnement"
+  },
+  "scrollToTop": {
+    "goUp": "Retour en haut"
+  }
+}

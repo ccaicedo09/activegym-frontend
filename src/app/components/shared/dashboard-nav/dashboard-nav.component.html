@@ -1,9 +1,9 @@
-<button class="btn btn-warning d-lg-none" id="sidebar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar" title="Toggle sidebar">
+<button class="btn btn-warning d-lg-none" id="sidebar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar" aria-expanded="false" [title]="'sideNav.toggleSideBar' | translate">
   <i class="bi bi-list"></i>
 </button>
 
 <!-- Small screen off canvas -->
-<div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
+<div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel" role="navigation" [ariaLabel]="'sideNav.navAribaLabel' | translate" aria-live="polite">
   <div class="offcanvas-header">
     <a class="navbar-brand" [routerLink]="['/dashboard']">
       <i class="fas fa-dumbbell fa-1x"></i> Active Gym
@@ -11,99 +11,99 @@
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    <ul class="nav flex-column links-list">
+    <ul class="nav flex-column links-list" role="menu" [ariaLabel]="'sideNav.navListAriaLabel' | translate">
       <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" *ngIf="hasRole(['ADMINISTRADOR', 'ASESOR'])">
         <i class="bi bi-graph-up"></i>
-        <a class="nav-link" [routerLink]="['/dashboard/analytics']">Estadísticas</a>
+        <a class="nav-link" [routerLink]="['/dashboard/analytics']" role="menuitem">{{"sideNav.analytics" | translate}}</a>
       </li>
       <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR', 'ASESOR'])">
         <i class="bi bi-card-checklist"></i>
-        <a class="nav-link" [routerLink]="['/dashboard/memberships-list']">Gestionar membresías</a>
+        <a class="nav-link" [routerLink]="['/dashboard/memberships-list']" role="menuitem">{{"sideNav.memberships" | translate}}</a>
       </li>
       <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR', 'ASESOR'])">
         <i class="bi bi-person-fill"></i>
-        <a class="nav-link" [routerLink]="['/dashboard/users']">Gestionar usuarios</a>
+        <a class="nav-link" [routerLink]="['/dashboard/users']" role="menuitem">{{"sideNav.users" | translate}}</a>
       </li>
       <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR'])">
         <i class="bi bi-lock-fill"></i>
-        <a class="nav-link" [routerLink]="['/dashboard/admin-change-password']">Contraseñas</a>
+        <a class="nav-link" [routerLink]="['/dashboard/admin-change-password']" role="menuitem">{{"sideNav.passwords" | translate}}</a>
       </li>
       <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR', 'ASESOR'])">
         <i class="bi bi-person-plus-fill"></i>
-        <a class="nav-link" [routerLink]="['/dashboard/user-form']">Crear usuario</a>
+        <a class="nav-link" [routerLink]="['/dashboard/user-form']" role="menuitem">{{"sideNav.createUser" | translate}}</a>
       </li>
       <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR'])">
         <i class="bi bi-gear-fill"></i>
-        <a class="nav-link" [routerLink]="['/dashboard/gymconfig']">Mi gimnasio</a>
+        <a class="nav-link" [routerLink]="['/dashboard/gymconfig']" role="menuitem">{{"sideNav.myGym" | translate}}</a>
       </li>
       <!-- Common Users Links -->
       <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole(['MIEMBRO']) && roles.length === 1">
         <i class="bi bi-card-checklist"></i>
-        <a class="nav-link" [routerLink]="['/dashboard/my-memberships']">Mis membresías</a>
+        <a class="nav-link" [routerLink]="['/dashboard/my-memberships']" role="menuitem">{{"sideNav.myMemberships" | translate}}</a>
       </li>
       <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR', 'ASESOR'])">
         <i class="bi bi-shop"></i>
-        <a class="nav-link" [routerLink]="['/gym-checkin']" target="_blank">Habilitar ingreso</a>
+        <a class="nav-link" [routerLink]="['/gym-checkin']" target="_blank" role="menuitem">{{"sideNav.checkIn" | translate}}</a>
       </li>
       <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR'])">
         <i class="bi bi-incognito"></i>
-        <a class="nav-link" [routerLink]="['/dashboard/access-logs']">Inspeccionar ingresos</a>
+        <a class="nav-link" [routerLink]="['/dashboard/access-logs']" role="menuitem">{{"sideNav.inspectCheckIns" | translate}}</a>
       </li>
       <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas">
         <i class="bi bi-house-door-fill"></i>
-        <a class="nav-link" [routerLink]="['']">Salir del dashboard</a>
+        <a class="nav-link" [routerLink]="['']" role="menuitem">{{"sideNav.exitDashboard" | translate}}</a>
       </li>
     </ul>
   </div>
 </div>
 
 <!-- Big screens sidebar -->
-<aside id="sidebar" class="d-none d-lg-block text-white p-3">
+<aside id="sidebar" class="d-none d-lg-block text-white p-3" role="navigation" [ariaLabel]="'sideNav.navAribaLabel' | translate">
   <a class="navbar-brand" [routerLink]="['/dashboard']">
     <i class="fas fa-dumbbell fa-1x"></i> Active Gym
   </a>
-  <ul class="nav flex-column links-list">
+  <ul class="nav flex-column links-list" role="menu" [ariaLabel]="'sideNav.navListAriaLabel' | translate">
     <li class="nav-item d-flex align-items-center" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR', 'ASESOR'])">
       <i class="bi bi-graph-up"></i>
-      <a class="nav-link" [routerLink]="['/dashboard/analytics']">Estadísticas</a>
+      <a class="nav-link" [routerLink]="['/dashboard/analytics']" role="menuitem">{{"sideNav.analytics" | translate}}</a>
     </li>
     <li class="nav-item d-flex align-items-center" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR', 'ASESOR'])">
       <i class="bi bi-card-checklist"></i>
-      <a class="nav-link" [routerLink]="['/dashboard/memberships-list']">Gestionar membresías</a>
+      <a class="nav-link" [routerLink]="['/dashboard/memberships-list']" role="menuitem">{{"sideNav.memberships" | translate}}</a>
     </li>
     <li class="nav-item d-flex align-items-center" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR', 'ASESOR'])">
       <i class="bi bi-person-fill"></i>
-      <a class="nav-link" [routerLink]="['/dashboard/users']">Gestionar usuarios</a>
+      <a class="nav-link" [routerLink]="['/dashboard/users']" role="menuitem">{{"sideNav.users" | translate}}</a>
     </li>
     <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR'])">
       <i class="bi bi-lock-fill"></i>
-      <a class="nav-link" [routerLink]="['/dashboard/admin-change-password']">Contraseñas</a>
+      <a class="nav-link" [routerLink]="['/dashboard/admin-change-password']" role="menuitem">{{"sideNav.passwords" | translate}}</a>
     </li>
     <li class="nav-item d-flex align-items-center" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR', 'ASESOR'])">
       <i class="bi bi-person-plus-fill"></i>
-      <a class="nav-link" [routerLink]="['/dashboard/user-form']">Crear usuario</a>
+      <a class="nav-link" [routerLink]="['/dashboard/user-form']" role="menuitem">{{"sideNav.createUser" | translate}}</a>
     </li>
     <li class="nav-item d-flex align-items-center" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR'])">
       <i class="bi bi-gear-fill"></i>
-      <a class="nav-link" [routerLink]="['/dashboard/gymconfig']">Mi gimnasio</a>
+      <a class="nav-link" [routerLink]="['/dashboard/gymconfig']" role="menuitem">{{"sideNav.myGym" | translate}}</a>
     </li>
     <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR', 'ASESOR'])">
       <i class="bi bi-shop"></i>
-      <a class="nav-link" [routerLink]="['/gym-checkin']" target="_blank">Habilitar ingreso</a>
+      <a class="nav-link" [routerLink]="['/gym-checkin']" target="_blank" role="menuitem">{{"sideNav.checkIn" | translate}}</a>
     </li>
     <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole(['ADMINISTRADOR'])">
       <i class="bi bi-incognito"></i>
-      <a class="nav-link" [routerLink]="['/dashboard/access-logs']">Inspeccionar ingresos</a>
+      <a class="nav-link" [routerLink]="['/dashboard/access-logs']" role="menuitem">{{"sideNav.inspectCheckIns" | translate}}</a>
     </li>
 
     <!-- Common Users Links -->
     <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas" routerLinkActive="active-link" *ngIf="hasRole(['MIEMBRO']) && roles.length === 1">
       <i class="bi bi-card-checklist"></i>
-      <a class="nav-link" [routerLink]="['/dashboard/my-memberships']">Mis membresías</a>
+      <a class="nav-link" [routerLink]="['/dashboard/my-memberships']" role="menuitem">{{"sideNav.myMemberships" | translate}}</a>
     </li>
     <li class="nav-item d-flex align-items-center" data-bs-dismiss="offcanvas">
       <i class="bi bi-house-door-fill"></i>
-      <a class="nav-link" [routerLink]="['']">Salir del dashboard</a>
+      <a class="nav-link" [routerLink]="['']" role="menuitem">{{"sideNav.exitDashboard" | translate}}</a>
     </li>
   </ul>
 </aside>

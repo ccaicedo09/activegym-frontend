@@ -5,11 +5,12 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { dateValidator } from '../../../validators/dateValidator';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-membership-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, TranslateModule],
   templateUrl: './membership-form.component.html',
   styleUrl: './membership-form.component.css'
 })

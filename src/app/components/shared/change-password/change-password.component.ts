@@ -3,11 +3,13 @@ import { Component, inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../../../services/auth/login.service';
 import { Router, RouterLink } from '@angular/router';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-change-password',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, FormsModule, RouterLink],
+  imports: [ReactiveFormsModule, CommonModule, FormsModule, RouterLink, MatTooltipModule, TranslateModule],
   templateUrl: './change-password.component.html',
   styleUrl: './change-password.component.css'
 })
@@ -18,6 +20,7 @@ export default class ChangePasswordComponent implements OnInit {
   private loginService = inject(LoginService);
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
+  private translate = inject(TranslateService);
 
   ngOnInit(): void {
     this.changePasswordForm = this.formBuilder.group({
@@ -55,13 +58,13 @@ export default class ChangePasswordComponent implements OnInit {
 
     const errors = [];
     if (password.hasError('required') && password.touched) {
-      errors.push('La contraseña es requerida');
+      errors.push(this.translate.instant('changePassword.passwordIsRequired'));
     }
     if (password.hasError('minlength')) {
-      errors.push('La contraseña debe tener al menos 8 caracteres');
+      errors.push(this.translate.instant('changePassword.atLeast8Characters'));
     }
     if (password.hasError('pattern')) {
-      errors.push('La contraseña debe contener al menos una mayúscula, una minúscula y un número');
+      errors.push(this.translate.instant('changePassword.pattern'));
     }
     return errors;
   }

@@ -2,11 +2,13 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { ExpiringNotification } from '../../shared/dashboard-upper-nav/notification-bell/ExpiringNotification.interface';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-expiring-memberships',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule, MatTooltipModule],
   templateUrl: './expiring-memberships.component.html',
   styleUrl: './expiring-memberships.component.css'
 })

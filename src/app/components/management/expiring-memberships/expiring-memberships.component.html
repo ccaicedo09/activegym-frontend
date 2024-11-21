@@ -1,13 +1,13 @@
-<h3 class="mt-2">Membresías por expirar</h3>
+<h3 class="mt-2">{{"expiring.title" | translate}}</h3>
 <div class="table-responsive">
   <table class="table table-hover table-bordered">
     <thead class="table-dark">
       <tr>
-        <th>Nombre</th>
-        <th>Documento</th>
-        <th>Teléfono</th>
-        <th>Tipo de membresía</th>
-        <th>Fecha de expiración</th>
+        <th>{{"usersList.name" | translate}}</th>
+        <th>{{"usersList.document" | translate}}</th>
+        <th>{{"usersList.phone" | translate}}</th>
+        <th>{{"membershipsList.type" | translate}}</th>
+        <th>{{"membershipsList.endDate" | translate}}</th>
       </tr>
     </thead>
     <tbody>
@@ -15,7 +15,7 @@
         <td>{{membership.userNames}}</td>
         <td>{{membership.userDocument}}</td>
         <td>{{membership.userPhone}}
-          <a [href]="getWhatsAppLink(membership)" target="_blank" class="ms-2">
+          <a [href]="getWhatsAppLink(membership)" target="_blank" class="ms-2" [matTooltip]="'expiring.contact' | translate">
             <i class="bi bi-whatsapp text-success"></i>
           </a>
         </td>

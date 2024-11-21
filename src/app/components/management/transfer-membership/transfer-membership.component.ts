@@ -4,11 +4,12 @@ import { UserService } from '../../../services/users/users.service';
 import { MembershipsService } from '../../../services/memberships/memberships.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-transfer-membership',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './transfer-membership.component.html',
 })
 export default class TransferMembershipComponent implements OnInit {

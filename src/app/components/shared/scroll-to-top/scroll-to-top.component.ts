@@ -1,9 +1,11 @@
 import { Component, HostListener } from '@angular/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-scroll-to-top',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule, MatTooltipModule],
   templateUrl: './scroll-to-top.component.html',
   styleUrl: './scroll-to-top.component.css'
 })

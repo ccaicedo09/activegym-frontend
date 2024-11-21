@@ -1,30 +1,30 @@
 <section id="login-page">
   <div class="login-form shadow-lg">
-    <h3><strong>Ingreso Dashboard</strong></h3>
-    <p>ingrese sus credenciales</p>
+    <h3><strong>{{"login.title" | translate}}</strong></h3>
+    <p>{{"login.subtitle" | translate}}</p>
     <form [formGroup]="adminLoginForm" (ngSubmit)="login()">
       <div class="input-group mb-3">
-        <label for="email" class="form-label"><i class="bi bi-envelope-fill"></i></label>
-        <input type="email" formControlName="email" class="form-control" id="email" placeholder="Email">
-        <div *ngIf="adminLoginForm.get('email')?.hasError('required') && adminLoginForm.get('email')?.touched" class="invalid-feedback d-block custom-invalid-feedback">
-          ¡El email es necesario!
+        <label for="email" class="form-label"><i class="bi bi-envelope-fill" aria-hidden="true"></i></label>
+        <input type="email" formControlName="email" class="form-control" id="email" [placeholder]="'login.emailPlaceholder' | translate" aria-required="true">
+        <div *ngIf="adminLoginForm.get('email')?.hasError('required') && adminLoginForm.get('email')?.touched" class="invalid-feedback d-block custom-invalid-feedback" role="alert">
+          {{"login.emailNecessary" | translate}}
         </div>
         <div *ngIf="adminLoginForm.get('email')?.hasError('email') && adminLoginForm.get('email')?.touched" class="invalid-feedback d-block custom-invalid-feedback">
-          ¡El email no es válido!
+          {{"login.invalidEmail" | translate}}
         </div>
       </div>
       <div class="input-group mb-3">
-        <label for="password" class="form-label"><i class="bi bi-lock-fill"></i></label>
-        <input type="password" class="form-control" formControlName="password" id="password" placeholder="Contraseña">
-        <div *ngIf="adminLoginForm.get('password')?.hasError('required') && adminLoginForm.get('password')?.touched" class="invalid-feedback d-block custom-invalid-feedback">
-          ¡La contraseña es necesaria!
+        <label for="password" class="form-label"><i class="bi bi-lock-fill" aria-hidden="true"></i></label>
+        <input type="password" class="form-control" formControlName="password" id="password" [placeholder]="'login.passwordPlaceholder' | translate" aria-required="true">
+        <div *ngIf="adminLoginForm.get('password')?.hasError('required') && adminLoginForm.get('password')?.touched" class="invalid-feedback d-block custom-invalid-feedback" role="alert">
+          {{"login.passwordNecessary" | translate}}
         </div>
-        <div *ngIf="adminLoginForm.get('password')?.hasError('minlength') && adminLoginForm.get('password')?.touched" class="invalid-feedback d-block custom-invalid-feedback">
-          ¡La contraseña no es válida!
+        <div *ngIf="adminLoginForm.get('password')?.hasError('minlength') && adminLoginForm.get('password')?.touched" class="invalid-feedback d-block custom-invalid-feedback" role="alert">
+          {{"login.invalidPassword" | translate}}
         </div>
       </div>
-      <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
-      <a href="#">volver al inicio</a>
+      <button type="submit" class="btn btn-primary btn-block">{{"login.loginButton" | translate}}</button>
+      <a href="#" [ariaLabel]="'login.goBackLabel' | translate">{{"login.goBack" | translate}}</a>
     </form>
   </div>
 </section>

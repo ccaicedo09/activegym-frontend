@@ -1,0 +1,12 @@
+<div class="dropdown" [matTooltip]="'languageSelector.changeLanguage' | translate">
+  <button class="btn btn-dropdown dropdown-toggle d-flex align-items-center" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+    <img [src]="'assets/' + currentLanguage + '.svg'" alt="Current Language" class="flag-icon me-2">
+    <span>{{ currentLanguage.toUpperCase() }}</span>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+    <li *ngFor="let language of languages" class="dropdown-item" (click)="changeLanguage(language)">
+      <img [src]="'assets/' + language + '.svg'" alt="{{ language.toUpperCase() }}" class="flag-icon me-2">
+      {{ language.toUpperCase() }}
+    </li>
+  </ul>
+</div>

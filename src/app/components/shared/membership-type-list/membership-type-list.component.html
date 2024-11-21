@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-custom" (click)="openModal(undefined)" *ngIf="isAdmin">Crear plan</button>
+<button type="button" class="btn btn-custom" (click)="openModal(undefined)" *ngIf="isAdmin">{{"membershipTypeList.button" | translate}}</button>
 
 <div class="container mt-4">
   <div class="row g-4">
@@ -8,14 +8,14 @@
           <h4 class="card-title type-title">{{ type.name }}</h4>
           <p class="card-text">{{ type.price | currency:'COP':'symbol'}}</p>
 
-          <h5>Características:</h5>
+          <h5>{{"membershipTypeList.features" | translate}}</h5>
           <ul>
             <li *ngFor="let feature of parseDescription(type.description)">
               {{ feature }}
             </li>
           </ul>
 
-          <h5>Opciones adicionales:</h5>
+          <h5>{{"membershipTypeList.additionalFeatures" | translate}}</h5>
           <ul>
             <!-- Opción Transferible -->
             <ng-template [ngIf]="type.isTransferable" [ngIfElse]="notTransferable">
@@ -36,11 +36,13 @@
         </div>
 
         <div class="card-footer d-flex justify-content-left" *ngIf="isAdmin">
-          <button class="btn btn-custom btn-sm me-2" (click)="openModal(type)">Editar</button>
+          <button class="btn btn-custom btn-sm me-2" (click)="openModal(type)">
+            {{"Editar" | translate}}
+          </button>
           <button
             [ngClass]="type.isVisible ? 'btn btn-success btn-sm' : 'btn btn-secondary btn-sm'"
             class="ms-2" (click)="toggleVisibility(type.id)">
-            {{ type.isVisible ? 'Visible' : 'No visible' }}
+            {{ type.isVisible ? "Visible" : 'membershipTypeList.notVisible' | translate }}
           </button>
         </div>
       </div>
@@ -53,9 +55,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title fs-5" id="membershipModalLabel">
-          {{ selectedMembershipType ? 'Editar Plan' : 'Crear nuevo plan' }}
+          {{ selectedMembershipType ? 'Editar' : 'membershipTypeList.createPlan' | translate }}
         </h3>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" [ariaLabel]="'homePage.headquarters.close' | translate"></button>
       </div>
       <div class="modal-body">
         <app-membership-type-form [membershipType]="selectedMembershipType"></app-membership-type-form>

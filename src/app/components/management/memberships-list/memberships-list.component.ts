@@ -10,11 +10,12 @@ import { MembershipType } from '../../../models/memberships/membershiptype.inter
 import { LoginService } from '../../../services/auth/login.service';
 import { PdfService } from '../../../services/util/pdf.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-memberships-list',
   standalone: true,
-  imports: [RouterLink, CommonModule, MembershipFormComponent, MatTooltipModule, ReactiveFormsModule],
+  imports: [RouterLink, CommonModule, MembershipFormComponent, MatTooltipModule, ReactiveFormsModule, TranslateModule],
   templateUrl: './memberships-list.component.html',
   styleUrl: './memberships-list.component.css'
 })

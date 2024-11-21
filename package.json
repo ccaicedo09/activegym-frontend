@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "^18.1.0",
     "@angular/router": "^18.1.0",
     "@auth0/angular-jwt": "^5.2.0",
+    "@ngx-translate/core": "^16.0.3",
+    "@ngx-translate/http-loader": "^16.0.0",
     "@popperjs/core": "^2.11.8",
     "activegym-frontend": "file:",
     "bootstrap": "^5.3.3",
