@@ -7,7 +7,7 @@ import HomeNavComponent from "../../components/shared/home-nav/home-nav.componen
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, HomeNavComponent],
+  imports: [CommonModule, HomeNavComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
